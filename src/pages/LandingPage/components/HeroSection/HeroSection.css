@@ -1147,16 +1147,16 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .circle-group {   
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 850px;
     position: absolute;
   }
 
   /* Show rotating arc only on narrow mobile screens */
   .circle-arc {
     display: block;
-    width: 200%;
-    height: 200%;
+    width: 400%;
+    height: 952%;
   }
 
   .circle-arc-svg {
@@ -1186,6 +1186,7 @@ body.sidebar-expanded .lp-1-section {
     position:absolute; 
     top: 100%;
     left: 50%;
+    visibility: hidden;
     
     transform: translateX(-50%);
      animation: rotate-glow 4.5s linear infinite; 
@@ -1328,17 +1329,17 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-bot {
-    top: -27%;
+    top: -30%;
   }
 
   .navbar-icon-2 {
     right: -1%;
-    top: -18%;
+    top: -21%;
   }
 
   .navbar-icon-3 {
     left: -1%;
-    top: -18%;
+    top: -21%;
   }
 
   .lp-section:not(.lp-1-section) {
