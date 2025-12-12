@@ -21,7 +21,8 @@
 
 .logo {
   width: 125%;
-  height: 125%;
+  height: auto;
+  
   object-fit: contain;
 }
 
@@ -70,6 +71,7 @@
 }
 
 @media (max-width: 480px) {
+  
   .logo-wrapper {
     width: 140px;
   }

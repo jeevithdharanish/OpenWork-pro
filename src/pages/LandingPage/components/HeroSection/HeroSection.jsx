@@ -58,7 +58,7 @@ const HeroSection = () => {
       name: 'earn-token',
       label: 'Earn Token',
       sectionId: 'lp-8-section',
-      icon: '/assets/sidebar-icon-6.svg',
+      icon: '/assets/diploma/icon.svg',
       className: 'icon-earn-token',
     },
     {
@@ -72,14 +72,14 @@ const HeroSection = () => {
       name: 'multichain',
       label: 'Multi Chain',
       sectionId: 'lp-10-section',
-      icon: '/assets/sidebar-icon-multichain.svg',
+      icon: '/assets/multichain/icon.svg',
       className: 'icon-multichain',
     },
     {
       name: 'architecture',
       label: 'Architecture',
       sectionId: 'lp-11-section',
-      icon: '/assets/sidebar-icon-architecture.svg',
+      icon: '/assets/architecture/icon.svg',
       className: 'icon-architecture',
     },
     {

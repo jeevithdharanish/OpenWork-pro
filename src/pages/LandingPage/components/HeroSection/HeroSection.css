@@ -1,12 +1,12 @@
 /* Hero Section (LP-1) */
 :root {
   --icon-brightness-high: 0.8;
-  --icon-saturation-high: 1.4;
-  --icon-contrast-high: 1.05;
+  --icon-saturation-high: 1.2;
+  --icon-contrast-high: .05;
 
   --rev-brightness-low: 0;
   --rev-saturation-low: 0;
-  --rev-contrast-low: 0.3;
+  --rev-contrast-low: 0.2;
 }
 
 
@@ -216,8 +216,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-discoverable img {
-  width: 11.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 14.667px !important;
+  height: 14.667px !important;
 }
 
 .icon-direct-contract {
@@ -227,8 +230,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-direct-contract img {
-  width: 10.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 14.667px !important;
+  height: 14.667px !important;
 }
 
 .icon-job-progress {
@@ -237,8 +243,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-job-progress img {
-  width: 11.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 14.667px !important;
+  height: 14.667px !important;
 }
 
 .icon-post-job {
@@ -247,8 +256,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-post-job img {
-  width: 10.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 14.667px !important;
+  height: 14.667px !important;
 }
 
 .icon-raise-dispute {
@@ -257,8 +269,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-raise-dispute img {
-  width: 9.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 12.667px !important;
+  height: 14.667px !important;
 }
 
 .icon-dao {
@@ -267,8 +282,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-dao img {
-  width: 10.667px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 15.667px !important;
+  height: 15.667px !important;
 }
 
 .icon-multichain {
@@ -291,14 +309,14 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-architecture img {
-  width: 18px !important;
+  width: 15px !important;
   height: 18px !important;
 }
 .icon-architecture img {
   filter: brightness(var(--icon-brightness-high))
           saturate(var(--icon-saturation-high))
           contrast(var(--icon-contrast-high));
-  opacity: 1; /* ensure full visibility */
+  opacity: 0.9; /* ensure full visibility */
 }
 
 .icon-revolution {
@@ -331,8 +349,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-earn-token img {
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
   width: 17px !important;
-  height: 17px !important;
+  height: 19px !important;
 }
 
 .icon-set-profile {
@@ -341,8 +362,11 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-set-profile img {
-  width: 9.467px !important;
-  height: 10.667px !important;
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  width: 14.467px !important;
+  height: 14.667px !important;
 }
 
 /* Active icon state - no blue border, show label persistently */
