@@ -158,10 +158,16 @@ body.sidebar-expanded .lp-1-section {
   white-space: nowrap;
   padding: 14.667px !important;
   gap: 0;
-  transition: none;
+  transition: 
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    gap 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
   border: 0px solid lightgrey;
-  will-change: width, padding;
+  will-change: width, padding, transform, opacity;
 }
 
 /* Hide label text by default */
@@ -173,7 +179,11 @@ body.sidebar-expanded .lp-1-section {
   width: 0;
   opacity: 0;
   padding: 0;
-  transition: none;
+  transition: 
+    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease 0.05s,
+    padding 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease;
   overflow: hidden;
   display: inline-block;
 }
@@ -202,7 +212,7 @@ body.sidebar-expanded .lp-1-section {
   
   flex-shrink: 0;
   display: block;
-  transition: none;
+  transition: filter 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .icon-btn:hover img {
@@ -226,7 +236,7 @@ body.sidebar-expanded .lp-1-section {
 
 .icon-direct-contract {
   left: 50%;
-  top: 9.3%;
+  top: 8.5%;
   transform: translateX(-50%);
 }
 
@@ -413,25 +423,29 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .circle-group {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
+  transform: scale(0.95);
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .landing-main.expanded .main-circle-bg {
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transform: scale(0.92);
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Hide glow when expanded/scrolling to other pages */
 .landing-main.expanded .glow-wrapper {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
+  transform: scale(0.9);
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .landing-main.expanded .radiant-glow-container {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease-out;
+  transform: scale(0.85);
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .landing-main.expanded .floating-icons {
@@ -443,7 +457,12 @@ body.sidebar-expanded .lp-1-section {
   width: 600px;
   height: 1100px;
   
-  transition: none;
+  transition: 
+    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1001;
   margin-left: -100px;
   animation: none !important;
@@ -451,7 +470,15 @@ body.sidebar-expanded .lp-1-section {
 
 /* Icons move smoothly along the curve */
 .landing-main.expanded .icon-btn {
-  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: 
+    top 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    gap 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
 }
 
 /* Radiant glow effect for sidebar - same rotating glow as hero section */
@@ -460,14 +487,14 @@ body.sidebar-expanded .lp-1-section {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8);
   width: 1600px;
   height: 600px;
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
   animation: sidebar-rotate-glow 1s linear infinite;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1000;
 }
 
@@ -477,9 +504,10 @@ body.sidebar-expanded .lp-1-section {
   left: 130px;
   top: 50%;
   
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(1);
   opacity: 1;
   animation: sidebar-rotate-glow 1s linear infinite;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
 }
 
 /* Sidebar rotating glow animation - same as hero */
@@ -517,8 +545,13 @@ body.sidebar-expanded .lp-1-section {
 
 /* Keyframes for delayed glow line appearance */
 @keyframes showGlowLine {
-  to {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+  100% {
     opacity: 1;
+    transform: scaleY(1);
   }
 }
 
