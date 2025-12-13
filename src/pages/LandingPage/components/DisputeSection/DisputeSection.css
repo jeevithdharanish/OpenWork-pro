@@ -4,7 +4,7 @@
   width: 100%;
   min-height: 100vh;
   display: flex;
-  /* margin-left: 50px; */
+  margin-left: 50px;
   align-items: center;
   justify-content: center;
   background: white;
@@ -51,6 +51,7 @@
 /* Right Content - Oracle Circle */
 .lp-7-circle-container {
   width: 500px;
+  margin-top: 60px;
   height: 450px;
   position: relative;
   flex-shrink: 0;
@@ -348,6 +349,10 @@
 
 /* Responsive Design */
 @media (min-width: 1280px) and (max-width: 1440px) {
+ 
+ .lp-7-section {
+    margin-left: 0px;
+  }
   .lp-7-container {
     margin-left: 180px;
     padding: 0 120px;
@@ -370,6 +375,9 @@
 }
 
 @media (max-width: 1024px) {
+  .lp-7-section {
+    margin-left: 0px;
+  }
   .lp-7-container {
     padding: 0 80px;
     gap: 50px;
@@ -402,6 +410,9 @@
 
 @media (max-width: 768px) {
   .lp-7-section {
+   
+    margin-left: 0px;
+  
     padding: 60px 0;
   }
 
@@ -433,6 +444,9 @@
 }
 
 @media (max-width: 480px) {
+  .lp-7-section {
+    margin-left: 0px;
+  }
   .lp-7-container {
     padding: 0 20px;
     gap: 30px;
@@ -452,7 +466,7 @@
     width: 100%;
     max-width: 320px;
     height: 300px;
-    margin-top: 30px;
+    margin-top: 70px;
   }
 
   .lp-7-oracle-circle-group {

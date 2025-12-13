@@ -2,7 +2,25 @@
 .lp-4-section {
   background: #FFFFFF;
   padding-top: 64px;
-  /* margin-left: 50px; */
+  margin-left: 50px;
+}
+.lp-4-ledger-container {
+ width: 750px;
+  height: auto;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.openwork-ledger-image {
+  
+  width: 100%; 
+  height: auto;
+  
+  /* This ensures the image scales correctly without stretching/squishing */
+  object-fit: contain;
 }
 
 .lp-4-container {
@@ -42,16 +60,13 @@
   margin: 0;
 }
 
-.lp-4-ledger-container {
-  width: 500px;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /* Responsive */
 @media (min-width: 1280px) and (max-width: 1440px) {
+  .lp-4-section {
+    /* margin-left: 0px; */
+  }
   .lp-4-container {
     margin-left: 180px;
     padding: 0 80px;
@@ -59,6 +74,9 @@
 }
 
 @media (max-width: 1024px) {
+  .lp-4-section {
+    margin-left: 0px;
+  }
   .lp-4-container {
     flex-direction: column;
     gap: 60px;
@@ -74,6 +92,9 @@
 }
 
 @media (max-width: 768px) {
+  .lp-4-section {
+    margin-left: 0px;
+  }
   .lp-4-container {
     /* margin-left:50px; */
     gap: 40px;
@@ -93,6 +114,9 @@
 }
 
 @media (max-width: 480px) {
+  .lp-4-section {
+    margin-left: 0px;
+  }
   
 
   .lp-4-heading {

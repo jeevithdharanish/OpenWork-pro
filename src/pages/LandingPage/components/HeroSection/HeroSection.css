@@ -144,80 +144,87 @@ body.sidebar-expanded .lp-1-section {
 
 .icon-btn {
   position: absolute;
-  width: 32px !important;
-  height: 32px !important;
+
+  width: 32px;
+  height: 32px;
   min-width: 32px;
-  padding: 0 !important;
-  border-radius: 999px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  pointer-events: all;
+
+  padding: 0;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* 🔒 lock icon position */
+
   cursor: pointer;
+  pointer-events: all;
+
   overflow: hidden;
   white-space: nowrap;
-  padding: 14.667px !important;
-  gap: 0;
-  transition: 
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    gap 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease,
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s ease;
+
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
-  border: 0px solid lightgrey;
-  will-change: width, padding, transform, opacity;
+  border: 0;
+
+  transition:
+    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: width, transform;
 }
 
-/* Hide label text by default */
+/* ICON — fixed anchor */
+.icon-btn img {
+  width: 14.667px;
+  height: 14.667px;
+
+  margin-left: 8px; /* 👈 anchor point */
+  flex-shrink: 0;
+
+  display: block;
+
+  transition: filter 0.25s ease;
+}
+
+/* LABEL — hidden by default */
 .icon-btn span {
   font-family: 'Satoshi', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  color: #767676;
-  width: 0;
+
+  margin-left: 6px;
+
   opacity: 0;
-  padding: 0;
-  transition: 
-    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.25s ease 0.05s,
-    padding 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+  transform: translateX(-6px);
+  color: #767676;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     color 0.2s ease;
-  overflow: hidden;
-  display: inline-block;
 }
 
-/* Hover - show label with name */
+/* HOVER — expand right only */
 .icon-btn:hover {
-  width: auto;
-  min-width: max-content;
-  padding: 14.667px 16px 14.667px 14.667px;
-  border-radius: 24px;
-  gap: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 140px; /* fixed = no jitter */
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
 }
 
-/* Show label on hover */
+/* Reveal text */
 .icon-btn:hover span {
-  width: auto;
   opacity: 1;
-  padding-left: 4px;
+  transform: translateX(0);
   color: #1246FF;
 }
 
-.icon-btn img {
-  width: 14.667px !important;
-  height: 14.667px !important;
-  
-  flex-shrink: 0;
-  display: block;
-  transition: filter 0.25s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+/* Icon color on hover */
+.icon-btn:hover img {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%)
+          saturate(3089%) hue-rotate(220deg)
+          brightness(101%) contrast(104%);
 }
 
-.icon-btn:hover img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
-}
 
 /* Individual Icon Positions - Using percentage for responsive scaling */
 .icon-discoverable {
