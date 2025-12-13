@@ -469,6 +469,9 @@
   }
 
   .lp-7-circle-container {
+    align-items: center;
+    justify-content: center;
+    
     width: 100%;
     max-width: 320px;
     height: 300px;
@@ -476,7 +479,7 @@
   }
 
   .lp-7-oracle-circle-group {
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.65);
   }
 
   .lp-7-bottom-text {

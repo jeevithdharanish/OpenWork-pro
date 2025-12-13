@@ -66,7 +66,7 @@
 @media (min-width: 1441px) {
   .lp-4-ledger-container img,
   .lp-4-section .openwork-ledger-image {
-    transform: scale(1.45) translateX(80px); /* 1.45x and moved slightly right */
+    transform: scale(1.45) translateX(100px); /* 1.45x and moved slightly right */
     transform-origin: center center;
   }
 }
