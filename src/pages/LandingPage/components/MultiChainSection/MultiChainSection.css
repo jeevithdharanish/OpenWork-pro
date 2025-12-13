@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 90px;
+  gap: 9px;
 }
 
 /* Left Content */
@@ -64,7 +64,7 @@
   height: 360px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(calc(-50% + 50px), -60%);
 }
 
 /* Ellipse Background */
@@ -293,6 +293,10 @@
     width: 100%;
     max-width: 460px;
     height: 420px;
+  }
+
+  .lp-10-chain-circle-group {
+    transform: translate(-50%, -50%);
   }
 }
 
