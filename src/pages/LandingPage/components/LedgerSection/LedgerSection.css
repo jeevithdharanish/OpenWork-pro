@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 90px;
+  gap: 136px;
   min-height: calc(100vh - 64px);
 }
 
@@ -56,10 +56,18 @@
   object-fit: contain;
 }
 
+/* Desktop only: scale up the ledger image without affecting layout */
+@media (min-width: 1441px) {
+  .openwork-ledger-image {
+    transform: scale(1.45) translateX(60px);; /* 25% larger on large desktops */
+    transform-origin: center center;
+  }
+}
+
 /* Responsive */
 @media (min-width: 1280px) and (max-width: 1440px){
   .lp-3-section {
-    margin-left: 0px;
+    margin-left: 10px;
   }
   .lp-3-container {
     margin-left:180px;

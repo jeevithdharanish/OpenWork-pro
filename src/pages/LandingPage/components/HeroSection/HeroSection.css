@@ -902,57 +902,57 @@ body.sidebar-expanded .lp-1-section {
 
 @media (max-width: 1024px) {
   .circle-group {
-    width: 600px;
-    height: 600px;
+    width: 520px;
+    height: 520px;
   }
 
   .radiant-glow-container {
-    width: 700px;
-    height: 700px;
+    width: 610px;
+    height: 620px;
   }
 
   .main-circle-bg {
-    width: 550px;
-    height: 550px;
+    width: 480px;
+    height: 480px;
   }
 
   .floating-icons {
-    width: 950px;
-    height: 570px;
+    width: 850px;
+    height: 520px;
   }
 
   /* Adjust icon positions for medium screens */
   .icon-discoverable {
-    left: 20.8%;
+    left: 21.8%;
     top: 32%;
   }
   .icon-direct-contract {
     left: 50%;
-    top: -01.0%;
+    top: 1%;
     transform: translateX(-50%);
   }
   .icon-job-progress {
-    left: 67%;
+    left: 65%;
     top: 10.5%;
   }
 
   .icon-post-job {
-    left: 29.3%;
+    left: 30.3%;
     top: 10.5%;
   }
 
   .icon-raise-dispute {
-    left: 76%;
+    left: 75%;
     top: 32%;
   }
 
   .icon-dao {
-    left: 77%;
+    left: 76%;
     top: 55%;
   }
 
   .icon-set-profile {
-    left: 20%;
+    left: 20.5%;
     top: 55.5%;
   }
 

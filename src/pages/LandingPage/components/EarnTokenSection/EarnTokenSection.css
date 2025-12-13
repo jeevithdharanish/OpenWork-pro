@@ -26,7 +26,7 @@
   width: 432px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 40px;
 }
 
 .lp-8-heading {
@@ -65,6 +65,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transition: transform 0.3s ease; /* smooth movement when shifted by media queries */
 }
 
 /* Ellipse Background */
@@ -95,6 +96,13 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Desktop only: slide the token circle group slightly to the right without changing layout */
+@media (min-width: 1441px) {
+  .lp-8-token-circle-group {
+    transform: translate(calc(-50% + 30px), -50%);
   }
 }
 

@@ -1,7 +1,7 @@
 /* Profile Section (LP-2) */
 .lp-2-section {
   display: flex;
-  margin-left: 50px;
+  margin-left: 80px;
   align-items: center;
   justify-content: center;
   background: #FFFFFF;
@@ -231,6 +231,7 @@
 
 @media (max-width: 1024px) {
   .lp-2-section {
+    
     margin-left: 0px;
   }
   .lp-2-container {
@@ -293,6 +294,7 @@
     margin-left: 0px;
   }
   .lp-2-container {
+    margin-top: 40px;
     gap: 40px;
     padding: 0 20px;
   }

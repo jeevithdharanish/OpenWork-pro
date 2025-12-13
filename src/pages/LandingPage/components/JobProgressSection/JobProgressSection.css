@@ -60,6 +60,7 @@
 /* LP-6 Responsive Design */
 @media (min-width: 1280px) and (max-width: 1440px) {
   .lp-6-section {
+    
     margin-left: 0px;
   }
   .lp-6-container {

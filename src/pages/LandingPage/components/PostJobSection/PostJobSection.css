@@ -5,13 +5,12 @@
   margin-left: 50px;
 }
 .lp-4-ledger-container {
- width: 750px;
-  height: auto;
-  
+  width: 500px;  /* match ProfileSection size */
+  height: 450px; /* match ProfileSection size */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px 0;
+ 
 }
 
 .openwork-ledger-image {
@@ -21,6 +20,7 @@
   
   /* This ensures the image scales correctly without stretching/squishing */
   object-fit: contain;
+  transition: transform 0.25s ease; /* animate move */
 }
 
 .lp-4-container {
@@ -60,12 +60,19 @@
   margin: 0;
 }
 
-
+/* Desktop only: scale up the post job image without affecting layout */
+@media (min-width: 1441px) {
+  .lp-4-ledger-container img,
+  .lp-4-section .openwork-ledger-image {
+    transform: scale(1.45) translateX(60px); /* 1.45x and moved slightly right */
+    transform-origin: center center;
+  }
+}
 
 /* Responsive */
 @media (min-width: 1280px) and (max-width: 1440px) {
   .lp-4-section {
-    /* margin-left: 0px; */
+    margin-left: 0px;
   }
   .lp-4-container {
     margin-left: 180px;
