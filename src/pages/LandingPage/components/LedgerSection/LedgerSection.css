@@ -73,6 +73,9 @@
     margin-left:180px;
     padding: 0 80px;
   }
+  .openwork-ledger-image {
+    transform: translateX(60px);
+  }
 }
 
 @media (max-width: 1024px) {

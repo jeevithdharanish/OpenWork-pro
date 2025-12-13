@@ -245,11 +245,11 @@
   .lp-10-container {
     margin-left: 180px;
     padding: 0 120px;
-    gap: 70px;
+    gap: 40px;
   }
 
   .lp-10-content {
-    width: 400px;
+    width: 480px;
   }
 
   .lp-10-heading {
@@ -260,6 +260,10 @@
   .lp-10-circle-container {
     width: 460px;
     height: 420px;
+  }
+  
+  .lp-10-chain-circle-group {
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -291,6 +295,7 @@
   }
 
   .lp-10-circle-container {
+    transform: none;
     width: 100%;
     max-width: 460px;
     height: 420px;

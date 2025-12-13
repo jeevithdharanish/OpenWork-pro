@@ -237,6 +237,10 @@
     text-align: center;
     align-items: center;
   }
+
+  .contract-circle-section {
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {

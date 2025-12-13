@@ -92,6 +92,10 @@
     height: 400px;
   }
 
+  .lp-6-job-card-image {
+    transform: none;
+  }
+
   .lp-6-heading {
     font-size: 36px;
     line-height: 44px;
