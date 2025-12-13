@@ -48,6 +48,7 @@
   position: relative;
   flex-shrink: 0;
   display: flex;
+  transform: scale(1) translateX(80px);
   align-items: center;
   justify-content: center;
 }

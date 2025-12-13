@@ -20,7 +20,7 @@
   width: 432px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 30px;
 }
 
 .lp-3-heading {
@@ -59,7 +59,7 @@
 /* Desktop only: scale up the ledger image without affecting layout */
 @media (min-width: 1441px) {
   .openwork-ledger-image {
-    transform: scale(1.45) translateX(60px);; /* 25% larger on large desktops */
+    transform: scale(1.45) translateX(80px); /* 25% larger on large desktops */
     transform-origin: center center;
   }
 }

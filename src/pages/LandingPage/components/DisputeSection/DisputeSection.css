@@ -50,6 +50,7 @@
 
 /* Right Content - Oracle Circle */
 .lp-7-circle-container {
+  transform: scale(1) translateX(80px);
   width: 450px;
   margin-top: 60px;
   height: 450px;
@@ -58,6 +59,7 @@
 }
 
 .lp-7-oracle-circle-group {
+  
   position: relative;
   width: 389.93px;
   height: 450px;
@@ -68,6 +70,7 @@
 
 /* Core Circle */
 .lp-7-core-circle {
+  
   position: absolute;
   left: 80.95px;
   top: 101.09px;
@@ -432,6 +435,7 @@
   }
 
   .lp-7-circle-container {
+    
     width: 100%;
     max-width: 380px;
     height: 350px;
@@ -439,6 +443,7 @@
   }
 
   .lp-7-oracle-circle-group {
+
     transform: translate(-50%, -50%) scale(0.85);
   }
 }

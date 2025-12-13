@@ -15,7 +15,7 @@
 
 .openwork-ledger-image {
   
-  width: 100%; 
+  width: 120%; 
   height: auto;
   
   /* This ensures the image scales correctly without stretching/squishing */
@@ -24,6 +24,7 @@
 }
 
 .lp-4-container {
+
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 162px;
@@ -35,10 +36,11 @@
 }
 
 .lp-4-content {
-  width: 432px;
+ 
+  width: 500px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 30px;
 }
 
 .lp-4-heading {
@@ -64,7 +66,7 @@
 @media (min-width: 1441px) {
   .lp-4-ledger-container img,
   .lp-4-section .openwork-ledger-image {
-    transform: scale(1.45) translateX(60px); /* 1.45x and moved slightly right */
+    transform: scale(1.45) translateX(80px); /* 1.45x and moved slightly right */
     transform-origin: center center;
   }
 }

@@ -51,6 +51,7 @@
 
 /* Right Content - Multi-Chain Circle */
 .lp-10-circle-container {
+  transform: scale(1) translateX(80px);
   width: 500px;
   height: 450px;
   position: relative;

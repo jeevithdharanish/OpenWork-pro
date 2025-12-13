@@ -51,6 +51,7 @@
 
 /* Right Content - Governance Circle */
 .lp-9-circle-container {
+  transform: scale(1) translateX(80px);
   width: 500px;
   height: 450px;
   position: relative;
@@ -193,6 +194,7 @@
 
   .lp-9-content {
     width: 400px;
+    gap: 40px;
   }
 
   .lp-9-heading {

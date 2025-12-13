@@ -56,6 +56,7 @@
 
 /* Right Content - Network Visualization */
 .lp-12-circle-container {
+  transform: scale(1) translateX(80px);
   width: 500px;
   height: 450px;
   position: relative;
@@ -64,6 +65,7 @@
 }
 
 .lp-12-network-group {
+  
   position: absolute;
   width: 380px;
   height: 377.157px;
@@ -73,6 +75,7 @@
 }
 
 .lp-12-network-bg {
+  
   position: absolute;
   left: 0;
   top: 0;
@@ -94,6 +97,7 @@
 
 /* Center Token */
 .lp-12-center-token {
+  
   position: absolute;
   left: calc(50% - 1.646px);
   top: calc(50% - 1.623px);
@@ -107,6 +111,7 @@
 }
 
 .lp-12-token-badge {
+  
   width: 140.738px;
   height: 140.738px;
   border-radius: 50%;
@@ -121,6 +126,7 @@
 }
 
 .lp-12-logo-icon {
+  
   width: 100px;
   height: 80px;
   object-fit: contain;
