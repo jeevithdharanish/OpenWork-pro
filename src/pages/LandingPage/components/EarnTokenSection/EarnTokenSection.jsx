@@ -58,6 +58,7 @@ const EarnTokenSection = () => {
                   <div className="lp-8-token-icon">
                     <img src="/assets/lp8-owork-token.svg" alt="OWORK" className="lp-8-token-icon-img" />
                   </div>
+                  
                   <span className="lp-8-token-amount">50K</span>
                 </div>
               </div>
