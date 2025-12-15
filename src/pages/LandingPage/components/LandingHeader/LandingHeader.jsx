@@ -17,7 +17,8 @@ const LandingHeader = ({ onLaunchApp }) => {
   return (
     <header className="landing-header">
       <div className="logo-wrapper">
-        <img src="/assets/Logo.jpg" alt="OpenWork" className="logo" />
+        <img src="/assets/Logo.jpg" alt="OpenWork" className="logo logo-desktop" />
+        <img src="/assets/openwork-logo/logo.svg" alt="OpenWork" className="logo logo-mobile" />
       </div>
       
       <div className="header-actions">
@@ -40,7 +41,11 @@ const LandingHeader = ({ onLaunchApp }) => {
           onClick={handleLaunchApp}
         >
           Launch App
-          <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon" />
+          <img
+            src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg"
+            alt=""
+            className="lp-button-icon lp-launch-arrow"
+          />
         </button>
       </div>
     </header>

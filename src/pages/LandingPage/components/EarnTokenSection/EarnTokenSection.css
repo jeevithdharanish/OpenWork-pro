@@ -315,8 +315,8 @@
 
 .lp-8-token-icon-img {
   margin-left: 1.2421px;
-  width: 14px;
-  height: 11px;
+  width: 10px;
+  height: 8px;
 }
 
   .lp-8-content {
@@ -341,10 +341,10 @@
   .lp-8-token-icon {
   width: 15px;
   height: 15px;
-  border-radius: 8px;
-  border: 1px solid #1246FF;
-  background: linear-gradient(180deg, #1246FF 23.958%, #4770FF 134.37%);
-  display: flex;
+ border-radius: 9.375px;
+border: 0.937px solid #1246FF;
+background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
+display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
@@ -353,8 +353,8 @@
 
 .lp-8-token-icon-img {
   margin-left: 1px;
-  width: 14px;
-  height: 11px;
+  width: 10px;
+  height: 8px;
 }
   .lp-8-container {
     padding: 0 80px;
