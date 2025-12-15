@@ -474,7 +474,8 @@ body.sidebar-expanded .lp-1-section {
     height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     margin-left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1001;
-  margin-left: -100px;
+  /* moved left to better align with sidebar */
+  margin-left: -135px;
   animation: none !important;
 }
 
