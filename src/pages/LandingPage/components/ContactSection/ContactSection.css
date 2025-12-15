@@ -139,6 +139,65 @@
   height: 11px;
 }
 
+/* Thank You Message */
+.lp-13-thank-you {
+  justify-content: center;
+  align-items: center;
+}
+
+.lp-13-thank-you-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.lp-13-thank-you-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(180deg, #1246FF 23.958%, #4770FF 134.37%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: white;
+  font-weight: bold;
+}
+
+.lp-13-thank-you-title {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #050505;
+  margin: 0;
+}
+
+.lp-13-thank-you-message {
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #767676;
+  margin: 0;
+  max-width: 280px;
+}
+
+/* Error Message */
+.lp-13-error-message {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  color: #dc3545;
+  margin: 0;
+}
+
+/* Disabled Button State */
+.lp-13-send-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 /* Responsive Design */
 @media (min-width: 1280px) and (max-width: 1440px) {
    .lp-13-section {
