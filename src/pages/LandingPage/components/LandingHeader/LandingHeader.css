@@ -13,6 +13,18 @@
   padding: 0 62px;
   z-index: 2000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  animation: header-fade-in 0.4s ease-out forwards;
+}
+
+@keyframes header-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .logo-wrapper {
@@ -22,6 +34,7 @@
 
   display: flex;
   align-items: center;
+  background: transparent;
 }
 
 .logo {
