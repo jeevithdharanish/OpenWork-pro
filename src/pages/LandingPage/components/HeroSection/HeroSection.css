@@ -145,9 +145,10 @@ body.sidebar-expanded .lp-1-section {
 .icon-btn {
   position: absolute;
 
-  width: 32px;
+  width: auto;
   height: 32px;
   min-width: 32px;
+  max-width: 32px;
 
   padding: 0;
   border-radius: 999px;
@@ -166,11 +167,11 @@ body.sidebar-expanded .lp-1-section {
   border: 0;
 
   transition:
-    width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 
-  will-change: width, transform;
+  will-change: max-width, transform;
 }
 
 /* ICON — fixed anchor */
@@ -206,7 +207,8 @@ body.sidebar-expanded .lp-1-section {
 
 /* HOVER — expand right only */
 .icon-btn:hover {
-  width: 140px; /* fixed = no jitter */
+  max-width: 240px; /* expands only as far as text needs */
+  padding-right: 9.885px; /* extra pill breathing room without shifting icon */
   box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
   transform: translateY(-1px);
 }
@@ -242,9 +244,9 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .icon-direct-contract {
-  left: 50%;
+  left: 48%;
   top: 8.5%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
 }
 
 .icon-direct-contract img {
@@ -401,6 +403,7 @@ body.sidebar-expanded .lp-1-section {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
   width: auto !important;
   min-width: max-content;
+  max-width: none !important;
   padding: 14.667px 16px 14.667px 14.667px !important;
   border-radius: 24px !important;
   gap: 8px;
@@ -710,18 +713,21 @@ body.sidebar-expanded .lp-1-section {
 
 /* Center Content */
 .center-content {
+   /* background-color:black; */
   position: relative;
   z-index: 10;
+  margin-top: -90px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 481px;
+  max-width: 450px;
   gap: 48px;
   padding: 0 20px;
 }
 
 .text-content {
+  /* background-color:black; */
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -958,7 +964,7 @@ body.sidebar-expanded .lp-1-section {
 
   .center-content {
     gap: 40px;
-    margin-top: -20px;
+    margin-top: -70px;
   }
 
   .text-content {
