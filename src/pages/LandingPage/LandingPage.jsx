@@ -19,6 +19,8 @@ import ContactSection from './components/ContactSection/ContactSection';
 const LandingPage = () => {
   return (
     <div className="landing-page">
+      {/* Radiant Glow - Fixed position, visible when sidebar expanded */}
+      <div className="page-radiant-glow"></div>
       <LandingSidebar />
       <LandingHeader />
       <HeroSection />

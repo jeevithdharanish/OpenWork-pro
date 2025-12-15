@@ -105,15 +105,15 @@ const HeroSection = () => {
   const CENTER_SLOT_INDEX = 2;
   const curveSlots = [
     // { left: 108, top: '4%' },
-    { left: 370, top: '1%' },
-    { left: 218, top: '30%' },
+    { left: 360, top: '1%' },
+    { left: 210, top: '30%' },
     
     { left: 184, top: '46%' },
-    { left: 200, top: '59%' },
-    { left: 220, top: '67%' },
-    { left: 245, top: '74%' },
-    { left: 369, top: '95%' },
-    { left: 274, top: '122%' },
+    { left: 197, top: '59%' },
+    { left: 214, top: '67%' },
+    { left: 240, top: '74%' },
+    { left: 379, top: '95%' },
+    { left: 74, top: '122%' },
     { left: 296, top: '136%' },
     { left: 218, top: '150%' },
   ];

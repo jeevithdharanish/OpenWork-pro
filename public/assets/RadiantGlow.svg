@@ -1,7 +1,7 @@
 <svg width="561" height="560" viewBox="0 0 561 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="280" cy="280.176" rx="220" ry="220" stroke="url(#paint0_linear_2267_572)" style="" stroke-width="2"/>
+<ellipse cx="280" cy="280.176" rx="220" ry="220" stroke="url(#paint0_linear_2267_572)" style="" stroke-width="1"/>
 <g filter="url(#filter0_f_2267_572)">
-<ellipse cx="280.333" cy="280.021" rx="220" ry="220" stroke="url(#paint1_linear_2267_572)" style="" stroke-width="12"/>
+<ellipse cx="280.333" cy="280.021" rx="220" ry="220" stroke="url(#paint1_linear_2267_572)" style="" stroke-width="4"/>
 </g>
 <defs>
 <filter id="filter0_f_2267_572" x="0.455505" y="0.143005" width="559.755" height="559.755" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
