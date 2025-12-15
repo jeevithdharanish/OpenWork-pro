@@ -13,14 +13,13 @@
  
 }
 
-.openwork-ledger-image {
-  
-  width: 120%; 
+.lp-4-section .openwork-ledger-image {
+  width: 144%;
   height: auto;
-  
-  /* This ensures the image scales correctly without stretching/squishing */
   object-fit: contain;
-  transition: transform 0.25s ease; /* animate move */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transition: transform 0.25s ease;
 }
 
 .lp-4-container {
