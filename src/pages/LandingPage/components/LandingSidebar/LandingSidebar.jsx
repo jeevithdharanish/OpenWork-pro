@@ -10,7 +10,6 @@ const LandingSidebar = () => {
   const lastScrollY = useRef(0);
 
   const sidebarItems = [
-    { id: 0, icon: '/assets/sidebar-icon-home.svg', label: 'Home', section: 'lp-1-section', activeY: -110 },
     { id: 1, icon: '/assets/sidebar-icon-1.svg', label: 'Discoverable', section: 'lp-2-section', activeY: -150 },
     { id: 2, icon: '/assets/sidebar-icon-2.svg', label: 'Job/Contract', section: 'lp-4-section', activeY: -200 },
     { id: 3, icon: '/assets/sidebar-icon-3.svg', label: 'Direct Contract', section: 'lp-5-section', activeY: -230 },
