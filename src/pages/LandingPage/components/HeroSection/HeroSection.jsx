@@ -2,6 +2,19 @@ import React, { useState, useEffect } from 'react';
 import Button from '../../../../components/Button/Button';
 import './HeroSection.css';
 
+// Section components for inline rendering
+import ProfileSection from '../ProfileSection/ProfileSection';
+import LedgerSection from '../LedgerSection/LedgerSection';
+import PostJobSection from '../PostJobSection/PostJobSection';
+import DirectContractSection from '../DirectContractSection/DirectContractSection';
+import JobProgressSection from '../JobProgressSection/JobProgressSection';
+import DisputeSection from '../DisputeSection/DisputeSection';
+import EarnTokenSection from '../EarnTokenSection/EarnTokenSection';
+import GovernanceSection from '../GovernanceSection/GovernanceSection';
+import MultiChainSection from '../MultiChainSection/MultiChainSection';
+import ArchitectureSection from '../ArchitectureSection/ArchitectureSection';
+import RevolutionSection from '../RevolutionSection/RevolutionSection';
+
 const HeroSection = () => {
   //  const Mobile = window.matchMedia('(max-width: 480px)').matches;
   const [isExpanded, setIsExpanded] = useState(false);
@@ -10,6 +23,21 @@ const HeroSection = () => {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 1024;
   });
+
+  // Map icon names to their section components
+  const sectionComponents = {
+    'set-profile': ProfileSection,
+    'discoverable': LedgerSection,
+    'post-job': PostJobSection,
+    'direct-contract': DirectContractSection,
+    'job-progress': JobProgressSection,
+    'raise-dispute': DisputeSection,
+    'earn-token': EarnTokenSection,
+    'dao': GovernanceSection,
+    'multichain': MultiChainSection,
+    'architecture': ArchitectureSection,
+    'revolution': RevolutionSection,
+  };
 
   const iconConfigs = [
     {
@@ -108,11 +136,11 @@ const HeroSection = () => {
     { left: 360, top: '1%' },
     { left: 210, top: '30%' },
     
-    { left: 184, top: '46%' },
-    { left: 197, top: '59%' },
-    { left: 214, top: '67%' },
-    { left: 240, top: '74%' },
-    { left: 379, top: '95%' },
+    { left: 194, top: '46%' },
+    { left: 202, top: '59%' },
+    { left: 222, top: '67%' },
+    { left: 252, top: '74%' },
+    { left: 249, top: '95%' },
     { left: 74, top: '122%' },
     { left: 296, top: '136%' },
     { left: 218, top: '150%' },
@@ -228,6 +256,20 @@ const HeroSection = () => {
   };
 
   const handleIconClick = (iconName, sectionId) => {
+    // Instead of navigating, expand the radiant SVG in place and show icons on left
+    if (activeIcon === iconName) {
+      // Clicking same icon again collapses
+      setIsExpanded(false);
+      setActiveIcon(null);
+      return;
+    }
+    setActiveIcon(iconName);
+    setIsExpanded(true);
+    // Future: render section content inside the hero based on iconName/sectionId
+  };
+
+  // Old scroll-based navigation (disabled)
+  const handleIconClickOld = (iconName, sectionId) => {
     setActiveIcon(iconName);
     const targetSection = document.getElementById(sectionId);
     
@@ -323,6 +365,12 @@ const HeroSection = () => {
     window.open('https://chatgpt.com/g/g-6811cd644b1c8191b203796b06deaa4a-openwork-simplified', '_blank');
   };
 
+  const handleHomeClick = () => {
+    // Collapse expanded state (no scrolling needed since we stay in hero)
+    setIsExpanded(false);
+    setActiveIcon(null);
+  };
+
   return (
     <section className="lp-section lp-1-section">
       <main className={`landing-main ${isExpanded ? 'expanded' : ''}`}>
@@ -381,6 +429,13 @@ const HeroSection = () => {
               style={getIconStyle(index)}
             />
           ))}
+
+          {/* Home icon - visible only when sidebar is expanded (hidden in hero) */}
+          <Button
+            icon={"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 11.5L12 3l9 8.5' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M7 11.5v6.5a1 1 0 001 1h8a1 1 0 001-1v-6.5' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"}
+            buttonCss={`icon-btn icon-home ${activeIcon === 'home' ? 'active' : ''}`}
+            onClick={() => handleHomeClick()}
+          />
         </div>
 
         {/* Navbar Floating Icons for Mobile */}
@@ -418,6 +473,13 @@ const HeroSection = () => {
             <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon" />
           </button>
         </div>
+
+        {/* Expanded Content Area - renders section content inside hero */}
+        {isExpanded && activeIcon && sectionComponents[activeIcon] && (
+          <div className="expanded-content-area">
+            {React.createElement(sectionComponents[activeIcon])}
+          </div>
+        )}
       </main>
     </section>
   );

@@ -12,6 +12,8 @@
 
 /* The section wrapper - clip only top and bottom, allow sides to overflow */
 .lp-1-section {
+  
+  
   clip-path: inset(0 -100% 0 -100%);
 }
 
@@ -98,10 +100,15 @@ body.sidebar-expanded .lp-1-section {
   transform: translate(-50%, -50%);
   width: 738px;
   height: 738px;
-  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
   animation: rotate-glow 8s linear infinite;
   pointer-events: none;
   z-index: 0;
+  /* Smooth transition for expand/collapse */
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease;
 }
 
 
@@ -117,6 +124,7 @@ body.sidebar-expanded .lp-1-section {
 
 /* Main Circle - White background */
 .main-circle-bg {
+  visibility:hidden;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -367,7 +375,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main:not(.expanded) .icon-earn-token,
 .landing-main:not(.expanded) .icon-multichain,
 .landing-main:not(.expanded) .icon-architecture,
-.landing-main:not(.expanded) .icon-revolution {
+.landing-main:not(.expanded) .icon-revolution,
+.landing-main:not(.expanded) .icon-home {
   display: none !important;
 }
 
@@ -397,6 +406,16 @@ body.sidebar-expanded .lp-1-section {
   width: 14.467px !important;
   height: 14.667px !important;
 }
+/* Home icon specifics */
+.icon-home img { 
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  opacity: 0.8;
+  margin: 6px;
+  width: 20px; height: 20px; 
+}
+.icon-home { --label-display: none; }
 
 /* Active icon state - no blue border, show label persistently */
 .icon-btn.active {
@@ -455,10 +474,22 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .landing-main.expanded .radiant-glow-container {
-  /* Hide the hero section glow when expanded - page-level glow takes over */
-  opacity: 0;
+  /* Expand the radiant SVG in place when an icon is clicked */
+  width: 1800px;
+  height: 1750px;
+  opacity: 1;
   pointer-events: none;
-}
+  visibility: visible;
+  display: block;
+  top: -5%;
+  margin-left: -70px;
+  /* Shift slightly right so icons can sit on the left */
+  left: 5%;
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease;
+} 
 
 .landing-main.expanded .floating-icons {
   position: fixed;
@@ -494,6 +525,7 @@ body.sidebar-expanded .lp-1-section {
     opacity 0.5s ease;
 }
 
+
 /* Radiant glow effect for sidebar - same rotating glow as hero section */
 .sidebar-glow {
   
@@ -503,7 +535,7 @@ body.sidebar-expanded .lp-1-section {
   transform: translate(-50%, -50%) scale(0.8);
   width: 1600px;
   height: 600px;
-  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
   animation: sidebar-rotate-glow 1s linear infinite;
   pointer-events: none;
   opacity: 0;
@@ -615,6 +647,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .icon-discoverable { left: 55px; top: 20%; transform: none; }
 .landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
 .landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
+/* Move home more right so it's visible alongside sidebar icons */
+.landing-main.expanded .icon-home { left: 220px; top: 30%; transform: none; }
 .landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
 .landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
 .landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
@@ -695,6 +729,59 @@ body.sidebar-expanded .lp-1-section {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+}
+
+/* Expanded Content Area - renders section content inside hero */
+.expanded-content-area {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-width: 1100px;
+  height: auto;
+  max-height: 85vh;
+  overflow: visible;
+  z-index: 100;
+  opacity: 0;
+  animation: fadeInContent 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+}
+
+/* Hide any scrollbars that might appear */
+.expanded-content-area::-webkit-scrollbar {
+  display: none;
+}
+.expanded-content-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.expanded-content-area .lp-section {
+  /* Reset section styles when rendered inside hero */
+  min-height: auto;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  overflow: visible;
+}
+
+/* Reset any container styles inside expanded area */
+.expanded-content-area .lp-section > div {
+  background: transparent;
+  box-shadow: none;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* Transition for normal state */
@@ -1280,7 +1367,7 @@ body.sidebar-expanded .lp-1-section {
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
   animation: rotate-glow 10s linear infinite;
   pointer-events: none;
   z-index: 0;

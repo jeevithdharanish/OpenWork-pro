@@ -36,9 +36,12 @@
 }
 
 body.sidebar-expanded .page-radiant-glow {
-  opacity: 1;
-  transition: opacity 8.4s ease;
-}
+  /* When the page expands via interactions, we keep the page glow invisible instead of enlarging it */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  display: none !important;
+  transition: none !important;
+} 
 
 @keyframes rotate-page-glow {
   from {
