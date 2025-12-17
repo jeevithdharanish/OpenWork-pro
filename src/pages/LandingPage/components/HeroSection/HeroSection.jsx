@@ -14,11 +14,13 @@ import GovernanceSection from '../GovernanceSection/GovernanceSection';
 import MultiChainSection from '../MultiChainSection/MultiChainSection';
 import ArchitectureSection from '../ArchitectureSection/ArchitectureSection';
 import RevolutionSection from '../RevolutionSection/RevolutionSection';
+import ContactSection from '../ContactSection/ContactSection';
 
 const HeroSection = () => {
   //  const Mobile = window.matchMedia('(max-width: 480px)').matches;
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeIcon, setActiveIcon] = useState(null);
+  const [transitionDirection, setTransitionDirection] = useState('down'); // 'down' = top-to-bottom, 'up' = bottom-to-top
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 1024;
@@ -37,6 +39,7 @@ const HeroSection = () => {
     'multichain': MultiChainSection,
     'architecture': ArchitectureSection,
     'revolution': RevolutionSection,
+    'contact': ContactSection,
   };
 
   const iconConfigs = [
@@ -136,10 +139,10 @@ const HeroSection = () => {
     { left: 360, top: '1%' },
     { left: 210, top: '30%' },
     
-    { left: 194, top: '46%' },
-    { left: 202, top: '59%' },
-    { left: 222, top: '67%' },
-    { left: 252, top: '74%' },
+    { left: 185, top: '46%' },
+    { left: 195, top: '59%' },
+    { left: 215, top: '67%' },
+    { left: 240, top: '74%' },
     { left: 249, top: '95%' },
     { left: 74, top: '122%' },
     { left: 296, top: '136%' },
@@ -168,6 +171,7 @@ const HeroSection = () => {
   };
 
   // Auto-expand sidebar and detect active section based on scroll
+  // DISABLED: Icons should only move when clicked, not on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (!isDesktop) {
@@ -176,49 +180,18 @@ const HeroSection = () => {
         return;
       }
 
+      // Only collapse when scrolling back to hero section, don't auto-expand or move icons on scroll
       const heroSection = document.querySelector('.lp-1-section');
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         const scrollPosition = window.scrollY;
-        const viewportHeight = window.innerHeight;
         
-        if (scrollPosition >= heroBottom - 200) {
-          setIsExpanded(true);
-          
-          // Find the section that occupies most of the viewport
-          let activeSection = null;
-          let maxVisibleArea = 0;
-          
-          for (let i = 0; i < sectionOrder.length; i++) {
-            const section = document.getElementById(sectionOrder[i]);
-            if (section) {
-              const sectionTop = section.offsetTop;
-              const sectionBottom = sectionTop + section.offsetHeight;
-              
-              // Calculate how much of this section is visible in viewport
-              const visibleTop = Math.max(sectionTop, scrollPosition);
-              const visibleBottom = Math.min(sectionBottom, scrollPosition + viewportHeight);
-              const visibleArea = Math.max(0, visibleBottom - visibleTop);
-              
-              if (visibleArea > maxVisibleArea) {
-                maxVisibleArea = visibleArea;
-                activeSection = sectionMap[sectionOrder[i]];
-              }
-            }
-          }
-          
-          if (activeSection) {
-            setActiveIcon(activeSection);
-            // Update active index for centering
-            const newIndex = iconOrder.indexOf(activeSection);
-            if (newIndex !== -1) {
-              setActiveIndex(newIndex);
-            }
-          }
-        } else {
+        // If scrolled back to hero section, collapse
+        if (scrollPosition < heroBottom - 200) {
           setIsExpanded(false);
           setActiveIcon(null);
         }
+        // Don't auto-expand or change active icon on scroll down
       }
     };
 
@@ -256,17 +229,64 @@ const HeroSection = () => {
   };
 
   const handleIconClick = (iconName, sectionId) => {
-    // Instead of navigating, expand the radiant SVG in place and show icons on left
     if (activeIcon === iconName) {
-      // Clicking same icon again collapses
       setIsExpanded(false);
       setActiveIcon(null);
       return;
     }
-    setActiveIcon(iconName);
-    setIsExpanded(true);
-    // Future: render section content inside the hero based on iconName/sectionId
+    
+    let newIndex = iconOrder.indexOf(iconName);
+    // Handle contact icon specially (it's at index 11, after all iconConfigs)
+    if (iconName === 'contact') {
+      newIndex = 11;
+    }
+    
+    // Determine direction based on previous vs new index
+    // If no previous activeIcon (first click), always come from right
+    if (newIndex !== -1) {
+      const prevIndex = activeIcon ? (activeIcon === 'contact' ? 11 : iconOrder.indexOf(activeIcon)) : -1;
+      const direction = prevIndex === -1 || newIndex > prevIndex ? 'down' : 'up';
+      setTransitionDirection(direction);
+      setActiveIndex(newIndex);
+    }
+    
+    // For first click (no activeIcon yet), add a small delay to let expanded styles apply first
+    // This prevents laggy first transition by allowing CSS transitions to kick in
+    if (!isExpanded) {
+      setIsExpanded(true);
+      // Double requestAnimationFrame ensures browser has painted the expanded state
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setActiveIcon(iconName);
+        });
+      });
+    } else {
+      // Already expanded, just switch icons immediately
+      setActiveIcon(iconName);
+    }
   };
+
+  // Add sliding transition class to expanded content based on direction
+  useEffect(() => {
+    const contentArea = document.querySelector('.expanded-content-area');
+    if (contentArea) {
+      // Remove any existing animation classes
+      contentArea.classList.remove('slide-in-right', 'slide-in-left');
+      
+      // Force reflow to restart animation
+      void contentArea.offsetWidth;
+      
+      // Add appropriate animation class based on direction
+      const animationClass = transitionDirection === 'down' ? 'slide-in-right' : 'slide-in-left';
+      contentArea.classList.add(animationClass);
+      
+      const removeClass = () => {
+        contentArea.classList.remove('slide-in-right', 'slide-in-left');
+        contentArea.removeEventListener('animationend', removeClass);
+      };
+      contentArea.addEventListener('animationend', removeClass);
+    }
+  }, [activeIcon, transitionDirection]);
 
   // Old scroll-based navigation (disabled)
   const handleIconClickOld = (iconName, sectionId) => {
@@ -415,7 +435,7 @@ const HeroSection = () => {
         </div>
 
         {/* Floating Icon Buttons - Icons move along the curve, active icon at center */}
-        <div className="floating-icons">
+        <div className={`floating-icons ${isExpanded ? `active-pos-${activeIndex}` : ''}`}>
           {/* Traveling glow elements for curves */}
           <div className="traveling-glow"></div>
           <div className="traveling-glow-bottom"></div>
@@ -435,6 +455,14 @@ const HeroSection = () => {
             icon={"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 11.5L12 3l9 8.5' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M7 11.5v6.5a1 1 0 001 1h8a1 1 0 001-1v-6.5' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"}
             buttonCss={`icon-btn icon-home ${activeIcon === 'home' ? 'active' : ''}`}
             onClick={() => handleHomeClick()}
+          />
+          
+          {/* Contact icon - visible only when sidebar is expanded, at bottom */}
+          <Button
+            icon={"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2z' stroke='%231246FF' stroke-width='1.6' fill='none'/%3E%3Cpath d='M3 7l9 6 9-6' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"}
+            buttonCss={`icon-btn icon-contact ${activeIcon === 'contact' ? 'active' : ''}`}
+            label="Contact"
+            onClick={() => handleIconClick('contact', 'lp-13-section')}
           />
         </div>
 

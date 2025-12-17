@@ -104,6 +104,8 @@ body.sidebar-expanded .lp-1-section {
   animation: rotate-glow 8s linear infinite;
   pointer-events: none;
   z-index: 0;
+  /* GPU acceleration for smooth transitions */
+  will-change: width, height, left, opacity, transform;
   /* Smooth transition for expand/collapse */
   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -145,6 +147,12 @@ body.sidebar-expanded .lp-1-section {
   height: 734px;
   z-index: 2;
   pointer-events: none;
+  transition: 
+    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Hide navbar floating icons on desktop */
@@ -179,9 +187,12 @@ body.sidebar-expanded .lp-1-section {
   transition:
     max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 18s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
-  will-change: max-width, transform;
+  will-change: max-width, transform, top, left, opacity;
 }
 
 /* ICON — fixed anchor */
@@ -417,6 +428,21 @@ body.sidebar-expanded .lp-1-section {
 }
 .icon-home { --label-display: none; }
 
+/* Contact icon specifics */
+.icon-contact img { 
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  opacity: 0.8;
+  margin: 6px;
+  width: 20px; height: 20px; 
+}
+
+/* Hide contact icon when not expanded */
+.landing-main:not(.expanded) .icon-contact {
+  display: none !important;
+}
+
 /* Active icon state - no blue border, show label persistently */
 .icon-btn.active {
   background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
@@ -475,14 +501,14 @@ body.sidebar-expanded .lp-1-section {
 
 .landing-main.expanded .radiant-glow-container {
   /* Expand the radiant SVG in place when an icon is clicked */
-  width: 1800px;
-  height: 1750px;
+  width: 2000px;
+  height: 2000px;
   opacity: 1;
   pointer-events: none;
   visibility: visible;
   display: block;
   top: -5%;
-  margin-left: -70px;
+  margin-left: 20px;
   /* Shift slightly right so icons can sit on the left */
   left: 5%;
   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -648,10 +674,13 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
 .landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
 /* Move home more right so it's visible alongside sidebar icons */
-.landing-main.expanded .icon-home { left: 220px; top: 30%; transform: none; }
+.landing-main.expanded .icon-home { left: 410px; top: 10%; transform: none; }
+/* Contact icon at the bottom */
+.landing-main.expanded .icon-contact { left: 400px; top: 80%; transform: none; }
 .landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
 .landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
 .landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
+
 
 /* ============================================
    DYNAMIC POSITIONS - Icons shift when active changes
@@ -667,6 +696,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
 .landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
+/* Home position when active-pos-0 */
+.landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 210px; top: 30%; }
 
 /* Active: discoverable (index 1) - shift icons so discoverable is at center */
 .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
@@ -676,6 +707,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
+/* Home position when active-pos-1 */
+.landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 310px; top: 10%; }
 
 /* Active: post-job (index 2) - shift icons so post-job is at center */
 .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
@@ -685,6 +718,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
 .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
+/* Home position when active-pos-2 */
+.landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 410px; top: 10%; }
 
 /* Active: direct-contract (index 3) - DEFAULT, all icons in natural positions */
 /* Already defined above */
@@ -697,6 +732,8 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
 .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
 .landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
+/* Home position when active-pos-4 */
+.landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 410px; top: 8%; }
 
 /* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
 .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
@@ -705,22 +742,104 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
 .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
 .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-architecture { opacity: 0; top: 110%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { opacity: 0; top: 120%; }
+/* Home position when active-pos-5 */
+.landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 410px; top: 10%; }
 
-/* Active: dao (index 6) - shift all icons UP so dao is at center */
+/* Active: earn-token (index 6) - shift all icons UP so earn-token is at center */
 .landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-multichain { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-architecture { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { opacity: 0; top: 110%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 410px; top: 10%; }
+/* Active: dao (index 7) - shift all icons UP so dao is at center */
+.landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 20px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 15px; top: 42%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-dao { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-architecture { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 129px; top: 95%; }
+.landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 410px; top: 10%; }
+
+/* Active: multichain (index 8) */
+.landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile { opacity: 0; top: -40%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-discoverable { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-post-job { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 25px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 18px; top: 42%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 410px; top: 10%; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 243px; top: 74%; transform: none; }
+/* Active: architecture (index 9) */
+.landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { opacity: 0; top: -50%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable { opacity: 0; top: -40%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-post-job { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-direct-contract { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 25px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 18px; top: 42%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-architecture { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 30px; top: 66%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 410px; top: 10%; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 220px; top: 68%; transform: none; }
+/* Active: revolution (index 10) */
+.landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { opacity: 0; top: -60%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-discoverable { opacity: 0; top: -50%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-post-job { opacity: 0; top: -40%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-direct-contract { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-job-progress { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-dao { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 25px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 18px; top: 42%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 15px; top: 50%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 410px; top: 10%; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 195px; top: 58%; transform: none; }
+
+/* Active: contact (index 11) - contact at center */
+.landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -70%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-discoverable { opacity: 0; top: -60%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-post-job { opacity: 0; top: -50%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-direct-contract { opacity: 0; top: -40%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-job-progress { opacity: 0; top: -30%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-raise-dispute { opacity: 0; top: -20%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token { opacity: 0; top: -10%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-dao { left: 93px; top: 8%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 55px; top: 20%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 25px; top: 34%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-revolution { left: 18px; top: 42%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 187px; top: 46%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 410px; top: 10%; }
 
 /* Smooth opacity transition for icons going off-screen */
 .landing-main.expanded .icon-btn {
-  transition: top 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
-              left 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.3s ease-out;
+  transition: top 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+              left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
@@ -728,7 +847,15 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .center-content {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transform: scale(0.96);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Show center content smoothly when collapsing */
+.landing-main .center-content {
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, 
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
 }
 
 /* Expanded Content Area - renders section content inside hero */
@@ -737,14 +864,50 @@ body.sidebar-expanded .lp-1-section {
   top: 50%;
   left: 55%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  max-width: 1100px;
+  width: 80%;
+  max-width: 1200px;
   height: auto;
-  max-height: 85vh;
-  overflow: visible;
-  z-index: 100;
-  opacity: 0;
-  animation: fadeInContent 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add sliding transition for expanded content */
+.expanded-content-area {
+  /* Animation applied via JS classes */
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translate(30%, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Slide in from left (when going bottom-to-top) */
+@keyframes slide-in-left {
+  0% {
+    transform: translate(-130%, -50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+/* Apply animation classes */
+.expanded-content-area.slide-in-right {
+  animation: slide-in-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.expanded-content-area.slide-in-left {
+  animation: slide-in-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Hide any scrollbars that might appear */
@@ -761,16 +924,29 @@ body.sidebar-expanded .lp-1-section {
   min-height: auto;
   padding: 0;
   margin: 0;
+  margin-left: 0 !important;
   background: transparent;
   box-shadow: none;
   border: none;
   overflow: visible;
 }
 
-/* Reset any container styles inside expanded area */
+/* Reset container padding and alignment inside expanded area */
 .expanded-content-area .lp-section > div {
   background: transparent;
   box-shadow: none;
+  padding: 0 40px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+/* Specific fix for contact section container alignment */
+.expanded-content-area .lp-13-container {
+  padding: 0 20px;
+  max-width: 1000px;
 }
 
 @keyframes fadeInContent {
@@ -789,16 +965,16 @@ body.sidebar-expanded .lp-1-section {
 .main-circle-bg,
 .radiant-glow-container,
 .center-content {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Smooth transition for floating icons and icon buttons */
 .floating-icons {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .icon-btn {
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Center Content */
@@ -845,6 +1021,13 @@ body.sidebar-expanded .lp-1-section {
 
 /* Responsive Design */
 @media (max-width: 1440px) {
+
+  .landing-main.expanded .radiant-glow-container {
+ 
+  top: -5%;
+  margin-left: 60px;
+  
+}
   .floating-icons {
     width: 1100px;
     height: 630px;
@@ -1306,6 +1489,27 @@ body.sidebar-expanded .lp-1-section {
 }
 
 @media (max-width: 480px) {
+
+  .radiant-glow-container {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 738px;
+  height: 738px;
+  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
+  animation: rotate-glow 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+  /* GPU acceleration for smooth transitions */
+  will-change: width, height, left, opacity, transform;
+  /* Smooth transition for expand/collapse */
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s ease;
+}
+
   .landing-main {
     padding-top: 200px;
     
@@ -1321,11 +1525,11 @@ body.sidebar-expanded .lp-1-section {
   }
 
   /* Show rotating arc only on narrow mobile screens */
-  .circle-arc {
+  /* .circle-arc {
     display: block;
     width: 400%;
     height: 952%;
-  }
+  } */
 
   .circle-arc-svg {
     animation: rotate-arc 9s linear infinite;
@@ -1497,7 +1701,7 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-bot {
-    top: -30%;
+    top: -33%;
   }
 
   .navbar-icon-2 {
