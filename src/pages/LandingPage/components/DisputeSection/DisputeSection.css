@@ -91,6 +91,7 @@
   animation: lp7-rotate-glow 20s linear infinite;
   pointer-events: none;
   z-index: -1;
+  will-change: transform;
 }
 
 @keyframes lp7-rotate-glow {

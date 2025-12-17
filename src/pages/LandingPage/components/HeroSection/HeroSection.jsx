@@ -229,6 +229,16 @@ const HeroSection = () => {
   };
 
   const handleIconClick = (iconName, sectionId) => {
+    // On mobile/tablet (≤1024px), scroll to section instead of expanding
+    // Don't set active state so labels only show on hover
+    if (!isDesktop) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
+
     if (activeIcon === iconName) {
       setIsExpanded(false);
       setActiveIcon(null);
