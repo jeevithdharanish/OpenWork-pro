@@ -319,7 +319,8 @@ body.sidebar-expanded .lp-1-section {
           saturate(var(--icon-saturation-high))
           contrast(var(--icon-contrast-high));
             opacity: 0.8;
-  width: 12.667px !important;
+            margin: 9px;
+  width: 14.667px !important;
   height: 14.667px !important;
 }
 
@@ -346,9 +347,10 @@ body.sidebar-expanded .lp-1-section {
   filter: brightness(var(--icon-brightness-high))
           saturate(var(--icon-saturation-high))
           contrast(var(--icon-contrast-high));
-          opacity: 0.8;
-  width: 20px !important;
-  height: 25px !important;
+  opacity: 0.8;
+   margin: 3px;
+  width: 23px !important;
+  height: 23px !important;
 }
 
 
@@ -1279,7 +1281,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 30px !important; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 330px !important; top: 2% !important; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 215px !important; top: 64% !important;}
@@ -1295,7 +1297,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 330px !important; top: 2% !important;}
   .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture {  left: 200px !important; top: 50%;  }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 215px !important; top: 64% !important;}
@@ -1311,7 +1313,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-dao { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 330px !important; top: 2% !important; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 205px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 360px !important; top: -1%; }
