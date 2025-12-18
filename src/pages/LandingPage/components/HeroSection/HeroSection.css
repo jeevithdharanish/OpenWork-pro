@@ -405,7 +405,7 @@ body.sidebar-expanded .lp-1-section {
           saturate(var(--icon-saturation-high))
           contrast(var(--icon-contrast-high));
             opacity: 0.8;
-  width: 17px !important;
+  width: 19px !important;
   height: 19px !important;
 }
 
@@ -904,13 +904,17 @@ body.sidebar-expanded .lp-1-section {
   /* Animation applied via JS classes */
 }
 
+/* Slide in from right - starts small and off-screen, grows as it arrives */
 @keyframes slide-in-right {
   0% {
-    transform: translate(30%, -50%);
+    transform: translate(60%, -50%) scale(0.7);
     opacity: 0;
   }
+  40% {
+    opacity: 0.5;
+  }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
 }
@@ -918,22 +922,65 @@ body.sidebar-expanded .lp-1-section {
 /* Slide in from left (when going bottom-to-top) */
 @keyframes slide-in-left {
   0% {
-    transform: translate(-130%, -50%);
+    transform: translate(-160%, -50%) scale(0.7);
     opacity: 0;
   }
+  40% {
+    opacity: 0.5;
+  }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
 }
 
-/* Apply animation classes - synced with circle expansion (0.6s) */
+/* Exit animations - shrinks first then slides away */
+@keyframes slide-out-left {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-120%, -50%) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(0.75);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(40%, -50%) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Apply animation classes - smooth transitions without bounce */
 .expanded-content-area.slide-in-right {
-  animation: slide-in-right 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .expanded-content-area.slide-in-left {
-  animation: slide-in-left 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Exit animations */
+.expanded-content-area.slide-out-left {
+  animation: slide-out-left 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.expanded-content-area.slide-out-right {
+  animation: slide-out-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Hide any scrollbars that might appear */
@@ -986,13 +1033,23 @@ body.sidebar-expanded .lp-1-section {
   }
 }
 
-/* Transition for normal state */
+/* Transition for normal state - use specific properties to avoid overriding optimized transitions */
 .circle-group,
-.main-circle-bg,
-.radiant-glow-container,
-.center-content {
-  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+.main-circle-bg {
+  transition: 
+    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.center-content {
+  transition: 
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* radiant-glow-container transitions already defined in base rule - don't override */
 
 /* Smooth transition for floating icons - use specific properties, not all */
 .floating-icons {
@@ -1215,7 +1272,7 @@ body.sidebar-expanded .lp-1-section {
   /* Active: direct-contract (index 3) - DEFAULT positions */
   .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 360px ; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile { left: 240px !important; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 220px !important; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 320px !important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 218px !important; top: 30%;}
   .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress {left: 215px !important; top: 64% !important; }
@@ -1905,6 +1962,11 @@ body.sidebar-expanded .lp-1-section {
   .icon-raise-dispute img {
     width: 8px !important;
     height: 8px !important;
+  }
+
+  .icon-earn-token img {
+    width: 48px !important;
+    height: 58px !important;
   }
 
   .icon-dao img {

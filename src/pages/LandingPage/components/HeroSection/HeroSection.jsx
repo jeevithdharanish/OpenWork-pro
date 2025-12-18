@@ -20,6 +20,8 @@ const HeroSection = () => {
   //  const Mobile = window.matchMedia('(max-width: 480px)').matches;
   const [isExpanded, setIsExpanded] = useState(false);
   const [activeIcon, setActiveIcon] = useState(null);
+  // displayedIcon is the content currently shown - changes AFTER exit animation
+  const [displayedIcon, setDisplayedIcon] = useState(null);
   const [transitionDirection, setTransitionDirection] = useState('down'); // 'down' = top-to-bottom, 'up' = bottom-to-top
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window === 'undefined') return true;
@@ -279,24 +281,73 @@ const HeroSection = () => {
   // Add sliding transition class to expanded content based on direction
   useEffect(() => {
     const contentArea = document.querySelector('.expanded-content-area');
-    if (contentArea) {
+    
+    // If this is the first time expanding (no previous content), just show immediately
+    if (!displayedIcon && activeIcon) {
+      setDisplayedIcon(activeIcon);
+      if (contentArea) {
+        contentArea.classList.add('slide-in-right');
+        const removeClass = () => {
+          contentArea.classList.remove('slide-in-right');
+          contentArea.removeEventListener('animationend', removeClass);
+        };
+        contentArea.addEventListener('animationend', removeClass);
+      }
+      return;
+    }
+    
+    // If activeIcon changed and we have existing content, animate the transition
+    if (contentArea && displayedIcon && activeIcon && activeIcon !== displayedIcon) {
       // Remove any existing animation classes
-      contentArea.classList.remove('slide-in-right', 'slide-in-left');
+      contentArea.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
       
       // Force reflow to restart animation
       void contentArea.offsetWidth;
       
-      // Add appropriate animation class based on direction
-      const animationClass = transitionDirection === 'down' ? 'slide-in-right' : 'slide-in-left';
-      contentArea.classList.add(animationClass);
+      // Determine animation classes based on direction
+      // Going DOWN: old content exits LEFT, new content enters from RIGHT
+      // Going UP: old content exits RIGHT, new content enters from LEFT
+      const exitClass = transitionDirection === 'down' ? 'slide-out-left' : 'slide-out-right';
+      const enterClass = transitionDirection === 'down' ? 'slide-in-right' : 'slide-in-left';
       
-      const removeClass = () => {
-        contentArea.classList.remove('slide-in-right', 'slide-in-left');
-        contentArea.removeEventListener('animationend', removeClass);
-      };
-      contentArea.addEventListener('animationend', removeClass);
+      // Apply exit animation to CURRENT (old) content
+      contentArea.classList.add(exitClass);
+      
+      // After exit animation, swap content and apply enter animation
+      setTimeout(() => {
+        // Now swap to the new content
+        setDisplayedIcon(activeIcon);
+        
+        // Wait for React to render the new content, then animate it in
+        requestAnimationFrame(() => {
+          const newContentArea = document.querySelector('.expanded-content-area');
+          if (newContentArea) {
+            newContentArea.classList.remove(exitClass);
+            void newContentArea.offsetWidth; // Force reflow
+            newContentArea.classList.add(enterClass);
+            
+            const removeClass = () => {
+              newContentArea.classList.remove('slide-in-right', 'slide-in-left', 'slide-out-left', 'slide-out-right');
+              newContentArea.removeEventListener('animationend', removeClass);
+            };
+            newContentArea.addEventListener('animationend', removeClass);
+          }
+        });
+      }, 400); // Wait for exit animation to mostly complete
     }
-  }, [activeIcon, transitionDirection]);
+    
+    // Handle closing (going back to hero)
+    if (!activeIcon && displayedIcon) {
+      if (contentArea) {
+        contentArea.classList.add('slide-out-left');
+        setTimeout(() => {
+          setDisplayedIcon(null);
+        }, 400);
+      } else {
+        setDisplayedIcon(null);
+      }
+    }
+  }, [activeIcon, transitionDirection, displayedIcon]);
 
   // Old scroll-based navigation (disabled)
   const handleIconClickOld = (iconName, sectionId) => {
@@ -513,9 +564,10 @@ const HeroSection = () => {
         </div>
 
         {/* Expanded Content Area - renders section content inside hero */}
-        {isExpanded && activeIcon && sectionComponents[activeIcon] && (
+        {/* Use displayedIcon (not activeIcon) so content changes AFTER exit animation */}
+        {isExpanded && displayedIcon && sectionComponents[displayedIcon] && (
           <div className="expanded-content-area">
-            {React.createElement(sectionComponents[activeIcon])}
+            {React.createElement(sectionComponents[displayedIcon])}
           </div>
         )}
       </main>
