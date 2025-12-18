@@ -805,7 +805,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 30px; top: 66%; }
 .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 75px; top: 82%; }
 .landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 243px; top: 74%; transform: none; }
+.landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 260px; top: 74%; transform: none; }
 /* Active: architecture (index 9) */
 .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { opacity: 0; top: -50%; }
 .landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable { opacity: 0; top: -40%; }
@@ -819,7 +819,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture { left: 15px; top: 50%; }
 .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 30px; top: 66%; }
 .landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 220px; top: 68%; transform: none; }
+.landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 233px; top: 68%; transform: none; }
 
 /* Active: revolution (index 10) */
 .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { opacity: 0; top: -60%; }
@@ -834,7 +834,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 18px; top: 42%; }
 .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 15px; top: 50%; }
 .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 195px; top: 58%; transform: none; }
+.landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 207px; top: 58%; transform: none; }
 
 /* Active: contact (index 11) - contact at center */
 .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -70%; }
@@ -848,7 +848,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 55px; top: 20%; }
 .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 25px; top: 34%; }
 .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution { left: 18px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 187px; top: 46%; }
+.landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 195px; top: 46%; }
 .landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 410px; top: 10%; }
 
 /* Smooth opacity transition for icons going off-screen */
