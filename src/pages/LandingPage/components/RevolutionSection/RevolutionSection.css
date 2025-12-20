@@ -83,7 +83,7 @@
   height: 370.676px;
   z-index: 1;
   pointer-events: none;
-  animation: rotate-network 60s linear infinite;
+  animation: rotate-network 12s linear infinite;
 }
 
 @keyframes rotate-network {
@@ -238,26 +238,54 @@
   }
   .lp-12-container {
     padding: 0 20px;
-    gap: 30px;
+    gap: 40px;
+  }
+
+  .lp-12-content {
+   display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+align-self: stretch;
   }
 
   .lp-12-heading {
-    font-size: 24px;
-    line-height: 32px;
+    align-self: stretch;
+    color: var(--Base-Black, #050505);
+text-align: center;
+font-family: inter, sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 30px; /* 125% */
+letter-spacing: -0.96px;
   }
 
   .lp-12-description {
-    font-size: 13px;
-    line-height: 20px;
+    align-self: stretch;
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
   }
 
   .lp-12-circle-container {
-    width: 100%;
+    display: flex;
+    width: 360.699px;
+    height: 358px;
+    padding: 0 6.198px 6.152px 0.001px;
+    align-items: center;
+    flex-shrink: 0;
+    /* width: 100%;
     max-width: 320px;
-    height: 300px;
+    height: 300px; */
   }
 
   .lp-12-network-group {
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.85);
   }
 }
