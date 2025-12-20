@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './DirectContractSection.css';
 
 const DirectContractSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   const handleCreateContract = () => {
@@ -18,7 +19,7 @@ const DirectContractSection = () => {
             Set your own terms and use smart contracts to lock payments in escrow. No third parties. Just code, transparency, and control.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleCreateContract}
           >
             Create Direct Contract
