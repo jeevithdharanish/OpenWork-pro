@@ -8,6 +8,8 @@ const ProfileSection = () => {
     });
   };
 
+  const isMobile = window.innerWidth <= 480;
+
   return (
     <section id="lp-2-section" className="lp-section lp-2-section">
       <div className="lp-2-container">
@@ -21,7 +23,7 @@ const ProfileSection = () => {
           </div>
           
           <button 
-            className="lp-blue-button"
+            className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={handleSetProfile}
           >
             Set Your Profile

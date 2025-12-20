@@ -1806,6 +1806,13 @@ body.sidebar-expanded .lp-1-section {
 
 @media (max-width: 480px) {
  
+  .lp-section {
+   margin-top: -1px;
+  }
+  
+  .center-content {  
+    gap: 2px;
+  }
 
   .main-heading {
     
@@ -1857,7 +1864,7 @@ body.sidebar-expanded .lp-1-section {
   width: 768px;
   height: 768px;
   background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
-  animation: rotate-glow 8s linear infinite;
+  animation: rotate-glow 4s linear infinite;
   pointer-events: none;
   z-index: 0;
   /* GPU acceleration for smooth transitions */
@@ -1894,47 +1901,9 @@ body.sidebar-expanded .lp-1-section {
     animation: rotate-arc 9s linear infinite;
   }
 
-  /* .circle-group::after {
-    content: '';
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    width: 690px;
-    height: 490px;
-    transform: translate(-50%, -52%);
-    border-radius: 50%;
-    
-    border: 2px solid rgba(18, 70, 255, 0.95);
-    
-    box-shadow: 0 0 28px rgba(18, 70, 255, 0.28), inset 0 0 16px rgba(18, 70, 255, 0.25);
-    /* background: radial-gradient(circle, rgba(18, 70, 255, 0.15) 0%, rgba(18, 70, 255, 0.08) 60%, rgba(18, 70, 255, 0) 100%); */
-    /* pointer-events: none;
-  } */ */
+ 
 
-  .radiant-glow-container {
-    width: 1600px;
-    height: 1290px;
-    position:absolute; 
-    top: 100%;
-    left: 50%;
-    visibility: hidden;
-    
-    transform: translateX(-50%);
-     animation: rotate-glow 4.5s linear infinite; 
-  }
-     /* Radiant Glow */
-/* .radiant-glow-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
-  animation: rotate-glow 10s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-} */
+ 
 
   .main-circle-bg { 
     /* top: 52%;
@@ -2052,8 +2021,8 @@ body.sidebar-expanded .lp-1-section {
    border: 1px solid #FFF !important;
 
     box-shadow: 0 0 0.408px 1.223px rgba(0, 0, 0, 0.05), 0 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.10) !important;
-    width: 32px !important;
-    height: 32px !important;
+    width: 35px !important;
+    height: 35px !important;
   }
 
   .navbar-icon-btn img {
@@ -2061,6 +2030,7 @@ body.sidebar-expanded .lp-1-section {
     width: 16px !important;
     height: 16px !important;
   }
+  
 
   /* Individual navbar icon sizes for mobile */
   .navbar-icon-bot img {

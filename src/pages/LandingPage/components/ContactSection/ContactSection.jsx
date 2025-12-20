@@ -46,7 +46,7 @@ const ContactSection = () => {
 
   if (status === 'success') {
     return (
-      <section className="lp-13-section">
+      <section id="lp-13-section" className="lp-13-section">
         <div className="lp-13-container">
           <div className="lp-13-content">
             <h2 className="lp-13-heading">Contact us</h2>
@@ -79,7 +79,7 @@ const ContactSection = () => {
   }
 
   return (
-    <section className="lp-13-section">
+    <section id="lp-13-section" className="lp-13-section">
       <div className="lp-13-container">
         <div className="lp-13-content">
           <h2 className="lp-13-heading">Contact us</h2>
