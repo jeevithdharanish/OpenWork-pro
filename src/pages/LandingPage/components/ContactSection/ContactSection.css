@@ -289,21 +289,43 @@
 
 @media (max-width: 480px) {
    .lp-13-section {
+    
     margin-left: 0px;
   }
   .lp-13-container {
     padding: 0 20px;
     gap: 30px;
   }
+  .lp-13-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+  }
 
   .lp-13-heading {
+    align-self: stretch;
+    color: var(--Base-Black, #050505);
+    text-align: center;
+    font-family: inter,sans-serif;
     font-size: 24px;
-    line-height: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px; /* 125% */
+    letter-spacing: -0.96px;
   }
 
   .lp-13-description {
-    font-size: 13px;
-    line-height: 20px;
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter,sans-serif;
+    align-self: stretch;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
   }
 
 
@@ -323,7 +345,6 @@
   }
 
   .lp-13-contact-form {
-    
     display: flex;
     width: 324px;
     flex-direction: column;
