@@ -29,11 +29,9 @@ const LedgerSection = () => {
         </div>
 
         {/* Right Content - OpenWork Ledger SVG */}
-        {isMobile ?<div className="lp-3-ledger-container">
-          <img src="/assets/ledger/ledger.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
-        </div> :<div className="lp-3-ledger-container">
+        <div className="lp-3-ledger-container">
           <img src="/assets/discoverable/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
-        </div>}
+        </div>
       </div>
     </section>
   );
