@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './DisputeSection.css';
 
 const DisputeSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   return (
@@ -14,7 +15,7 @@ const DisputeSection = () => {
             Disagreements? Let verified experts in the field decide. Skill-based oracles resolve disputes through decentralized token-based voting.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={() => navigate('/browse-jobs')}
           >
             See Disputes
