@@ -128,7 +128,7 @@ body.sidebar-expanded .lp-1-section {
 
 /* Main Circle - White background */
 .main-circle-bg {
-  visibility:hidden;
+  opacity:0;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -164,28 +164,21 @@ body.sidebar-expanded .lp-1-section {
 
 .icon-btn {
   position: absolute;
-
   width: auto;
   height: 32px;
   min-width: 32px;
   max-width: 32px;
-
   padding: 0;
   border-radius: 999px;
-
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start; /* 🔒 lock icon position */
-
+  justify-content: flex-start; 
   cursor: pointer;
   pointer-events: all;
-
   overflow: hidden;
   white-space: nowrap;
-
   background: linear-gradient(to bottom, #f4f4f4, #fefefe);
   border: 0;
-
   transition:
     max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.3s ease,
@@ -193,7 +186,6 @@ body.sidebar-expanded .lp-1-section {
     top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-
   will-change: max-width, transform, top, left, opacity;
 }
 
@@ -1815,7 +1807,49 @@ body.sidebar-expanded .lp-1-section {
 @media (max-width: 480px) {
  
 
-  .radiant-glow-container {
+  .main-heading {
+    
+    color: var(--Base-Black, #050505);
+    text-align: center;
+    font-family: Satoshi,sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px; /* 160% */
+    letter-spacing: -1.2px;
+  }
+
+  .main-description {
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: Satoshi,sans-serif;
+    font-size: 16px;
+    
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+
+  .lp-blue-button-1 {
+    color: var(--Base-White, #FFF);
+    font-family: Satoshi,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 171.429% */
+    display: flex;
+    height: 40px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 12px;
+    border: 4px solid #1246FF;
+    background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
+    box-shadow: 0 0 0.386px 1.158px rgba(0, 0, 0, 0.05), 0 4.634px 5.02px -2.317px rgba(0, 0, 0, 0.20);
+  }
+
+ .radiant-glow-container {
   position: absolute;
   top: 57%;
   left: 50%;
@@ -1829,18 +1863,18 @@ body.sidebar-expanded .lp-1-section {
   /* GPU acceleration for smooth transitions */
   will-change: width, height, left, opacity, transform;
   /* Smooth transition for expand/collapse */
-  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
               left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.4s ease;
-}
+  }
 
   .landing-main {
     padding-top: 200px;
     
     padding-bottom: 120px;
     align-items: center;
-   justify-content: center;
+    justify-content: center;
   }
 
   .circle-group {   
@@ -1902,14 +1936,22 @@ body.sidebar-expanded .lp-1-section {
   z-index: 0;
 } */
 
-  .main-circle-bg {
+  .main-circle-bg { 
+    /* top: 52%;
+    left: 50%;
+
+    width: 580px;
+    height: 580.726px;
+    border-radius: 580.726px;
+    background: #FFF;
+    opacity:1;
     width: 780px;
     height: 850px; 
     margin-top: 150px;  
     transform: translate(-50%, -50%);
     object-fit: cover;
     object-position: center top;
-    
+     */
     /* content: url('/assets/Ellipse 57.png'); */
   }
 
@@ -1934,34 +1976,20 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .icon-btn img {
-    width: 8px !important;
-    height: 8px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
-  /* Individual icon sizes for mobile */
-  .icon-discoverable img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .icon-direct-contract img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .icon-job-progress img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .icon-post-job img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .icon-raise-dispute img {
-    width: 8px !important;
-    height: 8px !important;
+  /* Individual icon sizes for mobile - inside mini circle */
+  .icon-discoverable img,
+  .icon-direct-contract img,
+  .icon-job-progress img,
+  .icon-post-job img,
+  .icon-raise-dispute img,
+  .icon-dao img,
+  .icon-set-profile img {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   .icon-earn-token img {
@@ -1969,33 +1997,48 @@ body.sidebar-expanded .lp-1-section {
     height: 58px !important;
   }
 
-  .icon-dao img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
-  .icon-set-profile img {
-    width: 8px !important;
-    height: 8px !important;
-  }
-
   .center-content {
-    gap: 32px;
-    margin-top: 0;
+    gap: 48px;
+    margin-top: -100px;
   }
 
   .text-content {
-    gap: 8px;
+    gap: 12px;
   }
 
   .main-heading {
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 30px;
+    line-height: 48px;
+    letter-spacing: -1.2px;
   }
 
   .main-description {
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 358px;
+    margin: 0 auto;
+  }
+
+  /* Mini circle wrapper for icon buttons - Figma design */
+  .icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(180deg, #F4F4F4 0%, #FEFEFE 100%) !important;
+    border-bottom: 1px solid #fff !important;
+    box-shadow: 
+      0px 0px 0.408px 1.223px rgba(0, 0, 0, 0.05),
+      0px 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .icon-btn img {
+    width: 16px !important;
+    height: 16px !important;
   }
 
   /* Adjust navbar floating icons for smaller mobile */
@@ -2005,13 +2048,18 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-btn {
-    width: 44px !important;
-    height: 44px !important;
+    border-radius: 50% !important;
+   border: 1px solid #FFF !important;
+
+    box-shadow: 0 0 0.408px 1.223px rgba(0, 0, 0, 0.05), 0 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.10) !important;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   .navbar-icon-btn img {
-    width: 18px !important;
-    height: 18px !important;
+    flex-shrink: 0;
+    width: 16px !important;
+    height: 16px !important;
   }
 
   /* Individual navbar icon sizes for mobile */
@@ -2031,17 +2079,17 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-bot {
-    top: -33%;
+    top: -36%;
   }
 
   .navbar-icon-2 {
     right: -1%;
-    top: -21%;
+    top: -25%;
   }
 
   .navbar-icon-3 {
     left: -1%;
-    top: -21%;
+    top: -25%;
   }
 
   .lp-section:not(.lp-1-section) {

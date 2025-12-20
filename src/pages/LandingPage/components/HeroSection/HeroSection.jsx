@@ -555,7 +555,7 @@ const HeroSection = () => {
           </div>
           
           <button 
-            className="lp-blue-button"
+            className={isDesktop?"lp-blue-button":"lp-blue-button-1"}
             onClick={handleLearnMore}
           >
             Learn More
