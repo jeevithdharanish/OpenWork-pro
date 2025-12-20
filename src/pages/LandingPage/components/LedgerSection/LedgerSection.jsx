@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './LedgerSection.css';
 
 const LedgerSection = () => {
+  const isMobile = window.innerWidth <= 1440;
   const navigate = useNavigate();
 
   const handleShowLedger = () => {
@@ -19,7 +20,7 @@ const LedgerSection = () => {
             Every job, update, and review is logged immutably in the OpenWork Ledger (OWL), giving you a permanent and transparent work history.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={handleShowLedger}
           >
             Show Ledger
@@ -28,9 +29,11 @@ const LedgerSection = () => {
         </div>
 
         {/* Right Content - OpenWork Ledger SVG */}
-        <div className="lp-3-ledger-container">
+        {isMobile ?<div className="lp-3-ledger-container">
+          <img src="/assets/ledger/ledger.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
+        </div> :<div className="lp-3-ledger-container">
           <img src="/assets/discoverable/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
-        </div>
+        </div>}
       </div>
     </section>
   );
