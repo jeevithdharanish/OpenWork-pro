@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './MultiChainSection.css';
 
 const MultiChainSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   return (
@@ -11,10 +12,9 @@ const MultiChainSection = () => {
         <div className="lp-10-content">
           <h1 className="lp-10-heading">Work on any chain you are comfortable with.</h1>
           <p className="lp-10-description">
-            OpenWork is compatible with all blockchains via its bridging architecture. Whether you're comfortable with Arbitrum, Optimism, Solana, Polygon, you name it, we can integrate it and you can integrate it and you can use the network you trust.
-          </p>
+           OpenWork is compatible with all blockchains via its bridging architecture. </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={() => navigate('/documentation')}
           >
             View Documentation
