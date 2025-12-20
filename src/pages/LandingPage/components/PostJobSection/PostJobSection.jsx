@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './PostJobSection.css';
 
 const PostJobSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   const handlePostJob = () => {
@@ -19,7 +20,7 @@ const PostJobSection = () => {
             Whether you're hiring or getting hired, OpenWork makes it easy to post jobs or discover skilled talent—without platform restrictions.
           </p>
           <button 
-            className="lp-blue-button"
+           className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={handlePostJob}
           >
             Post Job/Browse Talent
@@ -28,9 +29,12 @@ const PostJobSection = () => {
         </div>
 
         {/* Right Content - OpenWork Ledger SVG */}
-        <div className="lp-4-ledger-container">
+        {isMobile ?<div className="lp-4-ledger-container">
+          <img src="/assets/browsejob/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
+        </div> :<div className="lp-4-ledger-container">
           <img src="/assets/postjob/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
-        </div>
+        </div> }
+        
       </div>
     </section>
   );
