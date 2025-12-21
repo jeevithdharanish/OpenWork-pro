@@ -197,7 +197,8 @@
   }
   .lp-11-content {
     display: flex;
-    width: 368px;
+    width: 100%;
+    max-width: 368px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -221,19 +222,20 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 480px;
-    height: 620px; /* taller to allow larger visual */
+    max-width: 100%;
+    height: auto;
+    min-height: 520px; /* increased to allow larger visual */
     padding: 0 12px;
-    overflow: hidden; /* keep scaled image clipped to container */
+    overflow: visible;
   }
 
   .lp-11-architecture-image {
     width: auto;
-    max-width: 100%;
+    max-width: 120%; /* allow slight oversize for prominence */
     height: 100%;
-    max-height: 620px;
+    max-height: 520px;
     margin-left: 0;
-    transform: scale(1.5);
+    transform: scale(1.2);
     transform-origin: center center;
     margin: 0 auto;
     object-fit: contain;

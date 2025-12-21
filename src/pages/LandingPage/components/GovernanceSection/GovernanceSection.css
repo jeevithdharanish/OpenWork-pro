@@ -63,21 +63,24 @@
 
 .lp-9-governance-circle-group {
   position: absolute;
-  width: 410.047px;
-  height: 360px;
+  width: 450px; /* match outer image to ensure visual center */
+  height: 450px;
   left: 50%;
   top: 50%;
-  transform: translate(-30%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 /* Outer Governance Circle Image */
 .lp-9-outer-circle-image {
   position: absolute;
-  width: 450px;
-  height: 450px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  max-height: 450px;
   object-fit: contain;
-  left: -50px;
-  top: -42.2px;
 }
 
 @keyframes rotate-lp9-outer {
@@ -92,8 +95,8 @@
 /* Radiant Glow */
 .lp-9-radiant-glow {
   position: absolute;
-  left: 61.67px;
-  top: 80.99px;
+  left: 85px; /* centered inside 450px group */
+  top: 85px;
   width: 280px;
   height: 280px;
   animation: lp9-rotate-glow 20s linear infinite;
@@ -121,8 +124,8 @@
 /* Core Circle */
 .lp-9-core-circle {
   position: absolute;
-  left: 61.87px;
-  top: 81.07px;
+  left: 116.19px; /* centered inside 450px group */
+  top: 116.19px;
   width: 217.618px;
   height: 217.618px;
   z-index: 2;
@@ -162,16 +165,16 @@
 /* Center Governance Icon */
 .lp-9-center-icon {
   position: absolute;
-  left: 42%;
+  left: 50%;
   top: 50%;
-  transform: translate(calc(-50% - 2.343px), calc(-50% + 9.885px));
+  transform: translate(-50%, -50%);
   width: 87.474px;
   height: 87.474px;
   z-index: 6;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .lp-9-governance-img {
@@ -288,8 +291,9 @@
   }
   .lp-9-container {
     padding: 0 20px;
-    
     gap: 60px;
+    flex-direction: column; /* stack and allow centering */
+    align-items: center; /* center children horizontally */
   }
 
   .lp-blue-button-1 {
@@ -303,7 +307,8 @@
 
   .lp-9-content {
     display: flex;
-    width: 368px;
+    width: 100%;
+    max-width: 368px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -337,11 +342,14 @@
   }
 
   .lp-9-circle-container {
-    margin-left: 50px;
+    margin: 0 auto; /* center container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 520px;
-    
+    max-width: 320px; /* keep it from getting too wide on small screens */
     height: 320px;
+    overflow: visible;
   }
 
   .lp-9-governance-circle-group {
