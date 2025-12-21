@@ -268,7 +268,7 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background: #eeeeee;
+    background: linear-gradient(to right, rgba(238,238,238,0) 0%, #eeeeee 38%, #eeeeee 62%, rgba(238,238,238,0) 100%);
     z-index: 1;
   }
 
