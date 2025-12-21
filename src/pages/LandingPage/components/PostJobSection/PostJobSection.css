@@ -193,11 +193,10 @@
 
   .lp-4-ledger-container {
     align-items: center;
-    justify-content: center;
-    
+    justify-content: center;   
     width: 100%;
     max-width: 620px;
-    height: 480px;
+    height: 530px;
     
   }
  .lp-4-section .openwork-ledger-image {

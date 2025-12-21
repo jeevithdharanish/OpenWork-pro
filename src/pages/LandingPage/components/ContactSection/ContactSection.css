@@ -372,12 +372,18 @@
   }
 
   .lp-13-send-button {
+    color: var(--Base-White, #FFF);
+font-family: inter, sans-serif;
+font-size: 15.723px;
+font-style: normal;
+font-weight: 700;
+line-height: 26.955px; /* 171.429% */
     display: flex;
 height: 44.924px;
 padding: 8.985px 17.97px;
 justify-content: center;
 align-items: center;
-gap: 4.492px;
+gap: 9.492px;
     border-radius: 13.477px;
 border: 4.492px solid #1246FF;
 background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);

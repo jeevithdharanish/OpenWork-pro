@@ -19,13 +19,13 @@ const LandingSidebar = () => {
     { id: 5, icon: '/assets/sidebar-icon-3.svg', label: 'Direct Contract', section: 'lp-5-section', activeY: -230 },
     { id: 6, icon: '/assets/sidebar-icon-4.svg', label: 'Job In Progress', section: 'lp-6-section', activeY: -270 },
     { id: 7, icon: '/assets/sidebar-icon-5.svg', label: 'Raise Dispute', section: 'lp-7-section', activeY: -300 },
-    { id: 8, icon: '/assets/sidebar-icon-6.svg', label: 'Earn & Govern', section: 'lp-8-section', activeY: -320 },
+    { id: 8, icon: '/assets/diploma/icon.svg', label: 'Earn & Govern', section: 'lp-8-section', activeY: -320 },
     { id: 9, icon: '/assets/sidebar-icon-7.svg', label: 'DAO', section: 'lp-9-section', activeY: -350 },
     { id: 10, icon: '/assets/sidebar-icon-8.svg', label: 'Local Network', section: 'lp-10-section', activeY: -380 },
     { id: 11, icon: '/assets/sidebar-icon-9.svg', label: 'Openwork Arch', section: 'lp-11-section', activeY: -420 },
     { id: 12, icon: '/assets/sidebar-icon-10.svg', label: 'Work Revolution', section: 'lp-12-section', activeY: -450 },
-    {id:13, icon:"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2z' stroke='%231246FF' stroke-width='1.6' fill='none'/%3E%3Cpath d='M3 7l9 6 9-6' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E",
-       label:'Contact', section:'lp-13-section', activeY:-480},
+    // {id:13, icon:"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 5H3a2 2 0 00-2 2v10a2 2 0 002 2h18a2 2 0 002-2V7a2 2 0 00-2-2z' stroke='%231246FF' stroke-width='1.6' fill='none'/%3E%3Cpath d='M3 7l9 6 9-6' stroke='%231246FF' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E",
+    //    label:'Contact', section:'lp-13-section', activeY:-480},
   ];
 
   const buildMobileItems = () => {

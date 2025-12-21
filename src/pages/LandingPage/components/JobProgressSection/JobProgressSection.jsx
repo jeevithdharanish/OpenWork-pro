@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './JobProgressSection.css';
 
 const JobProgressSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   const handleViewJobs = () => {
@@ -19,7 +20,7 @@ const JobProgressSection = () => {
             Work gets done in milestones. Submit deliverables, leave reviews, and manage everything transparently in real-time.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleViewJobs}
           >
             View Jobs

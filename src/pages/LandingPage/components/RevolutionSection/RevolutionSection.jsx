@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './RevolutionSection.css';
 
 const RevolutionSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   return (
@@ -14,7 +15,7 @@ const RevolutionSection = () => {
             Build your profile, discover opportunities, or become a contributor. OpenWork is the internet's future of work—owned by its users.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={() => navigate('/home')}
           >
             Launch App

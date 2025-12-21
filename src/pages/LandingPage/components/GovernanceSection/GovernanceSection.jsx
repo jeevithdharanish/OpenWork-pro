@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './GovernanceSection.css';
 
 const GovernanceSection = () => {
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   return (
@@ -14,7 +15,7 @@ const GovernanceSection = () => {
             OpenWork is governed by its community. Propose upgrades, manage funds, and vote on key decisions with real stake in the system.
           </p>
           <button 
-            className="lp-blue-button"
+            className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={() => navigate('/documentation')}
           >
             View Documentation
