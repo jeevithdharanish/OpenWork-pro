@@ -30,7 +30,7 @@ const LedgerSection = () => {
 
         {/* Right Content - OpenWork Ledger SVG */}
         <div className="lp-3-ledger-container">
-          <img src="/assets/discoverable/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
+          <img src="/assets/discoverable/img.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div>
       </div>
     </section>
