@@ -418,13 +418,19 @@
   }
 
   .profile-circle-section {
-    width: 280px;
-    height: 280px;
+    width: 100%;
+    max-width: 320px;
+    height: 300px;
+    margin: 0 auto;
+    overflow: visible;
   }
 
   .profile-circle-group {
     width: 277.237px;
     height: 277.237px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .profile-radiant-glow {
