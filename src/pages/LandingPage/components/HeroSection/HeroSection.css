@@ -1807,7 +1807,9 @@ body.sidebar-expanded .lp-1-section {
 @media (max-width: 480px) {
  
   .lp-section {
-   margin-top: -1px;
+    
+   
+  
   }
   
   .center-content {  
@@ -1873,7 +1875,7 @@ body.sidebar-expanded .lp-1-section {
 
  .radiant-glow-container {
   position: absolute;
-  top: 57%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 768px;
@@ -1881,6 +1883,7 @@ body.sidebar-expanded .lp-1-section {
   background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
   animation: rotate-glow 4s linear infinite;
   pointer-events: none;
+  border-radius: 580.726px;
   z-index: 0;
   /* GPU acceleration for smooth transitions */
   will-change: width, height, left, opacity, transform;
@@ -2067,17 +2070,17 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .navbar-icon-bot {
-    top: -36%;
+    top: -50%;
   }
 
   .navbar-icon-2 {
     right: -1%;
-    top: -25%;
+    top: -39%;
   }
 
   .navbar-icon-3 {
     left: -1%;
-    top: -25%;
+    top: -39%;
   }
 
   .lp-section:not(.lp-1-section) {
