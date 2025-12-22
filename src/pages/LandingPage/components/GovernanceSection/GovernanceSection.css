@@ -250,17 +250,15 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
   .lp-9-section {
-    
     margin-left: 0px;
-  
     padding: 60px 0;
   }
 
   .lp-9-container {
     padding: 0 40px;
-    gap: 40px;
+    gap: 130px;
   }
 
   .lp-9-heading {
@@ -269,19 +267,67 @@
   }
 
   .lp-9-description {
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
     font-size: 14px;
     line-height: 21px;
   }
 
   .lp-9-circle-container {
     width: 100%;
-    max-width: 380px;
-    margin-left: 60px;
-    height: 350px;
+    max-width: 480px; /* increased width for larger visual */
+    margin: 0 auto; /* center horizontally */
+    height: 420px; /* slightly taller */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+    overflow: visible;
   }
 
   .lp-9-governance-circle-group {
-    transform: translate(-50%, -50%) scale(0.9);
+    justify-content: center;
+    align-items: center;
+    /* background-color:black; */
+    width: 580px;
+    height: 580px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  /* Increase image and core sizes at this breakpoint */
+  .lp-9-outer-circle-image {
+    justify-content: center;
+    align-items: center;
+    /* background-color:white; */
+    max-width: 580px;
+    max-height: 580px;
+  }
+
+  .lp-9-core-circle {
+    left: calc(50% - 150px);
+    top: calc(50% - 150px);
+    width: 290px;
+    height: 290px;
+  }
+
+  .lp-9-radeint-glow {
+    left: 95px;
+    top: 95px;
+    width: 290px;
+    height: 290px;
+  }
+
+  .lp-9-core-circle::before {
+    width: 340px;
+    height: 340px;
+  }
+
+  .lp-9-center-icon {
+    width: 100px;
+    height: 100px;
   }
 }
 
