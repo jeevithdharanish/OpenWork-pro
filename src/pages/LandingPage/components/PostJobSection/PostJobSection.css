@@ -208,13 +208,13 @@
     justify-content: center;   
     width: 100%;
     max-width: 620px;
-    height: 530px;
+    height: 500px;
     
   }
  .lp-4-section .openwork-ledger-image {
   width: 100%;
   max-width: 520px;
-  transform: scale(1.05);
+  transform: scale(1.1);
   transform-origin: center;
 }
 

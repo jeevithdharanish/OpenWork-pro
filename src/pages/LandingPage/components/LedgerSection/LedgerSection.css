@@ -213,21 +213,25 @@
   }
 
   .lp-3-ledger-container { 
-    align-items: center;
+    /* align-items: center;
     justify-content: center;   
     width: 115%;
     max-width: 100%;
     height: auto;
     min-height: 400px;
-    overflow: visible;
+    overflow: visible; */
+    align-items: center;
+    justify-content: center;   
+    width: 100%;
+    max-width: 620px;
+    height: 500px;
   }
 
   .lp-3-section .openwork-ledger-image {
-    width: 115%;
-    max-width: 105%;
-    height: auto;
-    transform: none;
-    transform-origin: center;
+    width: 100%;
+  max-width: 520px;
+  transform: scale(1.2);
+  transform-origin: center;
   }
 
 

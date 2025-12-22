@@ -329,8 +329,8 @@
   }
 
   .sidebar-nav-item.active .icon-wrapper {
-    border-color:#1246FF;
-    box-shadow: 0 4px 12px rgba(18, 70, 255, 0.15);
+   border-color:#456af0ff;
+    /* box-shadow: 0 4px 12px rgba(18, 70, 255, 0.15); */
   }
 
   .sidebar-nav-item.active img {
@@ -354,7 +354,7 @@
   .sidebar-nav-item.active .nav-label {
     opacity: 1;
     transform: translateY(0);
-    color: #1246FF;
+    color: #5c7cf1ff;
   }
 
   /* Hide Desktop specific elements */
