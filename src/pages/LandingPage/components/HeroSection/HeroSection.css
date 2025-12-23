@@ -693,6 +693,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
 .landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
+.landing-main.expanded .floating-icons.active-pos-0 .icon-contact { opacity: 0; top: 140%; }
 /* Home position when active-pos-0 */
 .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 210px; top: 30%; }
 
@@ -704,6 +705,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
+.landing-main.expanded .floating-icons.active-pos-1 .icon-contact { left:310; top: 120%; }
 /* Home position when active-pos-1 */
 .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 310px; top: 10%; }
 
@@ -715,6 +717,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
 .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
+.landing-main.expanded .floating-icons.active-pos-2 .icon-contact { left:310; top: 120%; }
 /* Home position when active-pos-2 */
 .landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 410px; top: 10%; }
 
@@ -730,6 +733,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-3 .icon-multichain { opacity: 0; top: 120%; }
 .landing-main.expanded .floating-icons.active-pos-3 .icon-architecture { opacity: 0; top: 130%; }
 .landing-main.expanded .floating-icons.active-pos-3 .icon-revolution { opacity: 0; top: 140%; }
+.landing-main.expanded .floating-icons.active-pos-3 .icon-contact { left:310; top: 120%; }
 /* Home position when active-pos-3 */
 .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 410px; top: 10%; }
 
@@ -741,6 +745,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
 .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
 .landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
+.landing-main.expanded .floating-icons.active-pos-4 .icon-contact { left:310; top: 120%; }
 /* Home position when active-pos-4 */
 .landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 410px; top: 8%; }
 
@@ -756,6 +761,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { opacity: 0; top: 120%; }
+.landing-main.expanded .floating-icons.active-pos-5 .icon-contact { left:310; top: 120%; }
 /* Home position when active-pos-5 */
 .landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 410px; top: 10%; }
 
@@ -772,6 +778,7 @@ body.sidebar-expanded .lp-1-section {
 .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture { left: 129px; top: 95%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { opacity: 0; top: 110%; }
 .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 410px; top: 10%; }
+.landing-main.expanded .floating-icons.active-pos-6 .icon-contact { left:310; top: 120%; }
 /* Active: dao (index 7) - shift all icons UP so dao is at center */
 .landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { opacity: 0; top: -30%; }
 .landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable { opacity: 0; top: -20%; }
