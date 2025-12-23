@@ -557,11 +557,11 @@ const HeroSection = () => {
           </div>
           
           <button 
-            className={Mobile?"lp-blue-button-1":"lp-blue-button"}
+            className={Mobile?"lp-hero-blue-button-1":"lp-blue-button"}
             onClick={handleLearnMore}
           >
-            Read Whitepaper
-            <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon" />
+            {Mobile ? "Learn More" :"Get Started"}
+            <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon lp-button-icon-home" />
           </button>
         </div>
 

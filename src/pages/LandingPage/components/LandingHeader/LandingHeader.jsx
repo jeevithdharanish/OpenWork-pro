@@ -4,6 +4,7 @@ import Button from '../../../../components/Button/Button';
 import './LandingHeader.css';
 
 const LandingHeader = ({ onLaunchApp }) => {
+  const onlyMobile = window.innerWidth <= 480;
   const navigate = useNavigate();
 
   const handleLaunchApp = () => {

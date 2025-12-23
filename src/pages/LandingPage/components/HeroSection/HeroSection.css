@@ -1377,7 +1377,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 205px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 360px !important; top: -90%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 208px !important; top: 60%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact {left: 215px !important; top: 64% !important;}
 
   /* Active: contact (index 11) */
   .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -80%; }
@@ -1822,6 +1822,9 @@ body.sidebar-expanded .lp-1-section {
    
   
   }
+  .lp-button-icon-home {
+  transform: rotate(135deg);
+}
   
   .center-content {  
     display: flex;
@@ -1844,11 +1847,11 @@ body.sidebar-expanded .lp-1-section {
     color: var(--Base-Black, #050505);
     text-align: center;
     font-family: inter,sans-serif;
-    font-size: 24px;
+    font-size: 34px !important;
     font-style: normal;
     font-weight: 700;
     line-height: 30px; /* 125% */
-    letter-spacing: -0.96px;
+    letter-spacing: -0.96px !important;
   }
 
   .main-description {
@@ -1856,19 +1859,19 @@ body.sidebar-expanded .lp-1-section {
     color: var(--Gray-Dark, #767676);
     text-align: center;
     font-family: inter, sans-serif;
-    letter-spacing: 0.02em;
-    font-size: 16px;
+    letter-spacing: 0.04em;
+    font-size: 18px !important;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: -15px;
     margin-bottom: 20px;
     line-height: 24px; /* 150% */
   }
 
-  .lp-blue-button-1 {
+  .lp-hero-blue-button-1 {
     color: var(--Base-White, #FFF);
     font-family: Satoshi,sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: 24px; 
@@ -1879,9 +1882,9 @@ body.sidebar-expanded .lp-1-section {
     align-items: center;
     gap: 8px;
     border-radius: 12px;
-    border: 4px solid #1246FF;
-    background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
-    box-shadow: 0 0 0.386px 1.158px rgba(0, 0, 0, 0.05), 0 4.634px 5.02px -2.317px rgba(0, 0, 0, 0.20);
+   background:  #1246FF;
+  border: 4px solid #2755fdff;
+  box-shadow: 0 0 0.386px 1.158px rgba(0, 0, 0, 0.05), 0 4.634px 5.02px -2.317px rgba(0, 0, 0, 0.20);
   }
 
  .radiant-glow-container {
@@ -2053,8 +2056,8 @@ body.sidebar-expanded .lp-1-section {
    border: 1px solid #FFF !important;
 
     box-shadow: 0 0 0.408px 1.223px rgba(0, 0, 0, 0.05), 0 4.89px 5.298px -2.445px rgba(0, 0, 0, 0.10) !important;
-    width: 35px !important;
-    height: 35px !important;
+    width: 45px !important;
+    height: 45px !important;
   }
 
   .navbar-icon-btn img {
@@ -2066,18 +2069,18 @@ body.sidebar-expanded .lp-1-section {
 
   /* Individual navbar icon sizes for mobile */
   .navbar-icon-bot img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .navbar-icon-2 img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .navbar-icon-3 img {
-    width: 16px !important;
-    height: 16px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .navbar-icon-bot {
