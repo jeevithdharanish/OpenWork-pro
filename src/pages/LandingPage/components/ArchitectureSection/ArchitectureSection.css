@@ -189,11 +189,11 @@
     color: var(--Base-Black, #050505);
     
     font-family: inter, sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 550;
     line-height: 30px; /* 125% */
-    letter-spacing: -0.96px;
+    letter-spacing: -0.8px;
   }
   .lp-11-content {
     display: flex;
@@ -211,7 +211,7 @@
     text-align: center;
     font-family: inter, sans-serif;
     font-size: 16px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
@@ -224,7 +224,7 @@
     width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 520px; /* increased to allow larger visual */
+    min-height: 540px; /* increased to allow larger visual */
     padding: 0 12px;
     overflow: visible;
   }
