@@ -342,15 +342,7 @@
     align-items: center; /* center children horizontally */
   }
 
-  .lp-blue-button-1 {
-  color: var(--Base-White, #FFF);
-  font-family: inter, sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700; 
-  line-height: 24px; /* 171.429% */
-  }
-
+ 
   .lp-9-content {
     display: flex;
     width: 100%;

@@ -1822,6 +1822,12 @@ body.sidebar-expanded .lp-1-section {
    
   
   }
+
+  /* Using centralized `.lp-blue-button-1` in `LandingPage.css` */
+
+  /* centralized in LandingPage.css */
+
+
   .lp-button-icon-home {
   transform: rotate(135deg);
 }
@@ -1868,24 +1874,7 @@ body.sidebar-expanded .lp-1-section {
     line-height: 24px; /* 150% */
   }
 
-  .lp-hero-blue-button-1 {
-    color: var(--Base-White, #FFF);
-    font-family: Satoshi,sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px; 
-    display: flex;
-    height: 40px;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 12px;
-   background:  #1246FF;
-  border: 4px solid #2755fdff;
-  box-shadow: 0 0 0.386px 1.158px rgba(0, 0, 0, 0.05), 0 4.634px 5.02px -2.317px rgba(0, 0, 0, 0.20);
-  }
+  
 
  .radiant-glow-container {
   position: absolute;

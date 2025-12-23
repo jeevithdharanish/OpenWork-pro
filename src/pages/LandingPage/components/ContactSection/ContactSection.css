@@ -117,8 +117,8 @@
 }
 
 .lp-13-send-button {
-  background: linear-gradient(180deg, #1246FF 23.958%, #4770FF 134.37%);
-  border: 4.643px solid #1246FF;
+   background:  #1246FF !important;
+  border: 4px solid #2755fdff !important;
   border-radius: 13.929px;
   padding: 9.286px 18.572px;
   display: flex;

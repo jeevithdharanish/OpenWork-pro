@@ -487,14 +487,14 @@
     letter-spacing: -0.96px;
   }
 
-  .lp-blue-button-1 {
+  /* .lp-blue-button-1 {
     color: var(--Base-White, #FFF);
     font-family: inter, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 700; 
-    line-height: 24px; /* 171.429% */
-  }
+    line-height: 24px; 
+  } */
 
   .lp-7-description {
     align-self: stretch;

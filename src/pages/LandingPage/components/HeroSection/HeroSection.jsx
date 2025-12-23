@@ -557,7 +557,7 @@ const HeroSection = () => {
           </div>
           
           <button 
-            className={Mobile?"lp-hero-blue-button-1":"lp-blue-button"}
+            className={Mobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleLearnMore}
           >
             {Mobile ? "Learn More" :"Get Started"}

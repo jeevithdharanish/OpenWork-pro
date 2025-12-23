@@ -144,24 +144,7 @@
 
 @media (max-width: 480px) {
 
-  .lp-blue-button-1 {
-    color: var(--Base-White, #FFF);
-    font-family: Satoshi,sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 24px; /* 171.429% */
-    display: flex;
-    height: 40px;
-    padding: 8px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    border-radius: 12px;
-    border: 4px solid #1246FF;
-    background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
-    box-shadow: 0 0 0.386px 1.158px rgba(0, 0, 0, 0.05), 0 4.634px 5.02px -2.317px rgba(0, 0, 0, 0.20);
-  }
+  
 
   .lp-3-section {
     margin-left: 0px;
