@@ -393,7 +393,7 @@
 
 @media (max-width: 480px) {
   
-  .lp-2-section {
+  .lp-2-section {  
     margin-left: 0px;
   }
   .lp-2-heading {
@@ -418,13 +418,6 @@
     gap: 48px;
   }
 
-  .text-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 19px;
-    align-self: stretch;
-  }
 
   .lp-2-description {
     color: var(--Gray-Dark, #767676);
