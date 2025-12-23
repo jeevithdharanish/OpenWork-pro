@@ -32,7 +32,7 @@ const LedgerSection = () => {
         {
           isMobile ?
         <div className="lp-3-ledger-container">
-          <img src="/assets/discoverable/img.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
+          <img src="/assets/discoverable/i.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div>:
         <div className="lp-3-ledger-container">
           <img src="/assets/discoverable/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
