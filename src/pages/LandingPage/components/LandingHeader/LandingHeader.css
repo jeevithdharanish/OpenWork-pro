@@ -86,9 +86,25 @@
     gap: 8px;
   }
 
-  /* Hide icon buttons in mobile view */
+  /* Hide all icon buttons by default */
   .header-icon-btn {
     display: none !important;
+  }
+
+  /* Bot and Doc icons - hidden by default with smooth transition */
+  .header-icon-btn.mobile-scroll-icon {
+    display: flex !important;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  /* Show Bot icon and Doc icon only after scrolling past hero */
+  .header-icon-btn.mobile-scroll-icon.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 }
 
@@ -115,5 +131,25 @@
   .lp-launch-arrow {
     display: none;
   }
-  /* Icon buttons already hidden in tablet view */
+
+  /* Hide all icon buttons by default in mobile */
+  .header-icon-btn {
+    display: none !important;
+  }
+
+  /* Bot and Doc icons - hidden by default with smooth transition */
+  .header-icon-btn.mobile-scroll-icon {
+    display: flex !important;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  /* Show Bot icon and Doc icon only after scrolling past hero */
+  .header-icon-btn.mobile-scroll-icon.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }

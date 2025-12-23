@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../../components/Button/Button';
 import './LandingHeader.css';
@@ -6,6 +6,18 @@ import './LandingHeader.css';
 const LandingHeader = ({ onLaunchApp }) => {
   const onlyMobile = window.innerWidth <= 480;
   const navigate = useNavigate();
+  const [pastHero, setPastHero] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show icons after scrolling past hero section (approximately viewport height)
+      const heroHeight = window.innerHeight;
+      setPastHero(window.scrollY > heroHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLaunchApp = () => {
     navigate('/home');
@@ -25,13 +37,13 @@ const LandingHeader = ({ onLaunchApp }) => {
       <div className="header-actions">
         <Button 
           icon="/assets/f424bb301166452f1d2aae2badd19051c2788323.svg"
-          buttonCss="header-icon-btn"
+          buttonCss={`header-icon-btn mobile-scroll-icon ${pastHero ? 'show' : ''}`}
           onClick={handleBotClick}
 
         />
         <Button 
           icon="/assets/203519ed928f5759c5c5434e7d71de7598f55b96.svg"
-          buttonCss="header-icon-btn"
+          buttonCss={`header-icon-btn mobile-scroll-icon ${pastHero ? 'show' : ''}`}
         />
         <Button 
           icon="/assets/141ae2395558d7fc65c358b46cf1beaa163ad655.svg"
