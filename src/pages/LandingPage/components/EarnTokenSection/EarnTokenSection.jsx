@@ -10,7 +10,7 @@ const EarnTokenSection = () => {
     <section id="lp-8-section" className="lp-section lp-8-section">
       <div className="lp-8-container">
         <div className="lp-8-content">
-          <h1 className="lp-8-heading">Earn OWORK tokens by doing jobs on OpenWork</h1>
+          <h1 className="lp-8-heading">Earn OWORK Tokens. Only Through Work.</h1>
           <p className="lp-8-description">
               {isMobile ?
               " With a total of 1 billion tokens minted in 20 batches. Initial rewards are high but will halve as transaction volume doubles, capping at $200M."
