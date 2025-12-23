@@ -560,7 +560,7 @@ const HeroSection = () => {
             className={Mobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleLearnMore}
           >
-            Learn More
+            Read Whitepaper
             <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon" />
           </button>
         </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './LedgerSection.css';
 
 const LedgerSection = () => {
-  const isMobile = window.innerWidth <= 1440;
+  const isMobile = window.innerWidth < 1440;
   const navigate = useNavigate();
 
   const handleShowLedger = () => {
@@ -32,7 +32,7 @@ const LedgerSection = () => {
         {
           isMobile ?
         <div className="lp-3-ledger-container">
-          <img src="/assets/discoverable/img.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
+          <img src="/assets/discoverable/img-mobile.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div>:
         <div className="lp-3-ledger-container">
           <img src="/assets/discoverable/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />

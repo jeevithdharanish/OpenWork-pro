@@ -1141,6 +1141,16 @@ body.sidebar-expanded .lp-1-section {
     height: 615px;
   }
 
+   .lp-blue-button {
+    color: var(--Base-White, #FFF);
+    font-family: inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 171.429% */
+        gap: 10px;
+      }
+
   .circle-group {
     /* Responsive to viewport height */
     width: min(635px, 80vh);
@@ -1252,7 +1262,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 300px; top: -21%; }
 
   /* Active: post-job (index 2) - shift icons so post-job is at center */
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 240px !important; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 340px !important; top: 8%; }
   .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable {  left: 218px !important; top: 30%; }
   .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 200px !important; top: 50%;}
   .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract {left: 215px !important; top: 64% !important;}
@@ -1264,7 +1274,7 @@ body.sidebar-expanded .lp-1-section {
   /* Active: direct-contract (index 3) - DEFAULT positions */
   .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 360px ; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile { left: 240px !important; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 320px !important; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 330px !important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 218px !important; top: 30%;}
   .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress {left: 215px !important; top: 64% !important; }
@@ -1275,7 +1285,7 @@ body.sidebar-expanded .lp-1-section {
   /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
   .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 330px!important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 222px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress {  left: 200px !important; top: 50%;}
   .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 215px !important; top: 64% !important; }
@@ -1287,7 +1297,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 330px!important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left:219px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute {  left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token {left: 215px !important; top: 64% !important; }
@@ -1300,12 +1310,13 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 330px !important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token {  left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-dao {left: 215px !important; top: 64% !important;}
   .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain { left: 235px !important; top: 72% !important;}
   .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture {left: 265px !important; top: 81% !important; }
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { left: 365px !important; top: 98% !important; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 360px; top: -20%; }
 
   /* Active: dao (index 7) */
@@ -1314,7 +1325,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 30px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 325px !important; top: 20%; }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-dao {left: 200px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 215px !important; top: 64% !important; }
@@ -1365,7 +1376,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 330px !important; top: 2% !important; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 220px !important; top: 34%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 205px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 360px !important; top: -1%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 360px !important; top: -90%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 208px !important; top: 60%; }
 
   /* Active: contact (index 11) */

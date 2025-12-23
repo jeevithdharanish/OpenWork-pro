@@ -12,7 +12,11 @@ const EarnTokenSection = () => {
         <div className="lp-8-content">
           <h1 className="lp-8-heading">Earn OWORK tokens by doing jobs on OpenWork</h1>
           <p className="lp-8-description">
-          With a total of 1 billion tokens minted in 20 batches. Initial rewards are high but will halve as transaction volume doubles, capping at $200M. </p>
+              {isMobile ?
+              " With a total of 1 billion tokens minted in 20 batches. Initial rewards are high but will halve as transaction volume doubles, capping at $200M."
+              :"100% of OWORK tokens are earned by completing jobs on the platform. No pre-sale. No investors. Just proof of work."
+               }
+          </p>
           <button 
             className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={() => navigate('/browse-jobs')}

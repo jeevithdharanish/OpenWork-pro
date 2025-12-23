@@ -208,7 +208,7 @@ body.sidebar-expanded .page-radiant-glow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 12px;
   cursor: pointer;
   height: 40px;
   width: fit-content;
@@ -234,11 +234,6 @@ body.sidebar-expanded .page-radiant-glow {
   width: 8px;
   height: 8px;
   flex-shrink: 0;
-}
-
-/* Rotate arrow down in hero section */
-.lp-1-section .lp-button-icon {
-  transform: rotate(135deg);
 }
 
 @media (max-width: 480px) {

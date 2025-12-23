@@ -12,6 +12,12 @@
   opacity: 1;
   visibility: visible;
 }
+@media  (max-width: 1440px) {
+  .landing-sidebar {
+    visibility: hidden;
+    display: none;
+  }
+}
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .landing-sidebar {
