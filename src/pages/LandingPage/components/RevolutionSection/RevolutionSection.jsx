@@ -10,10 +10,12 @@ const RevolutionSection = () => {
     <section id="lp-12-section" className="lp-section lp-12-section">
       <div className="lp-12-container">
         <div className="lp-12-content">
-          <h2 className="lp-12-heading">Join the Work Revolution</h2>
+          <div className="text-content">
+            <h2 className="lp-12-heading">Join the Work Revolution</h2>
           <p className="lp-12-description">
             Build your profile, discover opportunities, or become a contributor. OpenWork is the internet's future of work—owned by its users.
           </p>
+          </div>
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={() => navigate('/home')}

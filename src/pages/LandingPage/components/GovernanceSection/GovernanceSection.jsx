@@ -10,10 +10,12 @@ const GovernanceSection = () => {
     <section id="lp-9-section" className="lp-section lp-9-section">
       <div className="lp-9-container">
         <div className="lp-9-content">
-          <h1 className="lp-9-heading">Governed by its community of OWORK Token holders</h1>
+          <div className="text-content">
+            <h1 className="lp-9-heading">Governed by its community of OWORK Token holders</h1>
           <p className="lp-9-description">
             OpenWork is governed by its community. Propose upgrades, manage funds, and vote on key decisions with real stake in the system.
           </p>
+          </div>
           <button 
             className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={() => navigate('/documentation')}

@@ -14,10 +14,12 @@ const DirectContractSection = () => {
     <section id="lp-5-section" className="lp-section lp-5-section">
       <div className="lp-5-container">
         <div className="lp-5-content">
-          <h1 className="lp-5-heading">Create Direct Job Contract</h1>
+         <div className="text-content">
+           <h1 className="lp-5-heading">Create Direct Job Contract</h1>
           <p className="lp-5-description">
             Set your own terms and use smart contracts to lock payments in escrow. No third parties. Just code, transparency, and control.
           </p>
+         </div>
           <button 
             className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleCreateContract}

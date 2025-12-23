@@ -15,10 +15,12 @@ const LedgerSection = () => {
       <div className="lp-3-container">
         {/* Left Content */}
         <div className="lp-3-content">
-          <h1 className="lp-3-heading">Added to the Ledger - Forever Yours</h1>
+          <div className="text-content">
+            <h1 className="lp-3-heading">Added to the Ledger - Forever Yours</h1>
           <p className="lp-3-description">
             Every job, update, and review is logged immutably in the OpenWork Ledger (OWL), giving you a permanent and transparent work history.
           </p>
+          </div>         
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={handleShowLedger}

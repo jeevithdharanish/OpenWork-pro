@@ -82,10 +82,12 @@ const ContactSection = () => {
     <section id="lp-13-section" className="lp-13-section">
       <div className="lp-13-container">
         <div className="lp-13-content">
-          <h2 className="lp-13-heading">Contact us</h2>
+          <div className="text-content">
+            <h2 className="lp-13-heading">Contact us</h2>
           <p className="lp-13-description">
             OpenWork is building the internet's decentralized work layer — and we can't do it without you. Whether you're here to explore, collaborate, or contribute, we're always open to meaningful conversations.
           </p>
+          </div>
         </div>
 
         <div className="lp-13-form-container">

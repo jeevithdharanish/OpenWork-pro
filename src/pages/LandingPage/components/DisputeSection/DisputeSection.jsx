@@ -10,10 +10,12 @@ const DisputeSection = () => {
     <section id="lp-7-section" className="lp-section lp-7-section">
       <div className="lp-7-container">
         <div className="lp-7-content">
-          <h1 className="lp-7-heading">Dispute Resolution with Skill Oracles</h1>
+          <div className="text-content">
+            <h1 className="lp-7-heading">Dispute Resolution with Skill Oracles</h1>
           <p className="lp-7-description">
             Disagreements? Let verified experts in the field decide. Skill-based oracles resolve disputes through decentralized token-based voting.
           </p>
+          </div>
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={() => navigate('/browse-jobs')}

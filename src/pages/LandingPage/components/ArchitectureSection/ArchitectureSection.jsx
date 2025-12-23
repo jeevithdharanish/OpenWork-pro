@@ -10,13 +10,15 @@ const ArchitectureSection = () => {
     <section id="lp-11-section" className="lp-section lp-11-section">
       <div className="lp-11-container">
         <div className="lp-11-content">
-          <h2 className="lp-11-heading">The OpenWork Architecture</h2>
+          <div className="text-content">
+            <h2 className="lp-11-heading">The OpenWork Architecture</h2>
           <p className="lp-11-description">
             {isMobile
               ? "OpenWork’s chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the OpenWork Chain."
               : "OpenWork's chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the aggregating OpenWork parent chain. This parent chain supports oracles for dispute resolution and key DAO decisions through OpenWork's DAO contracts."
             }
           </p>
+          </div>
 
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}

@@ -15,10 +15,12 @@ const PostJobSection = () => {
       <div className="lp-4-container">
         {/* Left Content */}
         <div className="lp-4-content">
-          <h1 className="lp-4-heading">Post a Job or Browse Talent</h1>
+          <div className="text-content">
+            <h1 className="lp-4-heading">Post a Job or Browse Talent</h1>
           <p className="lp-4-description">
             Whether you're hiring or getting hired, OpenWork makes it easy to post jobs or discover skilled talent—without platform restrictions.
           </p>
+          </div>
           <button 
            className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={handlePostJob}

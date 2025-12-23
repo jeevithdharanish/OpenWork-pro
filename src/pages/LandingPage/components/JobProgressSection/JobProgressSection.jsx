@@ -15,10 +15,12 @@ const JobProgressSection = () => {
       <div className="lp-6-container">
         {/* Left Content */}
         <div className="lp-6-content">
-          <h1 className="lp-6-heading">Job in Progress</h1>
-          <p className="lp-6-description">
-            Work gets done in milestones. Submit deliverables, leave reviews, and manage everything transparently in real-time.
-          </p>
+          <div className="text-content">
+            <h1 className="lp-6-heading">Job in Progress</h1>
+            <p className="lp-6-description">
+              Work gets done in milestones. Submit deliverables, leave reviews, and manage everything transparently in real-time.
+            </p>
+          </div>
           <button 
             className={isMobile?"lp-blue-button-1":"lp-blue-button"}
             onClick={handleViewJobs}
