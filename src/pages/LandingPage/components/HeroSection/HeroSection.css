@@ -1855,8 +1855,8 @@ body.sidebar-expanded .lp-1-section {
     font-family: inter,sans-serif;
     font-size: 34px !important;
     font-style: normal;
-    font-weight: 700;
-    line-height: 30px; /* 125% */
+    font-weight: 600 !important;
+    line-height: 48px !important; /* 125% */
     letter-spacing: -0.96px !important;
   }
 
@@ -1866,9 +1866,9 @@ body.sidebar-expanded .lp-1-section {
     text-align: center;
     font-family: inter, sans-serif;
     letter-spacing: 0.04em;
-    font-size: 18px !important;
+    font-size: 16px !important;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: -15px;
     margin-bottom: 20px;
     line-height: 24px; /* 150% */
