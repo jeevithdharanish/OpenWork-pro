@@ -358,11 +358,11 @@
     color: var(--Base-Black, #050505);
     text-align: center;
     font-family: inter, sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 30px; /* 125% */
-    letter-spacing: -0.96px;
+    letter-spacing: -0.86px;
   }
 
   .lp-9-description {
@@ -370,7 +370,7 @@
     color: var(--Gray-Dark, #767676);
     text-align: center;
     font-family: inter, sans-serif;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.03em;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
