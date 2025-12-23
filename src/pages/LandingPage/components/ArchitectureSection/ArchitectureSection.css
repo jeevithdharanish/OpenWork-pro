@@ -177,65 +177,74 @@
 
 @media (max-width: 480px) {
   .lp-11-section {
+     padding-top: 0px;
     margin-left: 0px;
   }
   .lp-11-container {
-    padding: 0 20px;
-    gap: 30px;
+     /* background-color:black; */
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 100px 16px 72px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 90px;
+  min-height: calc(90vh - 64px);
   }
 
   .lp-11-heading {
     align-self: stretch;
     color: var(--Base-Black, #050505);
-    
-    font-family: inter, sans-serif;
+    text-align: center;
+    font-family: inter,sans-serif;
     font-size: 28px;
     font-style: normal;
-    font-weight: 550;
-    line-height: 30px; /* 125% */
-    letter-spacing: -0.8px;
-  }
-  .lp-11-content {
-    display: flex;
-    width: 100%;
-    max-width: 368px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+    font-weight: 700;
+    line-height: 34px; /* 125% */
+    letter-spacing: -0.96px;
   }
 
   .lp-11-description {
-    align-self: stretch;
     color: var(--Gray-Dark, #767676);
     text-align: center;
-    font-family: inter, sans-serif;
+    font-family: inter,sans-serif;
+    align-self: stretch;
     font-size: 16px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
   }
 
-  .lp-11-diagram-container {
+  .lp-11-content {
     display: flex;
+    width: 100%;
+    max-width: 375px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .lp-11-diagram-container {
+    
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    min-height: 540px; /* increased to allow larger visual */
-    padding: 0 12px;
+    max-width: 325px;
+    height: 450px;
+    margin: 0 auto;
     overflow: visible;
   }
 
   .lp-11-architecture-image {
     width: auto;
+    
     max-width: 120%; /* allow slight oversize for prominence */
     height: 100%;
     max-height: 520px;
     margin-left: 0;
-    transform: scale(1.2);
+    transform: scale(1.6);
     transform-origin: center center;
     margin: 0 auto;
     object-fit: contain;
