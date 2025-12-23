@@ -1,5 +1,21 @@
 /* Global Styles */
 /* Add this to your global stylesheet */
+
+/* Shared text content layout - Mobile only */
+@media (max-width: 480px) {
+  .text-content {
+
+  align-items: center;
+  text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+    align-self: stretch;
+  }
+}
+
 *,
 *::before,
 *::after {
