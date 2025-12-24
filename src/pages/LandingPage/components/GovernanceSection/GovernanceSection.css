@@ -358,10 +358,11 @@
     font-style: normal;
     font-weight: 700;
     line-height: 34px; /* 125% */
-    letter-spacing: -0.96px;
+    letter-spacing: -0.8px;
   }
 
   .lp-9-description {
+    margin-top: -5px;
     color: var(--Gray-Dark, #767676);
     text-align: center;
     font-family: inter,sans-serif;
@@ -388,7 +389,7 @@
     justify-content: center;
      width: 100%;
     max-width: 325px;
-    height: 450px;
+    height: 325px;
     margin: 0 auto;
     overflow: visible;
     overflow: visible;

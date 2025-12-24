@@ -214,8 +214,8 @@
   
  .lp-4-section .openwork-ledger-image {
     width: 100%;
-  max-width: 520px;
-  transform: scale(1.4);
+  max-width: 500px;
+  transform: scale(1.3);
   transform-origin: center;
 }
 

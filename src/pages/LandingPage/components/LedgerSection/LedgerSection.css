@@ -166,7 +166,7 @@
     
     width: 100%;
     max-width: 325px;
-    height: 450px;
+    height: 400px;
     margin: 0 auto;
     overflow: visible;
   }
@@ -180,7 +180,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 34px; /* 125% */
-    letter-spacing: -0.96px;
+    letter-spacing: -0.8px;
   }
 
   .lp-3-description {
@@ -209,8 +209,9 @@
 
   .lp-3-section .openwork-ledger-image {
     width: 100%;
-  max-width: 520px;
-  transform: scale(1.4);
+    
+  max-width: 500px;
+  transform: scale(1.3);
   transform-origin: center;
   }
 
