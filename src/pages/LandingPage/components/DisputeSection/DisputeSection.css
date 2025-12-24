@@ -524,6 +524,12 @@
     transform: translate(-50%, -50%) scale(0.75);
   }
 
+ .lp-7-ellipse-bg{
+     justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+  }
+
   /* Center the core circle reliably on small screens */
   .lp-7-core-circle{
     position: absolute;

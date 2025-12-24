@@ -109,23 +109,36 @@
 }
 
 @media (max-width: 480px) {
-  
-  
+  .landing-header {
+    padding: 0 12px; /* give more room for logo + button */
+  }
+
   .logo-wrapper {
-    width: 140px;
-    height: 24px;
+    width: auto;
+    min-width: 84px;
+    height: 28px;
+    display: flex;
+    align-items: center;
   }
 
   .logo-desktop {
     display: none;
   }
 
+  /* Ensure mobile logo doesn't get pushed off-screen */
   .logo-mobile {
-    margin-left: -50px;
+    margin-left: 0; /* remove negative offset */
     display: block;
-    width: 100%;
+    width: auto;
     height: 100%;
+    max-width: 140px;
     object-fit: contain;
+  }
+
+  .logo {
+    width: auto;
+    max-width: 140px;
+    height: auto;
   }
 
   .lp-launch-arrow {
@@ -151,5 +164,22 @@
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+  }
+
+  /* Keep the Launch App label on a single line and fit nicely */
+  .landing-header .lp-blue-button {
+    white-space: nowrap; /* prevent wrapping to two lines */
+    padding: 6px 10px; /* slightly smaller padding for mobile */
+    font-size: 13px; /* compact on small screens */
+    height: 40px;
+    min-width: 80px; /* ensure enough width for the label */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* hide arrow icon already declared as .lp-launch-arrow; ensure it doesn't reserve space */
+  .landing-header .lp-button-icon {
+    display: none;
   }
 }
