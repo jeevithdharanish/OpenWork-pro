@@ -5,7 +5,7 @@
   margin-left: 50px;
 }
 .lp-4-ledger-container {
-  width: 500px;  /* match ProfileSection size */
+  width: 480px;  /* match ProfileSection size */
   height: 450px; /* match ProfileSection size */
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
 
 .lp-4-content {
  
-  width: 500px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   gap: 30px;

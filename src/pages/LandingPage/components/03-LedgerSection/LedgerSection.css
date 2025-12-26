@@ -17,7 +17,7 @@
 }
 
 .lp-3-content {
-  width: 432px;
+  width: 450px;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -43,8 +43,8 @@
 }
 
 .lp-3-ledger-container {
-  width: 500px;
-  height: 450px;
+  width: 480px;  /* match ProfileSection size */
+  height: 450px; /* match ProfileSection size */
   display: flex;
   align-items: center;
   justify-content: center;
