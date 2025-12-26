@@ -27,7 +27,7 @@ const HeroSection = () => {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 1024;
   });
-  const Mobile = window.innerWidth < 1440;
+  const Mobile = window.innerWidth <= 1024;
   // Map icon names to their section components
   const sectionComponents = {
     'home': HeroSection,

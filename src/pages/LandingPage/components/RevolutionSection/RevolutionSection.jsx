@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './RevolutionSection.css';
 
 const RevolutionSection = () => {
-  const isMobile = window.innerWidth < 1440;
+  const isMobile = window.innerWidth <= 1024;
   const navigate = useNavigate();
 
   return (

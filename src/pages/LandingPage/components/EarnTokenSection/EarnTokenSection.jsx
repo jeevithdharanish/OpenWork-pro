@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './EarnTokenSection.css';
 
 const EarnTokenSection = () => {
-  const isMobile = window.innerWidth < 1440;
+  const isMobile = window.innerWidth <= 1024;
   const navigate = useNavigate();
 
   return (
