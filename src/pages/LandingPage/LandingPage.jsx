@@ -2,19 +2,19 @@
 import './LandingPage.css';
 import LandingHeader from './components/LandingHeader/LandingHeader';
 import LandingSidebar from './components/LandingSidebar/LandingSidebar';
-import HeroSection from './components/HeroSection/HeroSection';
-import ProfileSection from './components/ProfileSection/ProfileSection';
-import LedgerSection from './components/LedgerSection/LedgerSection';
-import PostJobSection from './components/PostJobSection/PostJobSection';
-import DirectContractSection from './components/DirectContractSection/DirectContractSection';
-import JobProgressSection from './components/JobProgressSection/JobProgressSection';
-import DisputeSection from './components/DisputeSection/DisputeSection';
-import EarnTokenSection from './components/EarnTokenSection/EarnTokenSection';
-import GovernanceSection from './components/GovernanceSection/GovernanceSection';
-import MultiChainSection from './components/MultiChainSection/MultiChainSection';
-import ArchitectureSection from './components/ArchitectureSection/ArchitectureSection';
-import RevolutionSection from './components/RevolutionSection/RevolutionSection';
-import ContactSection from './components/ContactSection/ContactSection';
+import HeroSection from './components/01-HeroSection/HeroSection';
+import ProfileSection from './components/02-ProfileSection/ProfileSection';
+import LedgerSection from './components/03-LedgerSection/LedgerSection';
+import PostJobSection from './components/04-PostJobSection/PostJobSection';
+import DirectContractSection from './components/05-DirectContractSection/DirectContractSection';
+import JobProgressSection from './components/06-JobProgressSection/JobProgressSection';
+import DisputeSection from './components/07-DisputeSection/DisputeSection';
+import EarnTokenSection from './components/08-EarnTokenSection/EarnTokenSection';
+import GovernanceSection from './components/09-GovernanceSection/GovernanceSection';
+import MultiChainSection from './components/10-MultiChainSection/MultiChainSection';
+import ArchitectureSection from './components/11-ArchitectureSection/ArchitectureSection';
+import RevolutionSection from './components/12-RevolutionSection/RevolutionSection';
+import ContactSection from './components/13-ContactSection/ContactSection';
 
 const LandingPage = () => {
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(() => {

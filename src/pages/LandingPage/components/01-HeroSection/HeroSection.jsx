@@ -3,18 +3,18 @@ import Button from '../../../../components/Button/Button';
 import './HeroSection.css';
 
 // Section components for inline rendering
-import ProfileSection from '../ProfileSection/ProfileSection';
-import LedgerSection from '../LedgerSection/LedgerSection';
-import PostJobSection from '../PostJobSection/PostJobSection';
-import DirectContractSection from '../DirectContractSection/DirectContractSection';
-import JobProgressSection from '../JobProgressSection/JobProgressSection';
-import DisputeSection from '../DisputeSection/DisputeSection';
-import EarnTokenSection from '../EarnTokenSection/EarnTokenSection';
-import GovernanceSection from '../GovernanceSection/GovernanceSection';
-import MultiChainSection from '../MultiChainSection/MultiChainSection';
-import ArchitectureSection from '../ArchitectureSection/ArchitectureSection';
-import RevolutionSection from '../RevolutionSection/RevolutionSection';
-import ContactSection from '../ContactSection/ContactSection';
+import ProfileSection from '../02-ProfileSection/ProfileSection';
+import LedgerSection from '../03-LedgerSection/LedgerSection';
+import PostJobSection from '../04-PostJobSection/PostJobSection';
+import DirectContractSection from '../05-DirectContractSection/DirectContractSection';
+import JobProgressSection from '../06-JobProgressSection/JobProgressSection';
+import DisputeSection from '../07-DisputeSection/DisputeSection';
+import EarnTokenSection from '../08-EarnTokenSection/EarnTokenSection';
+import GovernanceSection from '../09-GovernanceSection/GovernanceSection';
+import MultiChainSection from '../10-MultiChainSection/MultiChainSection';
+import ArchitectureSection from '../11-ArchitectureSection/ArchitectureSection';
+import RevolutionSection from '../12-RevolutionSection/RevolutionSection';
+import ContactSection from '../13-ContactSection/ContactSection';
 
 const HeroSection = () => {
   //  const Mobile = window.matchMedia('(max-width: 480px)').matches;

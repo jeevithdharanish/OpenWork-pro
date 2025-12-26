@@ -1,10 +1,11 @@
-/* Base Desktop Styles (Reset display:none) */
+/* Base Desktop Styles - hidden by default */
 .landing-sidebar {
   position: fixed;
   z-index: 1000;
   transition: all 0.4s ease;
   opacity: 0;
   visibility: hidden;
+  display: none; /* Hidden on desktop */
   --scroll-shift: 0px;
 }
 
@@ -12,15 +13,18 @@
   opacity: 1;
   visibility: visible;
 }
-@media  (max-width: 1440px) {
+
+/* Hide on screens larger than 1024px (desktop) */
+@media (min-width: 1025px) {
   .landing-sidebar {
-    visibility: hidden;
-    display: none;
+    display: none !important;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+/* Show on mobile/tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
   .landing-sidebar {
+    display: flex !important;
     top: 60px;
     left: 0;
     width: 100%;
@@ -34,7 +38,6 @@
     ) !important;
     box-shadow: 0 12px 30px rgba(2, 22, 56, 0.06);
     overflow: hidden;
-    display: flex;
     align-items: center;
     border-bottom: 1px solid rgba(0,0,0,0.02);
     -webkit-mask-image: linear-gradient(180deg, black 0%, black 88%, rgba(0,0,0,0) 100%);
