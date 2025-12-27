@@ -39,43 +39,19 @@ const LandingPage = () => {
       <LandingHeader />
       <HeroSection />
       
-      {/* Render sections below hero only for mobile/tablet (<=1024px) */}
-      {isMobileOrTablet && (
-        <>
-          <div id="discoverable">
-            <ProfileSection />
-          </div>
-          <div id="job-contract">
-            <LedgerSection />
-          </div>
-          <div id="direct-contract">
-            <PostJobSection />
-          </div>
-          <div id="job-progress">
-            <DirectContractSection />
-          </div>
-          <div id="raise-dispute">
-            <JobProgressSection />
-          </div>
-          <div id="earn-govern">
-            <DisputeSection />
-          </div>
-          <div id="dao">
-            <EarnTokenSection />
-          </div>
-          <div id="local-network">
-            <GovernanceSection />
-          </div>
-          <div id="openwork-arch">
-            <MultiChainSection />
-          </div>
-          <div id="work-revolution">
-            <ArchitectureSection />
-            <RevolutionSection />
-            <ContactSection />
-          </div>
-        </>
-      )}
+      {/* Post-hero sections (single render, anchors added for icon navigation) */}
+      <div id="lp-2-section"><ProfileSection /></div>
+      <div id="lp-3-section"><LedgerSection /></div>
+      <div id="lp-4-section"><PostJobSection /></div>
+      <div id="lp-5-section"><DirectContractSection /></div>
+      <div id="lp-6-section"><JobProgressSection /></div>
+      <div id="lp-7-section"><DisputeSection /></div>
+      <div id="lp-8-section"><EarnTokenSection /></div>
+      <div id="lp-9-section"><GovernanceSection /></div>
+      <div id="lp-10-section"><MultiChainSection /></div>
+      <div id="lp-11-section"><ArchitectureSection /></div>
+      <div id="lp-12-section"><RevolutionSection /></div>
+      <div id="lp-13-section"><ContactSection /></div>
     </div>
   );
 };

@@ -1064,14 +1064,38 @@ body.sidebar-expanded .lp-1-section {
 .center-content {
   position: relative;
   z-index: 10;
-  margin-top: -90px;
+  /* reset negative offset so the content naturally centers inside the hero */
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  max-width: 450px;
+  max-width: 520px;
   gap: 48px;
   padding: 0 20px;
+}
+
+/* Ensure CTA buttons inside the center content are horizontally centered */
+.center-content .lp-blue-button,
+.center-content .lp-blue-button-1 {
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* Slight upward nudge on large screens so content sits inside the circle visually */
+@media (min-width: 1441px) {
+  .landing-main .center-content {
+    margin-top: -40px;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .landing-main .center-content {
+    margin-top: -20px;
+    max-width: 520px;
+  }
 }
 
 .text-content {

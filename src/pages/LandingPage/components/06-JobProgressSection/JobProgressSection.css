@@ -52,7 +52,7 @@
 }
 
 .lp-6-job-card-image {
-  transform: scale(1) translateX(80px);
+  transform: scale(1.2) translateX(80px);
   width: 100%;
   height: auto;
   object-fit: contain;

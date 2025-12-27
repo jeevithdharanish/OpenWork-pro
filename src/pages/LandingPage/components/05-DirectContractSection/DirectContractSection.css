@@ -1,11 +1,13 @@
 /* Direct Contract Section (LP-5) */
 .lp-5-section {
+  background-color: black;
   background: #FFFFFF;
   padding-top: 64px;
   margin-left: 50px;
 }
 
 .lp-5-container {
+   /* background-color: black; */
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 162px;

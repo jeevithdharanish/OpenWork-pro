@@ -233,16 +233,63 @@ const HeroSection = () => {
   };
 
   const handleIconClick = (iconName, sectionId) => {
-    // On mobile/tablet (≤1024px), scroll to section instead of expanding
-    // Don't set active state so labels only show on hover
-    if (!isDesktop) {
-      const section = document.getElementById(sectionId);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+    // Try to find the target section and scroll to it (works on mobile and desktop)
+    const section = typeof document !== 'undefined' ? document.getElementById(sectionId) : null;
+    if (section) {
+      const scrollOffset = getMobileNavOffset();
+      const targetY = Math.max(section.offsetTop - scrollOffset, 0);
+
+      // Debug: log the click so we can trace inconsistent behaviors
+      try { console.debug('[Hero] click', { iconName, sectionId, targetY }); } catch (e) {}
+
+      // Determine current visible section
+      const allSections = Array.from(document.querySelectorAll('.lp-section'));
+      const currentScrollY = window.scrollY || window.pageYOffset || 0;
+      let currentSection = null;
+      allSections.forEach(sec => {
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        if (currentScrollY >= top - 100 && currentScrollY < bottom - 100) {
+          currentSection = sec;
+        }
+      });
+
+      try { console.debug('[Hero] currentSection', currentSection ? (currentSection.id || currentSection.className) : 'none'); } catch (e) {}
+
+      // Remove any previous transition classes so we can replay animations cleanly
+      allSections.forEach(sec => {
+        sec.classList.remove('page-transition-down', 'page-transition-up', 'page-slide-out-left', 'page-slide-out-right', 'page-transition-from-hero');
+      });
+
+      // Position at the target (instant) then play incoming animation on top
+      // We intentionally do NOT slide the current section out to keep a single 'stack' animation
+      window.scrollTo({ top: targetY, behavior: 'auto' });
+
+      // Replay the slide-in-from-right animation on the target section
+      // Ensure incoming section is on top via CSS z-index
+      section.classList.remove('page-transition-down');
+      void section.offsetWidth; // force reflow
+      section.classList.add('page-transition-down');
+
+      try { console.debug('[Hero] slide in (stack):', section.id || section.className); } catch (e) {}
+
+
+      // Cleanup animation classes after duration
+      const CLEANUP_MS = 700;
+      setTimeout(() => {
+        allSections.forEach(sec => {
+          sec.classList.remove('page-transition-down', 'page-transition-up', 'page-slide-out-left', 'page-slide-out-right', 'page-transition-from-hero');
+        });
+      }, CLEANUP_MS);
+
+      // highlight the clicked icon but keep hero collapsed
+      setActiveIcon(iconName);
+      setIsExpanded(false);
+      setDisplayedIcon(null);
       return;
     }
 
+    // Fallback: if section is not present, use the old expansion behavior
     if (activeIcon === iconName) {
       setIsExpanded(false);
       setActiveIcon(null);

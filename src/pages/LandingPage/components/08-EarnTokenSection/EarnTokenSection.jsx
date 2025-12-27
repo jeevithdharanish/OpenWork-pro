@@ -21,12 +21,12 @@ const EarnTokenSection = () => {
         <div className="lp-8-content">
           <div className="text-content">
             <h1 className="lp-8-heading">Earn OWORK Tokens. Only Through Work.</h1>
-          <p className="lp-8-description">
-              {isMobile ?
-              " With a total of 1 billion tokens minted in 20 batches. Initial rewards are high but will halve as transaction volume doubles, capping at $200M."
-              :"100% of OWORK tokens are earned by completing jobs on the platform. No pre-sale. No investors. Just proof of work."
-               }
-          </p>
+              <p className="lp-8-description">
+                  {isMobile ?
+                  " With a total of 1 billion tokens minted in 20 batches. Initial rewards are high but will halve as transaction volume doubles, capping at $200M."
+                  :"100% of OWORK tokens are earned by completing jobs on the platform. No pre-sale. No investors. Just proof of work."
+                  }
+              </p>
           </div>
           <button 
             className={isMobile?"lp-blue-button-1":"lp-blue-button"}
