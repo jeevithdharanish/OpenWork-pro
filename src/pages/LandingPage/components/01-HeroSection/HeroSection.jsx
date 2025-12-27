@@ -27,7 +27,7 @@ const HeroSection = () => {
     if (typeof window === 'undefined') return true;
     return window.innerWidth > 1024;
   });
-  const Mobile = window.innerWidth <= 1024;
+ 
   // Map icon names to their section components
   const sectionComponents = {
     'home': HeroSection,
@@ -557,10 +557,10 @@ const HeroSection = () => {
           </div>
           
           <button 
-            className={Mobile?"lp-blue-button-1":"lp-blue-button"}
+            className={isDesktop?"lp-blue-button":"lp-blue-button-1"}
             onClick={handleLearnMore}
           >
-            {Mobile ? "Learn More" :"Get Started"}
+            {isDesktop ? "Get Started" :"Learn More"}
             <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon lp-button-icon-home" />
           </button>
         </div>

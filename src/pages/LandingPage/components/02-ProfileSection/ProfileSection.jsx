@@ -1,5 +1,5 @@
-import React from 'react';
 import './ProfileSection.css';
+import { useState, useEffect } from 'react';
 
 const ProfileSection = () => {
   const handleSetProfile = () => {
@@ -8,7 +8,15 @@ const ProfileSection = () => {
     });
   };
 
-  const isMobile = window.innerWidth <= 480;
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+      useEffect(() => {
+        const handleResize = () => {
+          setIsMobile(window.innerWidth <= 480);
+        };
+    
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
 
   return (
     <section id="lp-2-section" className="lp-section lp-2-section">
