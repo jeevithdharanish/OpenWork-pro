@@ -329,8 +329,14 @@
   }
 
   .lp-8-circle-container {
-    width: 460px;
+    
+    width: 470px;
     height: 420px;
+  }
+  .lp-8-token-circle-group {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1.13);
   }
 }
 

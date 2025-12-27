@@ -206,11 +206,16 @@
   }
 
   .lp-9-circle-container {
+    
     margin-right: 40px;
     
     width: 460px;
     
     height: 420px;
+  }
+  .lp-9-governance-circle-group {
+    
+    transform:  scale(1.1) translate(-50%, -50%);
   }
 }
 

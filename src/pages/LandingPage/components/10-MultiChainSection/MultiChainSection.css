@@ -258,12 +258,15 @@
   }
 
   .lp-10-circle-container {
+    justify-content: center;
+    align-items: center;
+    
     width: 460px;
     height: 420px;
   }
   
   .lp-10-chain-circle-group {
-    transform: translate(-50%, -50%);
+    transform: scale(1.15) translate(-50%, -50%);
   }
 }
 

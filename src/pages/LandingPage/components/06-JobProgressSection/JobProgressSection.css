@@ -68,6 +68,10 @@
     margin-left: 180px;
     padding: 0 80px;
   }
+  .lp-6-job-card-image {
+  
+   transform: scale(1.2);
+  }
 }
 
 @media (max-width: 1024px) {

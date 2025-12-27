@@ -102,7 +102,7 @@
   }
   
   .lp-11-architecture-image {
-    transform: none;
+    transform: scale(1.2) translateX(60px);
   }
 }
 

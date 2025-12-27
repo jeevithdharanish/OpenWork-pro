@@ -81,7 +81,7 @@
   }
   .lp-4-ledger-container img,
   .lp-4-section .openwork-ledger-image {
-    transform: translateX(60px);
+    transform: scale(1.5) translateX(60px);
   }
 }
 
