@@ -44,7 +44,7 @@ const PostJobSection = () => {
         {isMobile ?<div className="lp-4-ledger-container">
           <img src="/assets/browsejob/image-mobile.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div> :<div className="lp-4-ledger-container">
-          <img src="/assets/postjob/image.png" alt="OpenWork Ledger" className="openwork-ledger-image" />
+          <img src="/assets/browsejob/svgimg.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div> }
         
       </div>
