@@ -35,15 +35,15 @@ const DisputeSection = () => {
 
         <div className="lp-7-circle-container">
           <div className="lp-7-oracle-circle-group">
-            <img src="/assets/outer-circle-dispute.svg" alt="" className="lp-7-ellipse-bg" />
+            <img src="/assets/outer-circle-dispute.svg" alt="" className="lp-7-ellipse-bg" loading="lazy" decoding="async" />
 
             <div className="lp-7-core-circle">
-              <img src="/assets/lp7-core-circle.svg" alt="" className="lp-7-core-bg" />
+              <img src="/assets/lp7-core-circle.svg" alt="" className="lp-7-core-bg" loading="lazy" />
             </div>
 
             <div className="lp-7-center-athena">
               <div className="lp-7-athena-container">
-                <img src="/assets/Athena.svg" alt="Athena" className="lp-7-athena-image" />
+                <img src="/assets/Athena.svg" alt="Athena" className="lp-7-athena-image" loading="lazy" decoding="async" />
               </div>
               <img src="/assets/job-text.svg" alt="" className="lp-7-job-text" />
             </div>

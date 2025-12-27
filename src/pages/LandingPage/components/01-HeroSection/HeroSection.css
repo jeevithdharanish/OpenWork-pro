@@ -1340,7 +1340,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain {  left: 246px !important; top: 72% !important;}
   .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture {left: 280px !important; top: 81% !important; }
     .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { left: 490px !important; top: 105% !important; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 390px !important; top: -15% !important; }
 
   /* Active: dao (index 7) */
   .landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { left: 390px !important; top: -15% !important;}
