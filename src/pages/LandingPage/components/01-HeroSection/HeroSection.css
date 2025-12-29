@@ -1160,7 +1160,7 @@ body.sidebar-expanded .lp-1-section {
   .icon-btn img {
     width: 18px;
     height: 18px;
-    margin-left: 10px;
+    margin-left: 13px;
   }
 
   /* Expanded sidebar icon sizing */
@@ -1175,7 +1175,7 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .icon-btn img {
     width: 18px !important;
     height: 18px !important;
-    margin-left: px !important;
+    margin-left: 8.5px !important;
   }
 
   /* Active state - show label when active */
@@ -1207,6 +1207,15 @@ body.sidebar-expanded .lp-1-section {
   width: 38px;
   height: 38px;
 }
+.icon-home img {
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  opacity: 1;
+   margin: 9px;
+   transform: scale(1.2);
+  width: 38px;
+  height: 38px;}
   
 }
 
