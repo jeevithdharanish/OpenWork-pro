@@ -337,7 +337,7 @@ body.sidebar-expanded .lp-1-section {
   filter: brightness(var(--icon-brightness-high))
           saturate(var(--icon-saturation-high))
           contrast(var(--icon-contrast-high));
-  opacity: 0.8;
+  opacity: 1.8;
    margin: 3px;
   width: 23px !important;
   height: 23px !important;
@@ -1119,8 +1119,12 @@ body.sidebar-expanded .lp-1-section {
   }
 
   .floating-icons {
-    width: min(1100px, 76vw);
-    height: min(630px, 44vw);
+    /* Use SAME scale factor as radiant-glow-container so icons stay aligned with glow */
+    /* radiant-glow is 680px base → floating-icons is 1280px base (ratio ~1.88) */
+    /* radiant-glow uses min(680px, 85vh, 47vw) → scale floating-icons proportionally */
+    --glow-size: min(680px, 85vh, 47vw);
+    width: calc(var(--glow-size) * 1.88);  /* 1280/680 = 1.88 */
+    height: calc(var(--glow-size) * 1.08); /* 734/680 = 1.08 */
   }
 
   .circle-group {
@@ -1144,14 +1148,79 @@ body.sidebar-expanded .lp-1-section {
     font-size: 38px;
     line-height: 46px;
   }
+
+  /* Icon button sizing for ≤1440px */
+  .icon-btn {
+    height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    border-radius: 999px;
+  }
+
+  .icon-btn img {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+  }
+
+  /* Expanded sidebar icon sizing */
+  .landing-main.expanded .icon-btn {
+    margin-left: -1px !important;
+    justify-items: center;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+  }
+
+  .landing-main.expanded .icon-btn img {
+    width: 18px !important;
+    height: 18px !important;
+    margin-left: px !important;
+  }
+
+  /* Active state - show label when active */
+  .icon-btn.active,
+  .landing-main.expanded .icon-btn.active {
+    max-width: none !important;
+    min-width: max-content !important;
+    padding-right: 16px !important;
+  }
+
+  .icon-btn.active span,
+  .landing-main.expanded .icon-btn.active span {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    color: #1246FF !important;
+    font-weight: 500;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    padding-left: 6px !important;
+  }
+
+  .icon-multichain img {
+  filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+  opacity: 1;
+   margin: 9px;
+   transform: scale(1.4);
+  width: 38px;
+  height: 38px;
+}
+  
 }
 
 /* Adjustments for 1025-1400px screens */
 @media (max-width: 1440px) and (min-width: 1025px) {
   .floating-icons {
-    width: 1050px;
-    height: 615px;
+    /* Tie to same scale factor as radiant-glow-container (85vh) so icons stay locked to glow */
+    --glow-size: min(773px, 85vh);
+    width: calc(var(--glow-size) * 1.88);  /* 1280/680 */
+    height: calc(var(--glow-size) * 1.08); /* 734/680 */
+    max-width: 100%;
+    max-height: 80vh;
   }
+  
 
    .lp-blue-button {
     color: var(--Base-White, #FFF);
@@ -1165,14 +1234,14 @@ body.sidebar-expanded .lp-1-section {
 
   .circle-group {
     /* Responsive to viewport height */
-    width: min(635px, 80vh);
-    height: min(635px, 80vh);
+    width: min(773px, 95vh);
+    height: min(773px, 88vh);
   }
 
   .radiant-glow-container {
     /* Responsive to viewport height */
-    width: min(672px, 85vh);
-    height: min(672px, 85vh);
+    width: min(773px, 95vh);
+    height: min(773px, 88vh);
   }
 
   .main-circle-bg {
@@ -1232,10 +1301,22 @@ body.sidebar-expanded .lp-1-section {
     width: min(2200px, 153vw);
     height: min(2200px, 153vw);
     margin: 0;
-    margin-left: min(130px, 9vw);
+    /* Reduced margin to bring gradient closer to icons */
+    margin-left: min(130px,40vw);
+    /* Keep vertical center at 50% so shrinking height scales both elements equally */
     top: -5%;
+    transform: translateY(-50%);
     left: 5%;
   }
+  .icon-set-profile { left: 27.5%; top: 58%; } 
+  .icon-discoverable { left: 27.5%; top: 36%; }
+  .icon-post-job { left: 32.3%; top: 18%; }
+.icon-direct-contract { left: 50%; top: 4%; }
+.icon-job-progress { left: 64.%; top: 18%; }
+
+.icon-raise-dispute { left: 69.5%; top: 36%; }
+.icon-dao { left: 69.5%; top: 58%; }
+/* move slightly up and left */
 
   /* Curve slot positions for 1440px - define the curve positions */
   /* Slot positions along the arc for 1440px screens */
@@ -1255,61 +1336,61 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .icon-contact { left: 650px; top: 120%; }
 
   /* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 225px !important; top: 20% !important; }
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 215px !important; top: 20% !important; }
   .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 246px !important; top: 72% !important; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 280px !important; top: 81% !important; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { left: 490px !important; top: 105% !important;}
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 215px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 229px !important; top: 75% !important; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { left: 330px !important; top: 105% !important;}
   .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { left: 490px !important; top: 105% !important;}
   .landing-main.expanded .floating-icons.active-pos-0 .icon-dao { left: 490px !important; top: 105% !important; }
 
 
   /* Active: discoverable (index 1) - shift icons so discoverable is at center */
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 225px !important; top: 20% !important; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 300px !important; top: -15% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 215px !important; top: 20% !important; }
   .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 246px !important; top: 72% !important;}
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 280px !important; top: 81% !important; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job {  left: 215px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress {left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { left: 330px !important; top: 105% !important; }
   .landing-main.expanded .floating-icons.active-pos-1 .icon-dao { left: 490px !important; top: 105% !important; }
   
 
   /* Active: post-job (index 2) - shift icons so post-job is at center */
   .landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable {  left: 225px !important; top: 20% !important; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 300px !important; top: -15% !important; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable {  left: 215px !important; top: 20% !important; }
   .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 200px !important; top: 50%;}
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract {left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 246px !important; top: 72% !important;}
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute {left: 280px !important; top: 81% !important; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-earn-token { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract {left: 215px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress {left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute {left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-earn-token { left: 330px !important; top: 105% !important; }
   .landing-main.expanded .floating-icons.active-pos-2 .icon-dao { left: 490px !important; top: 105% !important;  }
   
 
   /* Active: direct-contract (index 3) - DEFAULT positions */
   .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile {left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 300px !important; top: -19% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress {left: 225px !important; top: 64% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute {  left: 246px !important; top: 72% !important; }
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token {left: 280px !important; top: 81% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-dao { left: 490px !important; top: 105% !important;}
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress {left: 215px !important; top: 64% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute  {left: 229px !important; top: 75% !important;}
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token {left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-dao { left: 330px !important; top: 105% !important;}
 
   /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
   .landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 390px !important; top: -15% !important;  }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 300px !important; top: -19% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress {  left: 200px !important; top: 50%;}
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 225px !important; top: 64% !important;  }
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-earn-token{  left: 246px !important; top: 72% !important; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 280px !important; top: 81% !important; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-multichain { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute {left: 215px !important; top: 64% !important;  }
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-earn-token{left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-dao {left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-multichain { left: 330px !important; top: 105% !important; }
   .landing-main.expanded .floating-icons.active-pos-4 .icon-architecture { left: 490px !important; top: 105% !important; }
   
 
@@ -1318,13 +1399,13 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { left: 390px !important; top: -15% !important;}
   .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 390px !important; top: -15% !important;}
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract {left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 225px !important; top: 20% !important; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract {left: 300px !important; top: -19% !important; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute {  left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token {left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-dao {  left: 246px !important; top: 72% !important;}
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 280px !important; top: 81% !important; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture {left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token {left: 215px !important; top: 64% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-dao {left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain {left: 250px !important; top: 85% !important; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture {left: 330px !important; top: 105% !important; }
   .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { left: 490px !important; top: 105% !important; }
   
 
@@ -1333,13 +1414,13 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract {left: 390px !important; top: -15% !important;}
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress {left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress {left: 300px !important; top: -19% !important; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token {  left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-dao {left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain {  left: 246px !important; top: 72% !important;}
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture {left: 280px !important; top: 81% !important; }
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-dao {left: 215px !important; top: 64% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain {  left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture {left: 250px !important; top: 85% !important; }
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { left: 330px !important; top: 105% !important; }
   .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 390px !important; top: -15% !important; }
 
   /* Active: dao (index 7) */
@@ -1348,14 +1429,14 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { left: 390px !important; top: -15% !important;}
   .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { left: 390px !important; top: -15% !important;}
   .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token {left: 225px !important; top: 20% !important; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 300px !important; top: -19% !important; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-7 .icon-dao {left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 225px !important; top: 64% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture {  left: 246px !important; top: 72% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 280px !important; top: 81% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain {left: 215px !important; top: 64% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture {  left: 229px !important; top: 75% !important;}
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 250px !important; top: 85% !important;  }
   .landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 490px !important; top: 105% !important; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 330px !important; top: 105% !important; }
 
   /* Active: multichain (index 8) */
   .landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile {left: 390px !important; top: -15% !important;}
@@ -1364,13 +1445,13 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 390px !important; top: -15% !important;}
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 300px !important; top: -19% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-dao {left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 200px !important; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 225px !important; top: 64% !important; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 246px !important; top: 72% !important; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 215px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution {  left: 229px !important; top: 75% !important; }
   .landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-contact {  left: 280px !important; top: 81% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-contact {  left: 250px !important; top: 85% !important;   }
 
   /* Active: architecture (index 9) */
   .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { left: 390px !important; top: -15% !important; }
@@ -1380,12 +1461,12 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 360px !important; top: -10% !important; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 225px !important; top: 20% !important; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 360px !important; top: -40% !important; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 215px !important; top: 20% !important; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture {  left: 200px !important; top: 50%;  }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 225px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 215px !important; top: 64% !important; }
   .landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 360px !important; top: -50%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 246px !important; top: 72% !important;}
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 229px !important; top: 75% !important; }
 
   /* Active: revolution (index 10) */
   .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { left: 390px !important; top: -15% !important; }
@@ -1396,11 +1477,11 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { left: 390px !important; top: -15% !important;}
   .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { left: 390px !important; top: -15% !important; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-dao {left: 390px !important; top: -15% !important;}
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 390px !important; top: -15% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 300px !important; top: -25% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture {left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 205px !important; top: 50%; }
   .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 390px !important; top: -15% !important; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact {left: 225px !important; top: 64% !important; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 215px !important; top: 64% !important; }
 
   /* Active: contact (index 11) */
   .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -80%; }
@@ -1412,8 +1493,8 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token { opacity: 0; top: -20%; }
   .landing-main.expanded .floating-icons.active-pos-11 .icon-dao { opacity: 0; top: -10%; }
   .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 63px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 360px !important; top: -10% !important;  }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution {left: 225px !important; top: 20% !important;}
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 360px !important; top: -30% !important;  }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution{left: 215px !important; top: 20% !important;}
   .landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 205px !important; top: 46%; }
   .landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 360px !important; top: -50%; }
 }
