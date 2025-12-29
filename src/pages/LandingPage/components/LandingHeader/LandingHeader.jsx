@@ -27,9 +27,34 @@ const LandingHeader = ({ onLaunchApp }) => {
     window.open('https://chatgpt.com/g/g-6811cd644b1c8191b203796b06deaa4a-openwork-simplified', '_blank');
   };
 
+  const handleLogoClick = () => {
+    // Notify other components (HeroSection) to collapse/act like Home was clicked
+    window.dispatchEvent(new CustomEvent('openwork-home'));
+
+    // Ensure any expanded sidebar is collapsed
+    document.body.classList.remove('sidebar-expanded');
+
+    // Scroll to hero section (same offset as sidebar)
+    const hero = document.getElementById('lp-1-section');
+    if (hero) {
+      const target = Math.max(hero.offsetTop - 80, 0);
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    } else {
+      // Fallback: scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="landing-header">
-      <div className="logo-wrapper">
+      <div
+        className="logo-wrapper"
+        role="button"
+        tabIndex="0"
+        aria-label="Go to Home"
+        onClick={handleLogoClick}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { handleLogoClick(); e.preventDefault(); } }}
+      >
         <img src="/assets/Logo.jpg" alt="OpenWork" className="logo logo-desktop" />
         <img src="/assets/openwork-logo/logo.svg" alt="OpenWork" className="logo logo-mobile" />
       </div>

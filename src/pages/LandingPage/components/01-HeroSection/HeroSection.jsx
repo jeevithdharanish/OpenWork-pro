@@ -223,6 +223,26 @@ const HeroSection = () => {
     return () => document.body.classList.remove('sidebar-expanded');
   }, [isExpanded]);
 
+  // Listen for header logo clicks from other components (dispatches 'openwork-home')
+  useEffect(() => {
+    const handleExternalHome = () => {
+      // Collapse expanded content and reset active states (same as clicking Home)
+      setIsExpanded(false);
+      setActiveIcon(null);
+      setDisplayedIcon(null);
+
+      // Scroll to hero section to match header behavior
+      const hero = document.getElementById('lp-1-section');
+      if (hero) {
+        const target = Math.max(hero.offsetTop - 80, 0);
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener('openwork-home', handleExternalHome);
+    return () => window.removeEventListener('openwork-home', handleExternalHome);
+  }, []);
+
   const getMobileNavOffset = () => {
     if (typeof window === 'undefined') return 0;
     const isMobile = window.matchMedia('(max-width: 480px)').matches;

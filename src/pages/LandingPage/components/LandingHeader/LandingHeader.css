@@ -35,6 +35,20 @@
   display: flex;
   align-items: center;
   background: transparent;
+  cursor: pointer;
+  outline: none; /* suppress default focus ring for mouse */
+}
+
+/* Show a visible focus ring only for keyboard users */
+.logo-wrapper:focus-visible {
+  outline: 2px solid rgba(18, 70, 255, 0.18);
+  border-radius: 6px;
+  outline-offset: 2px;
+}
+
+/* Ensure mouse click doesn't leave a visible outline */
+.logo-wrapper:focus {
+  outline: none;
 }
 
 .logo {
