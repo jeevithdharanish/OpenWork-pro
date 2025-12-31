@@ -1106,129 +1106,50 @@ body.sidebar-expanded .lp-1-section {
   line-height: 24px; /* 150% */
 }
 
-/* Responsive Design */
-@media (max-width: 1440px) {
-
-  .landing-main.expanded .radiant-glow-container {
-    /* Scale with viewport width to stay aligned with icons */
-    width: min(2000px, 139vw);
-    height: min(2000px, 139vw);
-    top: -5%;
-    left: 5%;
-    margin-left: min(60px, 4.2vw);
-  }
-
-  .floating-icons {
-    /* Use SAME scale factor as radiant-glow-container so icons stay aligned with glow */
-    /* radiant-glow is 680px base → floating-icons is 1280px base (ratio ~1.88) */
-    /* radiant-glow uses min(680px, 85vh, 47vw) → scale floating-icons proportionally */
-    --glow-size: min(680px, 85vh, 47vw);
-    width: calc(var(--glow-size) * 1.88);  /* 1280/680 = 1.88 */
-    height: calc(var(--glow-size) * 1.08); /* 734/680 = 1.08 */
-  }
-
-  .circle-group {
-    /* Responsive to both viewport width and height */
-    width: min(650px, 82vh, 45vw);
-    height: min(650px, 82vh, 45vw);
-  }
-
-  .radiant-glow-container {
-    /* Responsive to both viewport width and height */
-    width: min(680px, 85vh, 47vw);
-    height: min(680px, 85vh, 47vw);
-  }
-
-  .main-circle-bg {
-    width: min(540px, 68vh, 38vw);
-    height: min(540px, 68vh, 38vw);
-  }
-
-  .main-heading {
-    font-size: 38px;
-    line-height: 46px;
-  }
-
-  /* Icon button sizing for ≤1440px */
-  .icon-btn {
-    height: 40px;
-    min-width: 40px;
-    max-width: 40px;
-    border-radius: 999px;
-  }
-
-  .icon-btn img {
-    width: 18px;
-    height: 18px;
-    margin-left: 13px;
-  }
-
-  /* Expanded sidebar icon sizing */
-  .landing-main.expanded .icon-btn {
-    margin-left: -1px !important;
-    justify-items: center;
-    height: 36px !important;
-    min-width: 36px !important;
-    max-width: 36px !important;
-  }
-
-  .landing-main.expanded .icon-btn img {
-    width: 18px !important;
-    height: 18px !important;
-    margin-left: 8.5px !important;
-  }
-
-  /* Active state - show label when active */
-  .icon-btn.active,
-  .landing-main.expanded .icon-btn.active {
-    max-width: none !important;
-    min-width: max-content !important;
-    padding-right: 16px !important;
-  }
-
-  .icon-btn.active span,
-  .landing-main.expanded .icon-btn.active span {
-    opacity: 1 !important;
-    transform: translateX(0) !important;
-    color: #1246FF !important;
-    font-weight: 500;
-    font-size: 16px !important;
-    line-height: 20px !important;
-    padding-left: 6px !important;
-  }
-
-  .icon-multichain img {
-  filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
-  opacity: 1;
-   margin: 9px;
-   transform: scale(1.4);
-  width: 38px;
-  height: 38px;
-}
-.icon-home img {
-  filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
-  opacity: 1;
-   margin: 9px;
-   transform: scale(1.2);
-  width: 38px;
-  height: 38px;}
-  
-}
-
 /* Adjustments for 1025-1400px screens */
 @media (max-width: 1440px) and (min-width: 1025px) {
-  .floating-icons {
-    /* Tie to same scale factor as radiant-glow-container (85vh) so icons stay locked to glow */
-    --glow-size: min(773px, 85vh);
-    width: calc(var(--glow-size) * 1.88);  /* 1280/680 */
-    height: calc(var(--glow-size) * 1.08); /* 734/680 */
-    max-width: 100%;
-    max-height: 80vh;
+
+  .main-heading {
+    align-self: stretch;
+    color: var(--Base-Black, #050505);
+    text-align: center;
+    font-family: inter, sans-serif;
+    /* Scales between 30px and 40px based on viewport */
+    font-size: clamp(30px, 5vh, 40px);
+    font-style: normal;
+    font-weight: 700;
+    /* Scale line-height proportionally */
+    line-height: clamp(38px, 6vh, 48px);
+    letter-spacing: -1.6px;
+}
+
+.main-description {
+    align-self: stretch;
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
+    /* Scales between 13px and 16px */
+    font-size: clamp(13px, 2vh, 16px);
+    font-style: normal;
+    font-weight: 400;
+    /* Scale line-height proportionally */
+    line-height: clamp(20px, 3vh, 24px);
+}
+
+  .lp-1-section{
+    /* margin-top: 20px; */
   }
+ .radiant-glow-container {
+    /* Use the smaller of width or height to maintain circle */
+    width: min(843px, 100vw, 100vh);
+    height: min(844px, 100vw, 100vh);
+}
+
+.floating-icons {
+    /* Match the same scale factor */
+    width: min(1100px, 130vw, 130vh);  /* Scale proportionally with glow */
+    height: min(555px, 66vw, 66vh); 
+}
   
 
    .lp-blue-button {
@@ -1247,15 +1168,25 @@ body.sidebar-expanded .lp-1-section {
     height: min(773px, 88vh);
   }
 
-  .radiant-glow-container {
-    /* Responsive to viewport height */
-    width: min(773px, 95vh);
-    height: min(773px, 88vh);
-  }
+  
 
   .main-circle-bg {
     width: min(530px, 67vh);
     height: min(530px, 67vh);
+  }
+
+  /* Icon button sizing for ≤1440px */
+  .icon-btn {
+    height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    border-radius: 999px;
+  }
+
+  .icon-btn img {
+    width: 18px;
+    height: 18px;
+    margin-left: 13px;
   }
 
   .icon-discoverable {
@@ -1298,6 +1229,61 @@ body.sidebar-expanded .lp-1-section {
     margin-top: -30px;
   }
 
+  /* Active state - show label when active */
+  .icon-btn.active,
+  .landing-main.expanded .icon-btn.active {
+    max-width: none !important;
+    min-width: max-content !important;
+    padding-right: 16px !important;
+  }
+
+  .icon-btn.active span,
+  .landing-main.expanded .icon-btn.active span {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    color: #1246FF !important;
+    font-weight: 500;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    padding-left: 6px !important;
+  }
+
+  .icon-multichain img {
+     filter: brightness(var(--icon-brightness-high))
+          saturate(var(--icon-saturation-high))
+          contrast(var(--icon-contrast-high));
+      opacity: 1;
+      margin: 9px;
+      transform: scale(1.4);
+      width: 38px;
+      height: 38px;
+    }
+    .icon-home img {
+      filter: brightness(var(--icon-brightness-high))
+              saturate(var(--icon-saturation-high))
+              contrast(var(--icon-contrast-high));
+      opacity: 1;
+      margin: 9px;
+      transform: scale(1.2);
+      width: 38px;
+      height: 38px;
+    }
+
+  /* Expanded sidebar icon sizing */
+  .landing-main.expanded .icon-btn {
+    margin-left: -1px !important;
+    justify-items: center;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+  }
+
+  .landing-main.expanded .icon-btn img {
+    width: 18px !important;
+    height: 18px !important;
+    margin-left: 8.5px !important;
+  }
+
   /* Expanded state adjustments for 1025-1440px screens */
   .landing-main.expanded .floating-icons {
     width: min(550px, 38vw);
@@ -1317,14 +1303,14 @@ body.sidebar-expanded .lp-1-section {
     transform: translateY(-50%);
     left: 5%;
   }
-  .icon-set-profile { left: 27.5%; top: 58%; } 
-  .icon-discoverable { left: 27.5%; top: 36%; }
-  .icon-post-job { left: 32.3%; top: 18%; }
-.icon-direct-contract { left: 50%; top: 4%; }
-.icon-job-progress { left: 64.%; top: 18%; }
+  .icon-set-profile { left: 20%; top: 68%; } 
+  .icon-discoverable { left: 18.25%; top: 36%; }
+  .icon-post-job { left: 26.25%; top: 4%; }
+  .icon-direct-contract { left: 50%; top: -14%; }
+  .icon-job-progress { left: 69.5%; top: 4%; }
 
-.icon-raise-dispute { left: 69.5%; top: 36%; }
-.icon-dao { left: 69.5%; top: 58%; }
+  .icon-raise-dispute { left: 77.5%; top: 36%; }
+  .icon-dao { left: 75.5%; top: 68%; }
 /* move slightly up and left */
 
   /* Curve slot positions for 1440px - define the curve positions */
@@ -1332,13 +1318,7 @@ body.sidebar-expanded .lp-1-section {
   /* top: 63px/8%, 30px/20%, 0px/34%, -5px/50% (center), 5px/66%, 45px/82%, 99px/95% */
   
   /* Default expanded positions (direct-contract at center) */
-  .landing-main.expanded .icon-set-profile { left: 63px; top: 8%; }
-  .landing-main.expanded .icon-discoverable { left: 30px; top: 20%; }
-  .landing-main.expanded .icon-post-job { left: 0px; top: 34%; }
-  .landing-main.expanded .icon-direct-contract { left: -5px; top: 50%; }
-  .landing-main.expanded .icon-job-progress { left: 5px; top: 66%; }
-  .landing-main.expanded .icon-raise-dispute { left: 45px; top: 82%; }
-  .landing-main.expanded .icon-dao { left: 99px; top: 95%; }
+  
 
   /* Adjust home and contact icon positions */
   .landing-main.expanded .icon-home { left: 360px; top: 10%; }

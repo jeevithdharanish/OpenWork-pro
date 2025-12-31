@@ -303,21 +303,93 @@ const HeroSection = () => {
   // Add sliding transition class to expanded content based on direction
   useEffect(() => {
     const contentArea = document.querySelector('.expanded-content-area');
-    
-    // If this is the first time expanding (no previous content), just show immediately
+    let cleanup = null;
+
+    // If this is the first time expanding (no previous content), wait for the glow transition
+    // to finish on desktop so content does not appear earlier than the glow/sidebar.
     if (!displayedIcon && activeIcon) {
-      setDisplayedIcon(activeIcon);
-      if (contentArea) {
-        contentArea.classList.add('slide-in-right');
-        const removeClass = () => {
-          contentArea.classList.remove('slide-in-right');
-          contentArea.removeEventListener('animationend', removeClass);
+      const iconToShow = activeIcon;
+
+      if (isExpanded) {
+        const glowEl = document.querySelector('.radiant-glow-container');
+        let fallbackTimer = null;
+
+        const showContent = () => {
+          // Ensure user hasn't changed selection or collapsed in the meantime
+          if (!isExpanded || activeIcon !== iconToShow) return;
+
+          setDisplayedIcon(iconToShow);
+
+          // Wait until after render, then animate the new content in
+          requestAnimationFrame(() => {
+            const newContentArea = document.querySelector('.expanded-content-area');
+            if (newContentArea) {
+              newContentArea.classList.add('slide-in-right');
+              const removeClass = () => {
+                newContentArea.classList.remove('slide-in-right');
+                newContentArea.removeEventListener('animationend', removeClass);
+              };
+              newContentArea.addEventListener('animationend', removeClass);
+            }
+          });
         };
-        contentArea.addEventListener('animationend', removeClass);
+
+        if (glowEl) {
+          // Start content slightly after expansion begins so it overlaps with the glow forming.
+          // This gives the appearance of content coming in from the right while the glow expands.
+          const earlyDelay = 10; // ms overlap before glow completes
+          const earlyTimer = setTimeout(() => {
+            if (!isExpanded || activeIcon !== iconToShow) return;
+            // Only show if we haven't already
+            if (!displayedIcon) showContent();
+          }, earlyDelay);
+
+          const onTransitionEnd = (e) => {
+            // Wait specifically for width/height transition that indicates expansion finished
+            if (e.target !== glowEl) return;
+            if (e.propertyName === 'width' || e.propertyName === 'height') {
+              if (!displayedIcon) showContent();
+              glowEl.removeEventListener('transitionend', onTransitionEnd);
+              if (fallbackTimer) clearTimeout(fallbackTimer);
+            }
+          };
+
+          glowEl.addEventListener('transitionend', onTransitionEnd);
+
+          // Fallback: in case transitionend doesn't fire (browser quirks), show after 700ms
+          fallbackTimer = setTimeout(() => {
+            if (!displayedIcon) showContent();
+            glowEl.removeEventListener('transitionend', onTransitionEnd);
+          }, 700);
+
+          cleanup = () => {
+            glowEl.removeEventListener('transitionend', onTransitionEnd);
+            if (fallbackTimer) clearTimeout(fallbackTimer);
+            clearTimeout(earlyTimer);
+          };
+        } else {
+          // No glow element found — fallback to a small early timeout so content still overlaps
+          const t = setTimeout(() => showContent(), 160);
+          cleanup = () => clearTimeout(t);
+        }
+      } else {
+        // Not expanded (mobile/tablet): show immediately
+        setDisplayedIcon(iconToShow);
+        if (contentArea) {
+          contentArea.classList.add('slide-in-right');
+          const removeClass = () => {
+            contentArea.classList.remove('slide-in-right');
+            contentArea.removeEventListener('animationend', removeClass);
+          };
+          contentArea.addEventListener('animationend', removeClass);
+        }
       }
-      return;
+
+      return () => {
+        if (cleanup) cleanup();
+      };
     }
-    
+
     // If activeIcon changed and we have existing content, animate the transition
     if (contentArea && displayedIcon && activeIcon && activeIcon !== displayedIcon) {
       // Remove any existing animation classes
@@ -369,7 +441,7 @@ const HeroSection = () => {
         setDisplayedIcon(null);
       }
     }
-  }, [activeIcon, transitionDirection, displayedIcon]);
+  }, [activeIcon, transitionDirection, displayedIcon, isExpanded]);
 
   // Old scroll-based navigation (disabled)
   const handleIconClickOld = (iconName, sectionId) => {
