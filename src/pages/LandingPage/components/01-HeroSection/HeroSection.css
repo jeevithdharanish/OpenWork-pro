@@ -245,7 +245,7 @@ body.sidebar-expanded .lp-1-section {
   margin: 6px;
   width: 16px; height: 16px; 
 }
-.icon-home { --label-display: none; }
+.icon-home { }
 
 .icon-set-profile {
   left: 26.5%;
@@ -827,11 +827,13 @@ body.sidebar-expanded .lp-1-section {
     transform: translate(-50%, -50%) scale(0.75);
     opacity: 0.8;
   }
+ 
   100% {
     transform: translate(40%, -50%) scale(0.6);
     opacity: 0;
   }
 }
+
 
 /* Apply animation classes - smooth transitions without bounce */
 .expanded-content-area.slide-in-right {
@@ -848,7 +850,7 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .expanded-content-area.slide-out-right {
-  animation: slide-out-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slide-out-right 0.3s cubic-bezier(0.22, 1, 0.2, 1) forwards;
 }
 
 /* Hide any scrollbars that might appear */
@@ -1057,7 +1059,7 @@ body.sidebar-expanded .lp-1-section {
   .icon-btn img {
     width: 18px;
     height: 18px;
-    margin-left: 13px;
+    margin-left: 11px;
   }
 
   .icon-discoverable {
@@ -1110,32 +1112,39 @@ body.sidebar-expanded .lp-1-section {
 
   .icon-btn.active span,
   .landing-main.expanded .icon-btn.active span {
+    text-align: center!important;
+    font-family: inter, sans-serif;
+    font-style: normal !important;
+    line-height: normal !important;
+    letter-spacing: 0.48px !important;
     opacity: 1 !important;
     transform: translateX(0) !important;
     color: #1246FF !important;
-    font-weight: 500;
-    font-size: 16px !important;
-    line-height: 20px !important;
-    padding-left: 6px !important;
+    font-weight: 500 !important;
+    font-size: 17px !important;    
+    padding-inline: 6px !important;
   }
 
-  .icon-multichain img {
-     filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
+  .icon-set-profile img,
+  .icon-discoverable img,
+  .icon-post-job img,
+  .icon-direct-contract img,
+  .icon-job-progress img,
+  .icon-raise-dispute img,
+  .icon-earn-token img ,
+  .icon-dao img,
+  .icon-architecture img,
+  .icon-revolution img,
+  .icon-multichain img {    
       opacity: 1;
-      margin: 9px;
-      transform: scale(1.4);
-      width: 38px;
-      height: 38px;
+      width: 18px;
+      height: 18px;
     }
-    .icon-home img {
-      filter: brightness(var(--icon-brightness-high))
-              saturate(var(--icon-saturation-high))
-              contrast(var(--icon-contrast-high));
+
+    .icon-home img {     
       opacity: 1;
       margin: 9px;
-      transform: scale(1.2);
+      transform: scale(1.1);
       width: 38px;
       height: 38px;
     }
@@ -1413,7 +1422,7 @@ body.sidebar-expanded .lp-1-section {
 
     .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution {left: 37% !important; top: 55%;}
 
-    .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 47% !important; top: 75% !important;}
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 42% !important; top: 66% !important; opacity: 1 !important; }
 
   /* Active: contact (index 11) */
     .landing-main.expanded .floating-icons.active-pos-11 .icon-home ,
@@ -1430,100 +1439,10 @@ body.sidebar-expanded .lp-1-section {
 
     .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution {  left: 40% !important; top: 25% !important; }
 
-    .landing-main.expanded .floating-icons.active-pos-11 .icon-contact {left: 37% !important; top: 55%;}
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-contact {left: 37% !important; top: 46%; opacity: 1 !important; }
 }
 
 
-/* @media (max-width: 1280px) {
-  .floating-icons {
-    width: 1000px;
-    height: 600px;
-  }
-
-  .circle-group {
-    width: 620px;
-    height: 620px;
-  }
-
-  .radiant-glow-container {
-    width: 650px;
-    height: 650px;
-  }
-
-  .main-circle-bg {
-    width: 520px;
-    height: 520px;
-  }
-
-  .center-content {
-    margin-top: 0;
-  }
-  .icon-discoverable {
-    left: 23.9%;
-    top: 32%;
-  }
-  .icon-direct-contract {
-    left: 50%;
-    top: 3.9%;
-    transform: translateX(-50%);
-  }
-  .icon-job-progress {
-    left: 65.2%;
-    top: 14.5%;
-  }
-
-  .icon-post-job {
-    left: 31.8%;
-    top: 14.5%;
-  }
-
-  .icon-raise-dispute {
-    left: 72.7%;
-    top: 32%;
-  }
-
-  .icon-dao {
-    left: 73.9%;
-    top: 55%;
-  }
-
-  .icon-set-profile {
-    left: 23%;
-    top: 55.5%;
-  } */
-
-  /* Expanded state adjustments for 1024-1280px screens */
-  /* .landing-main.expanded .floating-icons {
-    width: 500px;
-    height: 900px;
-    margin-left: -180px;
-  }
-
-  .landing-main.expanded .radiant-glow-container {
-    top: -5%;
-    margin-left: 40px;
-  } */
-
-  /* Adjust home and contact icon positions for smaller screens */
-  /* .landing-main.expanded .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .icon-contact { left: 310px; top: 80%; }
-  
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 280px; top: 30%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 250px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 320px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 200px; top: 74%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 180px; top: 68%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 160px; top: 58%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 320px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 150px; top: 46%; }
-} */
 
 @media (max-width: 1024px) {
   .circle-group {
@@ -1899,7 +1818,7 @@ body.sidebar-expanded .lp-1-section {
     text-align: center;
     font-family: inter, sans-serif;
     letter-spacing: 0.04em;
-    font-size: 17px !important;
+    font-size: 16px !important;
     font-style: normal;
     font-weight: 400;
     margin-top: -15px;
