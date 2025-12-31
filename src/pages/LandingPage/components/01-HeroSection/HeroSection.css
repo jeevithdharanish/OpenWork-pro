@@ -850,7 +850,7 @@ body.sidebar-expanded .lp-1-section {
 }
 
 .expanded-content-area.slide-out-right {
-  animation: slide-out-right 0.3s cubic-bezier(0.22, 1, 0.2, 1) forwards;
+  animation: slide-out-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Hide any scrollbars that might appear */
