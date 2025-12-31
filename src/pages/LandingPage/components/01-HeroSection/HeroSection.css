@@ -1377,7 +1377,7 @@ body.sidebar-expanded .lp-1-section {
 
     .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture {left: 42% !important; top: 66% !important;  }
     .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution {  left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-contact {  left: 53% !important; top: 83% !important;   }
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-contact {  left: 53% !important; top: 83% !important; opacity: 1 !important; }
 
     /* Active: architecture (index 9) */
     .landing-main.expanded .floating-icons.active-pos-9 .icon-home,
@@ -1394,8 +1394,8 @@ body.sidebar-expanded .lp-1-section {
 
     .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture {left: 37% !important; top: 55%;}
 
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 53% !important; top: 83% !important; }
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 42% !important; top: 66% !important;}
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 47% !important; top: 75% !important; opacity: 1 !important; }
 
   /* Active: revolution (index 10) */
     .landing-main.expanded .floating-icons.active-pos-10 .icon-home,
