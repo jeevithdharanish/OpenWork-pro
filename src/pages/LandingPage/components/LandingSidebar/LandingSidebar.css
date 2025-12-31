@@ -314,8 +314,8 @@
   }
 
   .icon-wrapper {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: white;
     display: flex;
@@ -327,14 +327,14 @@
   }
 
   .sidebar-nav-item img {
-    width: 16px;
-    height: 16px;
-    filter: grayscale(1) opacity(0.5);
+    width: 18px;
+    height: 18px;
+    filter: grayscale(1) opacity(0.9);
   }
 
   /* ACTIVE (CENTER) STATE */
   .sidebar-nav-item.active {
-    transform: scale(1.05);
+    transform: scale(0.9);
   }
 
   .sidebar-nav-item.active .icon-wrapper {
