@@ -1,987 +1,979 @@
 /* Hero Section (LP-1) */
-:root {
-  --icon-brightness-high: 0.8;
-  --icon-saturation-high: 1.2;
-  --icon-contrast-high: .05;
+  :root {
+    --icon-brightness-high: 0.8;
+    --icon-saturation-high: 1.2;
+    --icon-contrast-high: .05;
 
-  --rev-brightness-low: 0;
-  --rev-saturation-low: 0;
-  --rev-contrast-low: 0.2;
-}
-/* The section wrapper - clip only top and bottom, allow sides to overflow */
-.lp-1-section {
-  clip-path: inset(0 -100% 0 -100%);
-}
-/* Remove clip-path when sidebar is expanded so fixed elements are visible */
-body.sidebar-expanded .lp-1-section {
-  clip-path: none;
-}
-/* Main Content Area */
-.landing-main {
-  margin-top: 60px;
-  width: 100%;
-  height: 100vh;
-  max-height: 70vh;
-  padding-top: 120px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Glow Wrapper - No clipping */
-.glow-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Circle Group - Background elements */
-.circle-group {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Rotating arc border (top quadrant) */
-.circle-arc {
-  position: absolute;
-  top: 77%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300%;
-  height: 180%;
-  pointer-events: none;
-  z-index: 3; /* above circle bg, under center content (z-index 10) */
-  display: none; /* hidden by default, shown only on mobile */
-}
-
-.circle-arc-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
-  animation: rotate-arc 12s linear infinite;
-  will-change: transform;
-}
-
-@keyframes rotate-arc {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.circle-arc-svg path {
-  opacity: 0.98;
-}
-
-/* Radiant Glow */
-.radiant-glow-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* Responsive sizing - scales with viewport height */
-  width: 738px;
-  height:   738px;
-  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
-  animation: rotate-glow 8s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-  /* GPU acceleration for smooth transitions */
-  will-change: width, height, left, opacity, transform;
-  /* Smooth transition for expand/collapse */
-  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.4s ease;
-}
-
-@keyframes rotate-glow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
+    --rev-brightness-low: 0;
+    --rev-saturation-low: 0;
+    --rev-contrast-low: 0.2;
   }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
+  /* The section wrapper - clip only top and bottom, allow sides to overflow */
+  .lp-1-section {
+    clip-path: inset(0 -100% 0 -100%);
   }
-}
-
-/* Main Circle - White background */
-.main-circle-bg {
-  opacity:0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 580px;
-  height: 580px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-}
-
-/* Floating Icon Buttons */
-.floating-icons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1280px;
-  height: 734px;
-  z-index: 2;
-  pointer-events: none;
-  transition: 
-    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Hide navbar floating icons on desktop */
-.navbar-floating-icons {
-  display: none;
-}
-
-.icon-btn {  
-  position: absolute;
-  width: auto;
-  height: 32px;
-  min-width: 32px;
-  max-width: 32px;
-  padding: 0;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start; 
-  cursor: pointer;
-  pointer-events: all;
-  overflow: hidden;
-  white-space: nowrap;
-  background: linear-gradient(to bottom, #f4f4f4, #fefefe);
-  border: 0;
-  transition:
-    max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease,
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: max-width, transform, top, left, opacity;
-}
-
-/* ICON — fixed anchor */
-.icon-btn img {
-  width: 16px;
-  height: 16px;
-  margin-left: 7.5px; /* 👈 anchor point */
-  flex-shrink: 0;
-  display: block;
-  transition: filter 0.25s ease;
-}
-
-/* LABEL — hidden by default */
-.icon-btn span {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  margin-left: 3px;
-  opacity: 0;
-  transform: translateX(-6px);
-  color: #767676;
-  transition:
-    opacity 0.25s ease,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    color 0.2s ease;
-}
-
-/* HOVER — expand right only */
-.icon-btn:hover {
-  max-width: 240px; /* expands only as far as text needs */
-  padding-right: 9.885px; /* extra pill breathing room without shifting icon */
-  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
-  transform: translateY(-1px);
-}
-
-/* Reveal text */
-.icon-btn:hover span {
-  opacity: 1;
-  transform: translateX(0);
-  color: #1246FF;
-}
-
-/* Icon color on hover */
-.icon-btn:hover img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%)
-          saturate(3089%) hue-rotate(220deg)
-          brightness(101%) contrast(104%);
-}
-
-.icon-discoverable img,.icon-direct-contract img,
-.icon-job-progress img ,.icon-post-job img ,
-.icon-set-profile img,.icon-raise-dispute img,
-.icon-earn-token img,.icon-dao img,
-.icon-multichain img,.icon-architecture img,
-.icon-revolution img,.icon-home img,.icon-contact img,
-{
-  opacity: 1;
-  width: 16px !important;
-  height: 16px !important;
-}
-
-/* Home icon specifics */
-.icon-home img { 
-  opacity: 1;
-  margin: 6px;
-  width: 16px; height: 16px; 
-}
-.icon-home { }
-
-.icon-set-profile {
-  left: 26.5%;
-  top: 54.1%;
-}
-
-.icon-discoverable {
-  left: 27.4%;
-  top: 33%;
-}
-
-.icon-post-job {
-  left: 34.5%;
-  top: 17.7%;
-}
-
-.icon-direct-contract {
-  left: 48%;
-  top: 8.5%;
-}
-
-.icon-job-progress {
-  left: 63.2%;
-  top: 17.7%;
-}
-
-.icon-raise-dispute {
-  left: 69.8%;
-  top: 32.4%;
-}
-
-.icon-earn-token {
-  left: 71.2%;
-  top: 53.5%;
-}
-
-.icon-dao {
-  left: 71.2%;
-  top: 53.5%;
-}
-
-.icon-multichain {
-  left: 79.5%;
-  top: 63.2%;
-}
-
-.icon-architecture {
-  left: 82%;
-  top: 72%;
-}
-
-.icon-revolution { 
-  left: 84.5%;
-  top: 82%;
-}
-/* Hide Earn Token and Multichain icons until the sidebar expands */
-.landing-main:not(.expanded) .icon-dao, 
-.landing-main:not(.expanded) .icon-multichain,
-.landing-main:not(.expanded) .icon-architecture,
-.landing-main:not(.expanded) .icon-revolution,
-.landing-main:not(.expanded) .icon-home {
-  display: none !important;
-  opacity: 0;
-}
-
-
-/* Contact icon specifics */
-.icon-contact img { 
-  filter: brightness(var(--icon-brightness-high))
-          saturate(var(--icon-saturation-high))
-          contrast(var(--icon-contrast-high));
-  opacity: 1;
-  margin: 6px;
-  width: 16px; height: 16px; 
-}
-
-/* Hide contact icon when not expanded */
-.landing-main:not(.expanded) .icon-contact {
-  display: none !important;
-}
-
-/* Active icon state - no blue border, show label persistently */
-.icon-btn.active {
-  background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
-  border: none !important;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
-  width: auto !important;
-  min-width: max-content;
-  max-width: none !important;
-  margin-left:-1px;
-  /* padding: 14.667px 16px 14.667px 14.667px !important; */
-  border-radius: 24px !important;
-  gap: 8px;
-  transform: none !important;
-  transition: none !important;
-}
-
-.icon-btn.active img {
-  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
-}
-
-/* Show label when active - persistent, not just on hover */
-.icon-btn.active span {
-  width: auto;
-  opacity: 1;
-  padding-left: 4px;
-  color: #1246FF;
-  font-weight: 500;
-}
-
-/* ============================================
-   EXPANDED STATE - Fixed sidebar for whole page
-   Circle becomes fixed when scrolling past hero
-   ============================================ */
-
-/* Hide circle when expanded */
-.landing-main.expanded .circle-group {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.95);
-  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.landing-main.expanded .main-circle-bg {
-  opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Hide glow wrapper but keep radiant-glow-container visible when expanded */
-.landing-main.expanded .glow-wrapper {
-  opacity: 1;
-  pointer-events: none;
-  transform: none;
-  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.landing-main.expanded .radiant-glow-container {
-  /* Expand the radiant SVG in place when an icon is clicked */
-  width: 2000px;
-  height: 2000px;
-  opacity: 1;
-  pointer-events: none;
-  visibility: visible;
-  display: block;
-  top: -5%;
-  margin-left: 20px;
-  /* Shift slightly right so icons can sit on the left */
-  left: 5%;
-  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.4s ease;
-} 
-
-.landing-main.expanded .floating-icons {
-  position: fixed;
-  left: 0;
-  top: 55%;
-  /* Curve stays fixed at center */
-  transform: translateY(-50%) !important;
-  width: 600px;
-  height: 1100px;
-  
-  transition: 
-    left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    margin-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 1001;
-  /* moved left to better align with sidebar */
-  margin-left: -135px;
-  animation: none !important;
-}
-
-/* Icons move smoothly along the curve - synced with circle expansion */
-.landing-main.expanded .icon-btn {
-  transition: 
-    top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    padding 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    gap 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.4s ease,
-    transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.5s ease;
-}
-
-
-/* Radiant glow effect for sidebar - same rotating glow as hero section */
-.sidebar-glow {
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  width: 1600px;
-  height: 600px;
-  background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
-  animation: sidebar-rotate-glow 1s linear infinite;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 1000;
-}
-
-/* Show and position sidebar glow when expanded */
-.landing-main.expanded .sidebar-glow {
-  position: fixed;
-  left: 130px;
-  top: 50%;
-  
-  transform: translateY(-50%) scale(1);
-  opacity: 1;
-  animation: sidebar-rotate-glow 1s linear infinite;
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
-}
-
-/* Sidebar rotating glow animation - same as hero */
-@keyframes sidebar-rotate-glow {
-  from {
-    transform: translateY(-50%) rotate(0deg);
+  /* Remove clip-path when sidebar is expanded so fixed elements are visible */
+  body.sidebar-expanded .lp-1-section {
+    clip-path: none;
   }
-  to {
-    transform: translateY(-50%) rotate(360deg);
+  /* Main Content Area */
+  .landing-main {
+    margin-top: 60px;
+    width: 100%;
+    height: 100vh;
+    max-height: 70vh;
+    padding-top: 120px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
   }
-}
 
-/* Make sure floating-icons doesn't clip the glow */
-.landing-main.expanded .floating-icons {
-  overflow: visible;
-}
-
-/* Static curve line (subtle background) */
-.landing-main.expanded .floating-icons::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23D1E4F7' stop-opacity='0.3'/%3E%3Cstop offset='15%25' stop-color='%23D1E4F7' stop-opacity='1'/%3E%3Cstop offset='50%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='85%25' stop-color='%23D1E4F7' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0.3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='2' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: left top;
-  background-size: 100% 100%;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  animation: showGlowLine 0.2s ease-out 0.4s forwards;
-}
-
-/* Keyframes for delayed glow line appearance */
-@keyframes showGlowLine {
-  0% {
-    opacity: 0;
-    transform: scaleY(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-@keyframes startGlowAnimation {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Hide the glow elements - line animation is the effect now */
-.landing-main.expanded .floating-icons .traveling-glow,
-.landing-main.expanded .floating-icons .traveling-glow-bottom {
-  display: none;
-}
-
-/* ============================================
-   CURVE POSITIONS - 7 slots along the arc
-   Position 0 (top): left: 93px, top: 8%
-   Position 1: left: 55px, top: 20%
-   Position 2: left: 20px, top: 34%
-   Position 3 (center): left: 15px, top: 50%
-   Position 4: left: 30px, top: 66%
-   Position 5: left: 75px, top: 82%
-   Position 6 (bottom): left: 129px, top: 95%
-   ============================================ */
-
-/* Default positions - direct-contract (index 3) is at center */
-.landing-main.expanded .icon-set-profile { left: 93px; top: 8%; transform: none; }
-.landing-main.expanded .icon-discoverable { left: 55px; top: 20%; transform: none; }
-.landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
-.landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
-/* Move home more right so it's visible alongside sidebar icons */
-.landing-main.expanded .icon-home { left: 410px; top: 10%; transform: none; }
-/* Contact icon at the bottom */
-.landing-main.expanded .icon-contact { left: 400px; top: 80%; transform: none; }
-.landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
-.landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
-.landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
-
-
-/* ============================================
-   DYNAMIC POSITIONS - Icons shift when active changes
-   Icon order: set-profile(0), discoverable(1), post-job(2), 
-               direct-contract(3), job-progress(4), raise-dispute(5), dao(6)
-   ============================================ */
-
-/* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
-.landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
-.landing-main.expanded .floating-icons.active-pos-0 .icon-contact { opacity: 0; top: 140%; }
-/* Home position when active-pos-0 */
-.landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 210px; top: 30%; }
-
-/* Active: discoverable (index 1) - shift icons so discoverable is at center */
-.landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
-.landing-main.expanded .floating-icons.active-pos-1 .icon-contact { left:310; top: 120%; }
-/* Home position when active-pos-1 */
-.landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 310px; top: 10%; }
-
-/* Active: post-job (index 2) - shift icons so post-job is at center */
-.landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-2 .icon-contact { left:310; top: 120%; }
-/* Home position when active-pos-2 */
-.landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 410px; top: 10%; }
-
-/* Active: direct-contract (index 3) - icons in natural positions */
-.landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-dao { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-multichain { opacity: 0; top: 120%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-architecture { opacity: 0; top: 130%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-revolution { opacity: 0; top: 140%; }
-.landing-main.expanded .floating-icons.active-pos-3 .icon-contact { left:310; top: 120%; }
-/* Home position when active-pos-3 */
-.landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 410px; top: 10%; }
-
-/* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
-.landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-4 .icon-contact { left:310; top: 120%; }
-/* Home position when active-pos-4 */
-.landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 410px; top: 8%; }
-
-/* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
-.landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-architecture { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { opacity: 0; top: 120%; }
-.landing-main.expanded .floating-icons.active-pos-5 .icon-contact { left:310; top: 120%; }
-/* Home position when active-pos-5 */
-.landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 410px; top: 10%; }
-
-/* Active: earn-token (index 6) - shift all icons UP so earn-token is at center */
-.landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-multichain { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-architecture { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { opacity: 0; top: 110%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-6 .icon-contact { left:310; top: 120%; }
-/* Active: dao (index 7) - shift all icons UP so dao is at center */
-.landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 20px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 15px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-dao { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-architecture { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 129px; top: 95%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 300px; top: 85%; transform: none; }
-
-/* Active: multichain (index 8) */
-.landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile { opacity: 0; top: -40%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-discoverable { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-post-job { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 25px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 18px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 75px; top: 82%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 260px; top: 74%; transform: none; }
-/* Active: architecture (index 9) */
-.landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { opacity: 0; top: -50%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable { opacity: 0; top: -40%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-post-job { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-direct-contract { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 25px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 18px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-architecture { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 30px; top: 66%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 233px; top: 68%; transform: none; }
-
-/* Active: revolution (index 10) */
-.landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { opacity: 0; top: -60%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-discoverable { opacity: 0; top: -50%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-post-job { opacity: 0; top: -40%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-direct-contract { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-job-progress { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-dao { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 25px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 18px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 15px; top: 50%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 410px; top: 10%; }
-.landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 207px; top: 58%; transform: none; }
-
-/* Active: contact (index 11) - contact at center */
-.landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -70%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-discoverable { opacity: 0; top: -60%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-post-job { opacity: 0; top: -50%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-direct-contract { opacity: 0; top: -40%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-job-progress { opacity: 0; top: -30%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-raise-dispute { opacity: 0; top: -20%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token { opacity: 0; top: -10%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-dao { left: 93px; top: 8%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 55px; top: 20%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 25px; top: 34%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-revolution { left: 18px; top: 42%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 195px; top: 46%; }
-.landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 410px; top: 10%; }
-
-/* Smooth opacity transition for icons going off-screen */
-.landing-main.expanded .icon-btn {
-  transition: top 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
-              left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-/* Hide center content when expanded */
-.landing-main.expanded .center-content {
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.96);
-  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
-              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Show center content smoothly when collapsing */
-.landing-main .center-content {
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, 
-              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
-}
-
-/* Expanded Content Area - renders section content inside hero */
-.expanded-content-area {
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 1200px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* GPU acceleration for smooth slide animations */
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  /* Smooth transitions synced with circle expansion (0.6s) */
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Add sliding transition for expanded content */
-.expanded-content-area {
-  /* Animation applied via JS classes */
-}
-
-/* Slide in from right - starts small and off-screen, grows as it arrives */
-@keyframes slide-in-right {
-  0% {
-    transform: translate(60%, -50%) scale(0.7);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-/* Slide in from left (when going bottom-to-top) */
-@keyframes slide-in-left {
-  0% {
-    transform: translate(-160%, -50%) scale(0.7);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-}
-
-/* Exit animations - shrinks first then slides away */
-@keyframes slide-out-left {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  30% {
-    transform: translate(-50%, -50%) scale(0.75);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translate(-120%, -50%) scale(0.6);
-    opacity: 0;
-  }
-}
-
-@keyframes slide-out-right {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  30% {
-    transform: translate(-50%, -50%) scale(0.75);
-    opacity: 0.8;
-  }
- 
-  100% {
-    transform: translate(40%, -50%) scale(0.6);
-    opacity: 0;
-  }
-}
-
-
-/* Apply animation classes - smooth transitions without bounce */
-.expanded-content-area.slide-in-right {
-  animation: slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.expanded-content-area.slide-in-left {
-  animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* Exit animations */
-.expanded-content-area.slide-out-left {
-  animation: slide-out-left 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.expanded-content-area.slide-out-right {
-  animation: slide-out-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Hide any scrollbars that might appear */
-.expanded-content-area::-webkit-scrollbar {
-  display: none;
-}
-.expanded-content-area {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.expanded-content-area .lp-section {
-  /* Reset section styles when rendered inside hero */
-  min-height: auto;
-  padding: 0;
-  margin: 0;
-  margin-left: 0 !important;
-  background: transparent;
-  box-shadow: none;
-  border: none;
-  overflow: visible;
-}
-
-/* Reset container padding and alignment inside expanded area */
-.expanded-content-area .lp-section > div {
-  background: transparent;
-  box-shadow: none;
-  padding: 0 40px;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-}
-
-/* Specific fix for contact section container alignment */
-.expanded-content-area .lp-13-container {
-  padding: 0 20px;
-  max-width: 1000px;
-}
-
-@keyframes fadeInContent {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -45%);
-  }
-  to {
-    opacity: 1;
+  /* Glow Wrapper - No clipping */
+  .glow-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
   }
-}
 
-/* Transition for normal state - use specific properties to avoid overriding optimized transitions */
-.circle-group,
-.main-circle-bg {
-  transition: 
-    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
+  /* Circle Group - Background elements */
+  .circle-group {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-.center-content {
-  transition: 
-    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
+  /* Rotating arc border (top quadrant) */
+  .circle-arc {
+    position: absolute;
+    top: 77%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300%;
+    height: 180%;
+    pointer-events: none;
+    z-index: 3; /* above circle bg, under center content (z-index 10) */
+    display: none; /* hidden by default, shown only on mobile */
+  }
 
-/* radiant-glow-container transitions already defined in base rule - don't override */
+  .circle-arc-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: 50% 50%;
+    transform-box: fill-box;
+    animation: rotate-arc 12s linear infinite;
+    will-change: transform;
+  }
 
-/* Smooth transition for floating icons - use specific properties, not all */
-.floating-icons {
-  transition: 
-    left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
+  @keyframes rotate-arc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 
-/* icon-btn transitions defined in base .icon-btn rule - don't override with 'all' */
+  .circle-arc-svg path {
+    opacity: 0.98;
+  }
 
-/* Center Content */
-.center-content {
-  position: relative;
-  z-index: 10;
-  margin-top: -90px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 450px;
-  gap: 48px;
-  padding: 0 20px;
-}
+  /* Radiant Glow */
+  .radiant-glow-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Responsive sizing - scales with viewport height */
+    width: 738px;
+    height:   738px;
+    background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
+    animation: rotate-glow 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    /* GPU acceleration for smooth transitions */
+    will-change: width, height, left, opacity, transform;
+    /* Smooth transition for expand/collapse */
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s ease;
+  }
 
-.text-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  align-self: stretch;
-}
+  @keyframes rotate-glow {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
 
-.main-heading {
-  align-self: stretch;
-  font-family: 'inter', sans-serif;
-  color: var(--Base-Black, #050505);
-  text-align: center;
+  /* Main Circle - White background */
+  .main-circle-bg {
+    opacity:0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 580px;
+    height: 580px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
 
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 48px; /* 120% */
-  letter-spacing: -1.6px;
-}
+  /* Floating Icon Buttons */
+  .floating-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1280px;
+    height: 734px;
+    z-index: 2;
+    pointer-events: none;
+    transition: 
+      left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      top 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-.main-description {
-  align-self: stretch;
-  color: var(--Gray-Dark, #767676);
-  text-align: center;
-  font-family: inter, sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 150% */
-}
+  /* Hide navbar floating icons on desktop */
+  .navbar-floating-icons {
+    display: none;
+  }
 
+  .icon-btn {  
+    position: absolute;
+    width: auto;
+    height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    padding: 0;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start; 
+    cursor: pointer;
+    pointer-events: all;
+    overflow: hidden;
+    white-space: nowrap;
+    background: linear-gradient(to bottom, #f4f4f4, #fefefe);
+    border: 0;
+    transition:
+      max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s ease,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: max-width, transform, top, left, opacity;
+  }
+
+  /* ICON — fixed anchor */
+  .icon-btn img {
+    width: 16px;
+    height: 16px;
+    margin-left: 7.5px; /* 👈 anchor point */
+    flex-shrink: 0;
+    display: block;
+    transition: filter 0.25s ease;
+  }
+
+  /* LABEL — hidden by default */
+  .icon-btn span {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 3px;
+    opacity: 0;
+    transform: translateX(-6px);
+    color: #767676;
+    transition:
+      opacity 0.25s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.2s ease;
+  }
+
+  /* HOVER — expand right only */
+  .icon-btn:hover {
+    max-width: 240px; /* expands only as far as text needs */
+    padding-right: 9.885px; /* extra pill breathing room without shifting icon */
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px);
+  }
+
+  /* Reveal text */
+  .icon-btn:hover span {
+    opacity: 1;
+    transform: translateX(0);
+    color: #1246FF;
+  }
+
+  /* Icon color on hover */
+  .icon-btn:hover img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(98%)
+            saturate(3089%) hue-rotate(220deg)
+            brightness(101%) contrast(104%);
+  }
+
+  .icon-discoverable img,.icon-direct-contract img,
+  .icon-job-progress img ,.icon-post-job img ,
+  .icon-set-profile img,.icon-raise-dispute img,
+  .icon-earn-token img,.icon-dao img,
+  .icon-multichain img,.icon-architecture img,
+  .icon-revolution img,.icon-home img,.icon-contact img,
+  {
+    opacity: 1;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* Home icon specifics */
+  .icon-home img { 
+    opacity: 1;
+    margin: 6px;
+    width: 16px; height: 16px; 
+  }
+  .icon-home { }
+
+  .icon-set-profile {
+    left: 26.5%;
+    top: 54.1%;
+  }
+
+  .icon-discoverable {
+    left: 27.4%;
+    top: 33%;
+  }
+
+  .icon-post-job {
+    left: 34.5%;
+    top: 17.7%;
+  }
+
+  .icon-direct-contract {
+    left: 48%;
+    top: 8.5%;
+  }
+
+  .icon-job-progress {
+    left: 63.2%;
+    top: 17.7%;
+  }
+
+  .icon-raise-dispute {
+    left: 69.8%;
+    top: 32.4%;
+  }
+
+  .icon-earn-token {
+    left: 71.2%;
+    top: 53.5%;
+  }
+
+  .icon-dao {
+    left: 71.2%;
+    top: 53.5%;
+  }
+
+  .icon-multichain {
+    left: 79.5%;
+    top: 63.2%;
+  }
+
+  .icon-architecture {
+    left: 82%;
+    top: 72%;
+  }
+
+  .icon-revolution { 
+    left: 84.5%;
+    top: 82%;
+  }
+  /* Hide Earn Token and Multichain icons until the sidebar expands */
+  .landing-main:not(.expanded) .icon-dao, 
+  .landing-main:not(.expanded) .icon-multichain,
+  .landing-main:not(.expanded) .icon-architecture,
+  .landing-main:not(.expanded) .icon-revolution,
+  .landing-main:not(.expanded) .icon-home {
+    display: none !important;
+    opacity: 0;
+  }
+
+  /* Contact icon specifics */
+  .icon-contact img { 
+    filter: brightness(var(--icon-brightness-high))
+            saturate(var(--icon-saturation-high))
+            contrast(var(--icon-contrast-high));
+    opacity: 1;
+    margin: 6px;
+    width: 16px; height: 16px; 
+  }
+
+  /* Hide contact icon when not expanded */
+  .landing-main:not(.expanded) .icon-contact {
+    display: none !important;
+  }
+
+  /* Active icon state - no blue border, show label persistently */
+  .icon-btn.active {
+    background: linear-gradient(180deg, #ffffff 0%, #f8faff 100%);
+    border: none !important;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.08);
+    width: auto !important;
+    min-width: max-content;
+    max-width: none !important;
+    margin-left:-1px;
+    /* padding: 14.667px 16px 14.667px 14.667px !important; */
+    border-radius: 24px !important;
+    gap: 8px;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .icon-btn.active img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(3089%) hue-rotate(220deg) brightness(101%) contrast(104%);
+  }
+
+  /* Show label when active - persistent, not just on hover */
+  .icon-btn.active span {
+    width: auto;
+    opacity: 1;
+    padding-left: 4px;
+    color: #1246FF;
+    font-weight: 500;
+  }
+  /* ============================================
+    EXPANDED STATE - Fixed sidebar for whole page
+    Circle becomes fixed when scrolling past hero
+    ============================================ */
+
+  /* Hide circle when expanded */
+  .landing-main.expanded .circle-group {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.95);
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .landing-main.expanded .main-circle-bg {
+    opacity: 0;
+    transform: scale(0.92);
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1), transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Hide glow wrapper but keep radiant-glow-container visible when expanded */
+  .landing-main.expanded .glow-wrapper {
+    opacity: 1;
+    pointer-events: none;
+    transform: none;
+    transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .landing-main.expanded .radiant-glow-container {
+    /* Expand the radiant SVG in place when an icon is clicked */
+    width: 2000px;
+    height: 2000px;
+    opacity: 1;
+    pointer-events: none;
+    visibility: visible;
+    display: block;
+    top: -5%;
+    margin-left: 20px;
+    /* Shift slightly right so icons can sit on the left */
+    left: 5%;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s ease;
+  } 
+
+  .landing-main.expanded .floating-icons {
+    position: fixed;
+    left: 0;
+    top: 55%;
+    /* Curve stays fixed at center */
+    transform: translateY(-50%) !important;
+    width: 600px;
+    height: 1100px;
+    
+    transition: 
+      left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      margin-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1001;
+    /* moved left to better align with sidebar */
+    margin-left: -135px;
+    animation: none !important;
+  }
+
+  /* Icons move smoothly along the curve - synced with circle expansion */
+  .landing-main.expanded .icon-btn {
+    transition: 
+      top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      gap 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease,
+      transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+      opacity 0.5s ease;
+  }
+
+
+  /* Radiant glow effect for sidebar - same rotating glow as hero section */
+  .sidebar-glow { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 1600px;
+    height: 600px;
+    background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
+    animation: sidebar-rotate-glow 1s linear infinite;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1000;
+  }
+
+  /* Show and position sidebar glow when expanded */
+  .landing-main.expanded .sidebar-glow {
+    position: fixed;
+    left: 130px;
+    top: 50%;
+    
+    transform: translateY(-50%) scale(1);
+    opacity: 1;
+    animation: sidebar-rotate-glow 1s linear infinite;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+  }
+
+  /* Sidebar rotating glow animation - same as hero */
+  @keyframes sidebar-rotate-glow {
+    from {
+      transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateY(-50%) rotate(360deg);
+    }
+  }
+
+  /* Make sure floating-icons doesn't clip the glow */
+  .landing-main.expanded .floating-icons {
+    overflow: visible;
+  }
+
+  /* Static curve line (subtle background) */
+  .landing-main.expanded .floating-icons::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='700' viewBox='0 0 180 700'%3E%3Cdefs%3E%3ClinearGradient id='lineGrad' x1='0%25' y1='100%25' x2='0%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%23D1E4F7' stop-opacity='0.3'/%3E%3Cstop offset='15%25' stop-color='%23D1E4F7' stop-opacity='1'/%3E%3Cstop offset='50%25' stop-color='%231246FF' stop-opacity='1'/%3E%3Cstop offset='85%25' stop-color='%23D1E4F7' stop-opacity='1'/%3E%3Cstop offset='100%25' stop-color='%23D1E4F7' stop-opacity='0.3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M 160 0 Q 30 175, 30 350 Q 30 525, 160 700' stroke='url(%23lineGrad)' stroke-width='2' fill='none' stroke-linecap='round' stroke-dasharray='950' stroke-dashoffset='-950'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 100% 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    animation: showGlowLine 0.2s ease-out 0.4s forwards;
+  }
+
+  /* Keyframes for delayed glow line appearance */
+  @keyframes showGlowLine {
+    0% {
+      opacity: 0;
+      transform: scaleY(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+
+  @keyframes startGlowAnimation {
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Hide the glow elements - line animation is the effect now */
+  .landing-main.expanded .floating-icons .traveling-glow,
+  .landing-main.expanded .floating-icons .traveling-glow-bottom {
+    display: none;
+  }
+  /* ============================================
+    CURVE POSITIONS - 7 slots along the arc
+    Position 0 (top): left: 93px, top: 8%
+    Position 1: left: 55px, top: 20%
+    Position 2: left: 20px, top: 34%
+    Position 3 (center): left: 15px, top: 50%
+    Position 4: left: 30px, top: 66%
+    Position 5: left: 75px, top: 82%
+    Position 6 (bottom): left: 129px, top: 95%
+    ============================================ */
+
+  /* Default positions - direct-contract (index 3) is at center */
+  .landing-main.expanded .icon-set-profile { left: 93px; top: 8%; transform: none; }
+  .landing-main.expanded .icon-discoverable { left: 55px; top: 20%; transform: none; }
+  .landing-main.expanded .icon-post-job { left: 20px; top: 34%; transform: none; }
+  .landing-main.expanded .icon-direct-contract { left: 15px; top: 50%; transform: none; }
+  /* Move home more right so it's visible alongside sidebar icons */
+  .landing-main.expanded .icon-home { left: 410px; top: 10%; transform: none; }
+  /* Contact icon at the bottom */
+  .landing-main.expanded .icon-contact { left: 400px; top: 80%; transform: none; }
+  .landing-main.expanded .icon-job-progress { left: 30px; top: 66%; transform: none; }
+  .landing-main.expanded .icon-raise-dispute { left: 75px; top: 82%; transform: none; }
+  .landing-main.expanded .icon-dao { left: 129px; top: 95%; transform: none; }
+
+  /* ============================================
+    DYNAMIC POSITIONS - Icons shift when active changes
+    Icon order: set-profile(0), discoverable(1), post-job(2), 
+                direct-contract(3), job-progress(4), raise-dispute(5), dao(6)
+    ============================================ */
+
+  /* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-contact { opacity: 0; top: 140%; }
+  /* Home position when active-pos-0 */
+  .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 210px; top: 30%; }
+
+  /* Active: discoverable (index 1) - shift icons so discoverable is at center */
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-contact { left:310; top: 120%; }
+  /* Home position when active-pos-1 */
+  .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 310px; top: 10%; }
+
+  /* Active: post-job (index 2) - shift icons so post-job is at center */
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-contact { left:310; top: 120%; }
+  /* Home position when active-pos-2 */
+  .landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 410px; top: 10%; }
+
+  /* Active: direct-contract (index 3) - icons in natural positions */
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 20px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-dao { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-multichain { opacity: 0; top: 120%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-architecture { opacity: 0; top: 130%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-revolution { opacity: 0; top: 140%; }
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-contact { left:310; top: 120%; }
+  /* Home position when active-pos-3 */
+  .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 410px; top: 10%; }
+
+  /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 20px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-contact { left:310; top: 120%; }
+  /* Home position when active-pos-4 */
+  .landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 410px; top: 8%; }
+
+  /* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { opacity: 0; top: 120%; }
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-contact { left:310; top: 120%; }
+  /* Home position when active-pos-5 */
+  .landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 410px; top: 10%; }
+
+  /* Active: earn-token (index 6) - shift all icons UP so earn-token is at center */
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { opacity: 0; top: 110%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 410px; top: 10%; }
+  .landing-main.expanded .floating-icons.active-pos-6 .icon-contact { left:310; top: 120%; }
+  /* Active: dao (index 7) - shift all icons UP so dao is at center */
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 20px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 15px; top: 42%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-dao { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 129px; top: 95%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 410px; top: 10%; }
+  .landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 300px; top: 85%; transform: none; }
+
+  /* Active: multichain (index 8) */
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile { opacity: 0; top: -40%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-discoverable { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-post-job { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 25px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 18px; top: 42%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 75px; top: 82%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 410px; top: 10%; }
+  .landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 260px; top: 74%; transform: none; }
+  /* Active: architecture (index 9) */
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { opacity: 0; top: -50%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable { opacity: 0; top: -40%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-post-job { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-direct-contract { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 25px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 18px; top: 42%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 30px; top: 66%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 410px; top: 10%; }
+  .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 233px; top: 68%; transform: none; }
+
+  /* Active: revolution (index 10) */
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { opacity: 0; top: -60%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-discoverable { opacity: 0; top: -50%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-post-job { opacity: 0; top: -40%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-direct-contract { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-job-progress { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-dao { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 25px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 18px; top: 42%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 15px; top: 50%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 410px; top: 10%; }
+  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 207px; top: 58%; transform: none; }
+
+  /* Active: contact (index 11) - contact at center */
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -70%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-discoverable { opacity: 0; top: -60%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-post-job { opacity: 0; top: -50%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-direct-contract { opacity: 0; top: -40%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-job-progress { opacity: 0; top: -30%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-raise-dispute { opacity: 0; top: -20%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token { opacity: 0; top: -10%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-dao { left: 93px; top: 8%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 55px; top: 20%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 25px; top: 34%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution { left: 18px; top: 42%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 195px; top: 46%; }
+  .landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 410px; top: 10%; }
+
+  /* Smooth opacity transition for icons going off-screen */
+  .landing-main.expanded .icon-btn {
+    transition: top 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+                left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Hide center content when expanded */
+  .landing-main.expanded .center-content {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.96);
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Show center content smoothly when collapsing */
+  .landing-main .center-content {
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, 
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+  }
+
+  /* Expanded Content Area - renders section content inside hero */
+  .expanded-content-area {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* GPU acceleration for smooth slide animations */
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Smooth transitions synced with circle expansion (0.6s) */
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Add sliding transition for expanded content */
+  .expanded-content-area {
+    /* Animation applied via JS classes */
+  }
+
+  /* Slide in from right - starts small and off-screen, grows as it arrives */
+  @keyframes slide-in-right {
+    0% {
+      transform: translate(60%, -50%) scale(0.7);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Slide in from left (when going bottom-to-top) */
+  @keyframes slide-in-left {
+    0% {
+      transform: translate(-160%, -50%) scale(0.7);
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Exit animations - shrinks first then slides away */
+  @keyframes slide-out-left {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    30% {
+      transform: translate(-50%, -50%) scale(0.75);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-120%, -50%) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-out-right {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    30% {
+      transform: translate(-50%, -50%) scale(0.75);
+      opacity: 0.8;
+    }
+  
+    100% {
+      transform: translate(40%, -50%) scale(0.6);
+      opacity: 0;
+    }
+  }
+
+  /* Apply animation classes - smooth transitions without bounce */
+  .expanded-content-area.slide-in-right {
+    animation: slide-in-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .expanded-content-area.slide-in-left {
+    animation: slide-in-left 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  /* Exit animations */
+  .expanded-content-area.slide-out-left {
+    animation: slide-out-left 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .expanded-content-area.slide-out-right {
+    animation: slide-out-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  /* Hide any scrollbars that might appear */
+  .expanded-content-area::-webkit-scrollbar {
+    display: none;
+  }
+  .expanded-content-area {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .expanded-content-area .lp-section {
+    /* Reset section styles when rendered inside hero */
+    min-height: auto;
+    padding: 0;
+    margin: 0;
+    margin-left: 0 !important;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    overflow: visible;
+  }
+
+  /* Reset container padding and alignment inside expanded area */
+  .expanded-content-area .lp-section > div {
+    background: transparent;
+    box-shadow: none;
+    padding: 0 40px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  /* Specific fix for contact section container alignment */
+  .expanded-content-area .lp-13-container {
+    padding: 0 20px;
+    max-width: 1000px;
+  }
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -45%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  /* Transition for normal state - use specific properties to avoid overriding optimized transitions */
+  .circle-group,
+  .main-circle-bg {
+    transition: 
+      width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .center-content {
+    transition: 
+      opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* radiant-glow-container transitions already defined in base rule - don't override */
+  /* Smooth transition for floating icons - use specific properties, not all */
+  .floating-icons {
+    transition: 
+      left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      top 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* icon-btn transitions defined in base .icon-btn rule - don't override with 'all' */
+  /* Center Content */
+  .center-content {
+    position: relative;
+    z-index: 10;
+    margin-top: -90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 450px;
+    gap: 48px;
+    padding: 0 20px;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+  }
+
+  .main-heading {
+    align-self: stretch;
+    font-family: 'inter', sans-serif;
+    color: var(--Base-Black, #050505);
+    text-align: center;
+
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px; /* 120% */
+    letter-spacing: 0.02em;
+  }
+
+  .main-description {
+    align-self: stretch;
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    letter-spacing: 0.02em;
+    font-family: inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+  }
+
+  
 /* Adjustments for 1025-1400px screens */
 @media (max-width: 1440px) and (min-width: 1025px) {
-
   .main-heading {
     align-self: stretch;
     color: var(--Base-Black, #050505);
@@ -994,20 +986,20 @@ body.sidebar-expanded .lp-1-section {
     /* Scale line-height proportionally */
     line-height: clamp(38px, 6vh, 48px);
     letter-spacing: -1.6px;
-}
+ }
 
-.main-description {
-    align-self: stretch;
-    color: var(--Gray-Dark, #767676);
-    text-align: center;
-    font-family: inter, sans-serif;
-    /* Scales between 13px and 16px */
-    font-size: clamp(13px, 2vh, 16px);
-    font-style: normal;
-    font-weight: 400;
-    /* Scale line-height proportionally */
-    line-height: clamp(20px, 3vh, 24px);
-}
+  .main-description {
+      align-self: stretch;
+      color: var(--Gray-Dark, #767676);
+      text-align: center;
+      font-family: inter, sans-serif;
+      /* Scales between 13px and 16px */
+      font-size: clamp(13px, 2vh, 16px);
+      font-style: normal;
+      font-weight: 400;
+      /* Scale line-height proportionally */
+      line-height: clamp(20px, 3vh, 24px);
+  }
 
   .lp-1-section{
     /* margin-top: 20px; */
@@ -1016,15 +1008,14 @@ body.sidebar-expanded .lp-1-section {
     /* Use the smaller of width or height to maintain circle */
     width: min(843px, 100vw, 100vh);
     height: min(844px, 100vw, 100vh);
-}
+ }
 
-.floating-icons {
-    /* Match the same scale factor */
-    width: min(1100px, 130vw, 130vh);  /* Scale proportionally with glow */
-    height: min(555px, 66vw, 66vh); 
-}
+  .floating-icons {
+      /* Match the same scale factor */
+      width: min(1100px, 130vw, 130vh);  /* Scale proportionally with glow */
+      height: min(555px, 66vw, 66vh); 
+  }
   
-
    .lp-blue-button {
     color: var(--Base-White, #FFF);
     font-family: inter, sans-serif;
@@ -1040,8 +1031,6 @@ body.sidebar-expanded .lp-1-section {
     width: min(773px, 95vh);
     height: min(773px, 88vh);
   }
-
-  
 
   .main-circle-bg {
     width: min(530px, 67vh);
@@ -1125,7 +1114,11 @@ body.sidebar-expanded .lp-1-section {
     padding-inline: 6px !important;
   }
 
-  .icon-set-profile img,
+  .icon-set-profile img{
+    opacity: 0.9;
+    width: 17px;
+    height: 17px;
+  }
   .icon-discoverable img,
   .icon-post-job img,
   .icon-direct-contract img,
@@ -1153,36 +1146,44 @@ body.sidebar-expanded .lp-1-section {
   .landing-main.expanded .icon-btn {
     margin-left: -1px !important;
     justify-items: center;
-    height: 36px !important;
-    min-width: 36px !important;
-    max-width: 36px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
   }
 
   .landing-main.expanded .icon-btn img {
-    width: 18px !important;
-    height: 18px !important;
-    margin-left: 8.5px !important;
+    width: 19px !important;
+    height: 19px !important;
+    margin-left: 9px !important;
   }
 
   /* Expanded state adjustments for 1025-1440px screens */
   .landing-main.expanded .floating-icons {
-    width: min(550px, 38vw);
-    height: min(1000px, 70vw);
-    margin-left: min(-160px, -11vw);
+    width: clamp(600px, 40vw, 1100px);
+    height: clamp(700px, 125vh, 800px);
+    margin-left: clamp(-160px, -12vw, -100px);
+    /* Icons stay in same position */
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
   }
 
   .landing-main.expanded .radiant-glow-container {
     /* Scale with viewport to stay aligned with icons */
-    width: min(2200px, 153vw);
-    height: min(2200px, 153vw);
+    width: min(2200px, 153.5vw);
+    height: min(2200px, 153.5vw);
     margin: 0;
+  
     /* Reduced margin to bring gradient closer to icons */
     margin-left: min(130px,40vw);
     /* Keep vertical center at 50% so shrinking height scales both elements equally */
     top: -5%;
     transform: translateY(-50%);
-    left: 5%;
+    left: 5.7%;
   }
+
   .icon-set-profile { left: 20%; top: 68%; } 
   .icon-discoverable { left: 18.25%; top: 36%; }
   .icon-post-job { left: 26.25%; top: 4%; }
@@ -1197,15 +1198,76 @@ body.sidebar-expanded .lp-1-section {
     opacity: 0;
   } 
  
-    /* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 40% !important; top: 25% !important; }
+    /* Top icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-home,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution
+     { left: 36% !important; top: 29.5% !important; }
+     
+    /* center icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-contact
+    { left: 34% !important; top: 50% !important;opacity: 1 !important; }
 
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 37% !important; top: 55%; }
+    /* bottom 1 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-contact
+    { left: 36.5% !important; top: 67% !important;opacity: 1 !important; }
 
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 47% !important; top: 75% !important; }
-    .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 53% !important; top: 83% !important; }
+    /* bottom 2 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-contact
+    { left: 39% !important; top: 75% !important;opacity: 1 !important; }
 
+    /* bottom 3 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-contact
+    { left: 42% !important; top: 83% !important;opacity: 1 !important; }
+
+    /* rest icons below */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress, 
     .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute, 
     .landing-main.expanded .floating-icons.active-pos-0 .icon-dao ,
@@ -1219,16 +1281,10 @@ body.sidebar-expanded .lp-1-section {
     }
 
     /* Active: discoverable (index 1) - shift icons so discoverable is at center */
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable {  left: 37% !important; top: 55%;  }
-
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job {  left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress {left: 53% !important; top: 83% !important; }
-
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-home {
+      left: 58% !important; top: -15% !important; opacity: 0 !important;
+    }
+  
     .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute,
     .landing-main.expanded .floating-icons.active-pos-1 .icon-dao,
     .landing-main.expanded .floating-icons.active-pos-1 .icon-earn-token,
@@ -1236,21 +1292,14 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-1 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-1 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-1 .icon-contact {
-      left: 87%  !important; top: 105% !important;
+      left: 59%  !important; top: 105% !important;
       opacity: 0 !important;
     }
   
     /* Active: post-job (index 2) - shift icons so post-job is at center */
     .landing-main.expanded .floating-icons.active-pos-2 .icon-home ,
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract {left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress {left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute {left: 53% !important; top: 83% !important; }
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
     .landing-main.expanded .floating-icons.active-pos-2 .icon-earn-token ,
     .landing-main.expanded .floating-icons.active-pos-2 .icon-dao ,
@@ -1258,52 +1307,38 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-2 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-2 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-2 .icon-contact {
-      left: 87%  !important; top: 105% !important;
+      left: 59%  !important; top: 105% !important;
       opacity: 0 !important;
     }
   
     /* Active: direct-contract (index 3) - DEFAULT positions */
     .landing-main.expanded .floating-icons.active-pos-3 .icon-home ,
     .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile,
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract  {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress {left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute  {left: 47% !important; top: 75% !important;}
-      .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token {left: 53% !important; top: 83% !important; }
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
     .landing-main.expanded .floating-icons.active-pos-3 .icon-dao ,
     .landing-main.expanded .floating-icons.active-pos-3 .icon-multichain ,
     .landing-main.expanded .floating-icons.active-pos-3 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-3 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-3 .icon-contact {
-        left: 87%  !important; top: 105% !important;
-        opacity: 0 !important;
+       left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
     }
 
     /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
     .landing-main.expanded .floating-icons.active-pos-4 .icon-home ,
     .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile ,
     .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable ,
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job  { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute {left: 42% !important; top: 66% !important; }
-      .landing-main.expanded .floating-icons.active-pos-4 .icon-earn-token {left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-4 .icon-dao {left: 53% !important; top: 83% !important; }
-
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job 
+     {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+    
     .landing-main.expanded .floating-icons.active-pos-4 .icon-multichain ,
     .landing-main.expanded .floating-icons.active-pos-4 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-4 .icon-revolution ,
     .landing-main.expanded .floating-icons.active-pos-4 .icon-contact {
-        left: 87%  !important; top: 105% !important;
-        opacity: 0 !important;
+        left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
     } 
   
     /* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
@@ -1311,21 +1346,14 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile ,
     .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable ,
     .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job ,
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token {left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-dao {left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain {left: 53% !important; top: 83% !important; }
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
     .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture ,
     .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution ,
     .landing-main.expanded .floating-icons.active-pos-5 .icon-contact {
-          left: 87%  !important; top: 105% !important;
-          opacity: 0 !important;
+          left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
     }
   
      /* Active: earn-token (index 6) */
@@ -1334,20 +1362,13 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable ,
     .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job, 
     .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract ,
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 73% !important; top: -15% !important; opacity: 0 !important; }
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-dao {left: 42% !important; top: 66% !important; }
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain {left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture {left: 53% !important; top: 83% !important; }
-
-      .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution ,
-      .landing-main.expanded .floating-icons.active-pos-6 .icon-contact {
-        left: 87%  !important; top: 105% !important;
-          opacity: 0 !important;
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-contact {
+        left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
       }
 
     /* Active: dao (index 7) */
@@ -1357,18 +1378,12 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job ,
     .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract ,
     .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress ,
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute  { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-dao {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain {left: 42% !important; top: 66% !important;  }
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture {  left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 53% !important; top: 83% !important;  }
-
-    .landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 87%  !important; top: 105% !important;
-          opacity: 0 !important; }
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute  
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+  
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-contact 
+    { left: 59%  !important; top: 105% !important;
+      opacity: 0 !important; }
 
     /* Active: multichain (index 8) */
     .landing-main.expanded .floating-icons.active-pos-8 .icon-home,
@@ -1378,16 +1393,9 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract ,
     .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress ,
     .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute ,
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-dao {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture {left: 42% !important; top: 66% !important;  }
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution {  left: 47% !important; top: 75% !important;}
-    .landing-main.expanded .floating-icons.active-pos-8 .icon-contact {  left: 53% !important; top: 83% !important; opacity: 1 !important; }
-
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important;}
+  
     /* Active: architecture (index 9) */
     .landing-main.expanded .floating-icons.active-pos-9 .icon-home,
     .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile ,
@@ -1397,15 +1405,9 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress ,
     .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute ,
     .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token ,
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 42% !important; top: 66% !important;}
-    .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 47% !important; top: 75% !important; opacity: 1 !important; }
-
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-dao 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
+   
   /* Active: revolution (index 10) */
     .landing-main.expanded .floating-icons.active-pos-10 .icon-home,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile ,
@@ -1416,14 +1418,9 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute ,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-dao ,
-    .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution {left: 37% !important; top: 55%;}
-
-    .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 42% !important; top: 66% !important; opacity: 1 !important; }
-
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
+    
   /* Active: contact (index 11) */
     .landing-main.expanded .floating-icons.active-pos-11 .icon-home ,
     .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile ,
@@ -1435,13 +1432,9 @@ body.sidebar-expanded .lp-1-section {
     .landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token ,
     .landing-main.expanded .floating-icons.active-pos-11 .icon-dao ,
     .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain,
-    .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 73% !important; top: -15% !important; opacity: 0 !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution {  left: 40% !important; top: 25% !important; }
-
-    .landing-main.expanded .floating-icons.active-pos-11 .icon-contact {left: 37% !important; top: 46%; opacity: 1 !important; }
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }   
 }
-
 
 
 @media (max-width: 1024px) {
@@ -1669,26 +1662,22 @@ body.sidebar-expanded .lp-1-section {
     max-width: 360px;
     gap: 28px;
     margin-top: 0;
-    padding: 0;
-    
+    padding: 0;   
   }
 
   .text-content {
-    gap: 8px;
-    
+    gap: 8px;   
   }
 
   .main-heading {
     font-size: 30px;
     line-height: 38px;
-    letter-spacing: -0.8px;
-    
+    letter-spacing: -0.8px;   
   }
 
   .main-description {
     font-size: 13px;
-    line-height: 20px;
-    
+    line-height: 20px;   
   }
 
   /* Add navbar icons as floating icons in mobile */
@@ -1777,12 +1766,10 @@ body.sidebar-expanded .lp-1-section {
   .lp-section { 
   
   }
-  /* Using centralized `.lp-blue-button-1` in `LandingPage.css` */
 
-  /* centralized in LandingPage.css */
   .lp-button-icon-home {
   transform: rotate(135deg);
-}
+  }
   
   .center-content {  
     display: flex;
@@ -1818,7 +1805,7 @@ body.sidebar-expanded .lp-1-section {
     text-align: center;
     font-family: inter, sans-serif;
     letter-spacing: 0.04em;
-    font-size: 16px !important;
+    font-size: 15px !important;
     font-style: normal;
     font-weight: 400;
     margin-top: -15px;
@@ -1868,36 +1855,18 @@ body.sidebar-expanded .lp-1-section {
     animation: rotate-arc 9s linear infinite;
   }
 
-  .main-circle-bg { 
-    /* top: 52%;
-    left: 50%;
 
-    width: 580px;
-    height: 580.726px;
-    border-radius: 580.726px;
-    background: #FFF;
-    opacity:1;
-    width: 780px;
-    height: 850px; 
-    margin-top: 150px;  
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    object-position: center top;
-     */
-    /* content: url('/assets/Ellipse 57.png'); */
+  @keyframes rotate-glow {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
   }
-
-
-@keyframes rotate-glow {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
   .floating-icons {
+    opacity: 0;
     width: 6500px;
     height: 3800px;
   }
@@ -1924,6 +1893,7 @@ body.sidebar-expanded .lp-1-section {
   .icon-revolution img,
   .icon-earn-token img,
   .icon-set-profile img {
+    opacity: 0 !important;
     width: 16px !important;
     height: 16px !important;
   }
@@ -1931,23 +1901,6 @@ body.sidebar-expanded .lp-1-section {
   .center-content {
     gap: 48px;
     margin-top: -100px;
-  }
-
-  .text-content {
-    gap: 12px;
-  }
-
-  .main-heading {
-    font-size: 30px;
-    line-height: 48px;
-    letter-spacing: -1.2px;
-  }
-
-  .main-description {
-    font-size: 16px;
-    line-height: 24px;
-    max-width: 358px;
-    margin: 0 auto;
   }
 
   /* Mini circle wrapper for icon buttons - Figma design */
@@ -1993,7 +1946,6 @@ body.sidebar-expanded .lp-1-section {
     height: 16px !important;
   }
   
-
   /* Individual navbar icon sizes for mobile */
   .navbar-icon-bot img {
     width: 20px !important;
