@@ -40,7 +40,7 @@ const JobProgressSection = () => {
 
         {/* Right Content - Job Details Card (SVG placeholder) */}
         <div className="lp-6-job-card-container">
-          <img src="/assets/job-table-LP.svg" alt="Job Details" className="lp-6-job-card-image" />
+          <img src="/assets/jobprogress/svgimg.svg" alt="Job Details" className="lp-6-job-card-image" />
         </div>
       </div>
     </section>

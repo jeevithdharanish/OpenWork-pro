@@ -212,11 +212,19 @@
   }
 
   
- .lp-4-section .openwork-ledger-image {
-    width: 100%;
-  max-width: 500px;
-  transform: scale(1.3);
-  transform-origin: center;
+ .lp-4-section {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lp-4-section .openwork-ledger-image {
+      width: 130%; /* Instead of scale(1.3) */
+      max-width: 650px; /* 500px * 1.3 */
+      height: auto;
+      display: block;
+      margin: 0 auto;
+  /* No transform needed */
 }
 
 
