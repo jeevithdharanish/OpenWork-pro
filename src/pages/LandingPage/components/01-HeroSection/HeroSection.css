@@ -18,7 +18,7 @@
   }
   /* Main Content Area */
   .landing-main {
-    margin-top: 60px;
+    margin-top: 63px;
     width: 100%;
     height: 100vh;
     max-height: 70vh;
@@ -93,10 +93,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* Responsive sizing - scales with viewport height */
-    width: 738px;
-    height:   738px;
+    width: 758px;
+    height:   758px;
     background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
-    animation: rotate-glow 6s linear infinite;
+    animation: rotate-glow 3s linear infinite;
     pointer-events: none;
     z-index: 0;
     /* GPU acceleration for smooth transitions */
@@ -248,37 +248,37 @@
   .icon-home { }
 
   .icon-set-profile {
-    left: 26.5%;
+    left: 26%;
     top: 54.1%;
   }
 
   .icon-discoverable {
-    left: 27.4%;
+    left: 27%;
     top: 33%;
   }
 
   .icon-post-job {
-    left: 34.5%;
+    left: 33%;
     top: 17.7%;
   }
 
   .icon-direct-contract {
     left: 48%;
-    top: 8.5%;
+    top: 7.5%;
   }
 
   .icon-job-progress {
-    left: 63.2%;
+    left: 64.2%;
     top: 17.7%;
   }
 
   .icon-raise-dispute {
-    left: 69.8%;
+    left: 70.2%;
     top: 32.4%;
   }
 
   .icon-earn-token {
-    left: 71.2%;
+    left: 71.7%;
     top: 53.5%;
   }
 
@@ -549,173 +549,243 @@
                 direct-contract(3), job-progress(4), raise-dispute(5), dao(6)
     ============================================ */
 
-  /* Active: set-profile (index 0) - shift all icons DOWN so set-profile is at center */
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute { opacity: 0; top: 120%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-dao { opacity: 0; top: 130%; }
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-contact { opacity: 0; top: 140%; }
-  /* Home position when active-pos-0 */
-  .landing-main.expanded .floating-icons.active-pos-0 .icon-home { left: 210px; top: 30%; }
+  /* Top icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-home,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution
+     { left: 34.2% !important; top: 33.5% !important; }
+     
+    /* center icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-contact
+    { left: 33% !important; top: 47% !important;opacity: 1 !important; }
 
-  /* Active: discoverable (index 1) - shift icons so discoverable is at center */
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-set-profile { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-discoverable { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-dao { opacity: 0; top: 120%; }
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-contact { left:310; top: 120%; }
-  /* Home position when active-pos-1 */
-  .landing-main.expanded .floating-icons.active-pos-1 .icon-home { left: 310px; top: 10%; }
+    /* bottom 1 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-discoverable,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-contact
+    { left: 36% !important; top: 62% !important;opacity: 1 !important; }
 
-  /* Active: post-job (index 2) - shift icons so post-job is at center */
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-discoverable { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-post-job { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-direct-contract { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-dao { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-contact { left:310; top: 120%; }
-  /* Home position when active-pos-2 */
-  .landing-main.expanded .floating-icons.active-pos-2 .icon-home { left: 410px; top: 10%; }
+    /* bottom 2 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-contact
+    { left: 39.3% !important; top: 68% !important;opacity: 1 !important; }
 
-  /* Active: direct-contract (index 3) - icons in natural positions */
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-post-job { left: 20px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-direct-contract { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-job-progress { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-raise-dispute { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-dao { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-multichain { opacity: 0; top: 120%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-architecture { opacity: 0; top: 130%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-revolution { opacity: 0; top: 140%; }
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-contact { left:310; top: 120%; }
-  /* Home position when active-pos-3 */
-  .landing-main.expanded .floating-icons.active-pos-3 .icon-home { left: 410px; top: 10%; }
+    /* bottom 3 icon position */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-contact
+    { left: 43% !important; top: 74% !important;opacity: 1 !important; }
 
-  /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-direct-contract { left: 20px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-job-progress { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-raise-dispute { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-dao { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-contact { left:310; top: 120%; }
-  /* Home position when active-pos-4 */
-  .landing-main.expanded .floating-icons.active-pos-4 .icon-home { left: 410px; top: 8%; }
+    /* rest icons below */
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress, 
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-raise-dispute, 
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-dao ,
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-0 .icon-contact {
+      left: 87%  !important; top: 105% !important;
+      opacity: 0 !important;
+    }
 
-  /* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-job-progress { left: 20px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-raise-dispute { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-earn-token { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-dao { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-multichain { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution { opacity: 0; top: 120%; }
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-contact { left:310; top: 120%; }
-  /* Home position when active-pos-5 */
-  .landing-main.expanded .floating-icons.active-pos-5 .icon-home { left: 410px; top: 10%; }
+    /* Active: discoverable (index 1) - shift icons so discoverable is at center */
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-home {
+      left: 58% !important; top: -15% !important; opacity: 0 !important;
+    }
+  
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-raise-dispute,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-dao,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-1 .icon-contact {
+      left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+    }
+  
+    /* Active: post-job (index 2) - shift icons so post-job is at center */
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-set-profile 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
-  /* Active: earn-token (index 6) - shift all icons UP so earn-token is at center */
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-raise-dispute { left: 20px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-earn-token { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-dao { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-multichain { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution { opacity: 0; top: 110%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-home { left: 410px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-6 .icon-contact { left:310; top: 120%; }
-  /* Active: dao (index 7) - shift all icons UP so dao is at center */
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute { left: 20px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-earn-token { left: 15px; top: 42%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-dao { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-multichain { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution { left: 129px; top: 95%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-home { left: 410px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-7 .icon-contact { left: 300px; top: 85%; transform: none; }
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-earn-token ,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-dao ,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-2 .icon-contact {
+      left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+    }
+  
+    /* Active: direct-contract (index 3) - DEFAULT positions */
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-discoverable 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
 
-  /* Active: multichain (index 8) */
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile { opacity: 0; top: -40%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-discoverable { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-post-job { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token { left: 25px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-dao { left: 18px; top: 42%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-multichain { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution { left: 75px; top: 82%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-home { left: 410px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-8 .icon-contact { left: 260px; top: 74%; transform: none; }
-  /* Active: architecture (index 9) */
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile { opacity: 0; top: -50%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable { opacity: 0; top: -40%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-post-job { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-direct-contract { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-dao { left: 25px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain { left: 18px; top: 42%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-architecture { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution { left: 30px; top: 66%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-home { left: 410px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-9 .icon-contact { left: 233px; top: 68%; transform: none; }
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-dao ,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-multichain ,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-revolution,
+    .landing-main.expanded .floating-icons.active-pos-3 .icon-contact {
+       left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+    }
 
+    /* Active: job-progress (index 4) - shift icons UP so job-progress is at center */
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-post-job 
+     {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+    
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-multichain ,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-architecture,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-revolution ,
+    .landing-main.expanded .floating-icons.active-pos-4 .icon-contact {
+        left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+    } 
+  
+    /* Active: raise-dispute (index 5) - shift icons UP so raise-dispute is at center */
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-direct-contract 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-architecture ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-revolution ,
+    .landing-main.expanded .floating-icons.active-pos-5 .icon-contact {
+          left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+    }
+  
+     /* Active: earn-token (index 6) */
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-post-job, 
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-job-progress 
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-revolution ,
+    .landing-main.expanded .floating-icons.active-pos-6 .icon-contact {
+        left: 59%  !important; top: 105% !important;
+      opacity: 0 !important;
+      }
+
+    /* Active: dao (index 7) */
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-job-progress ,
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-raise-dispute  
+    {left: 58% !important; top: -15% !important; opacity: 0 !important; }
+  
+    .landing-main.expanded .floating-icons.active-pos-7 .icon-contact 
+    { left: 59%  !important; top: 105% !important;
+      opacity: 0 !important; }
+
+    /* Active: multichain (index 8) */
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-home,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-set-profile,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-job-progress ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-8 .icon-earn-token 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important;}
+  
+    /* Active: architecture (index 9) */
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-home,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-job-progress ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-earn-token ,
+    .landing-main.expanded .floating-icons.active-pos-9 .icon-dao 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
+   
   /* Active: revolution (index 10) */
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile { opacity: 0; top: -60%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-discoverable { opacity: 0; top: -50%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-post-job { opacity: 0; top: -40%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-direct-contract { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-job-progress { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-dao { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain { left: 25px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture { left: 18px; top: 42%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-revolution { left: 15px; top: 50%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-home { left: 410px; top: 10%; }
-  .landing-main.expanded .floating-icons.active-pos-10 .icon-contact { left: 207px; top: 58%; transform: none; }
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-home,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-job-progress ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-earn-token,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-dao ,
+    .landing-main.expanded .floating-icons.active-pos-10 .icon-multichain 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; }
+    
+  /* Active: contact (index 11) */
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-home ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-discoverable ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-post-job ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-direct-contract ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-job-progress,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-raise-dispute ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-dao ,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain,
+    .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture 
+    { left: 58% !important; top: -15% !important; opacity: 0 !important; } 
 
-  /* Active: contact (index 11) - contact at center */
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-set-profile { opacity: 0; top: -70%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-discoverable { opacity: 0; top: -60%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-post-job { opacity: 0; top: -50%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-direct-contract { opacity: 0; top: -40%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-job-progress { opacity: 0; top: -30%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-raise-dispute { opacity: 0; top: -20%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-earn-token { opacity: 0; top: -10%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-dao { left: 93px; top: 8%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-multichain { left: 55px; top: 20%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-architecture { left: 25px; top: 34%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution { left: 18px; top: 42%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-contact { left: 195px; top: 46%; }
-  .landing-main.expanded .floating-icons.active-pos-11 .icon-home { left: 410px; top: 10%; }
 
   /* Smooth opacity transition for icons going off-screen */
   .landing-main.expanded .icon-btn {
@@ -1171,8 +1241,8 @@
   }
 
   .landing-main.expanded .radiant-glow-container {
-    /* Scale with viewport to stay aligned with icons */
-    width: min(2200px, 153.5vw);
+    /* Scale with viewport height to stay aligned with icons */
+   width: min(2200px, 153.5vw);
     height: min(2200px, 153.5vw);
     margin: 0;
   
@@ -1211,7 +1281,7 @@
     .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution
-     { left: 36.7% !important; top: 29.5% !important; }
+     { left: 36% !important; top: 29.5% !important; }
      
     /* center icon position */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile,

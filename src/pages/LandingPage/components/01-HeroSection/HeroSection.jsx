@@ -552,8 +552,8 @@ const HeroSection = () => {
 
   // Handle scroll/wheel events to navigate between sections
   const handleWheelNavigation = useCallback((e) => {
-    // Only handle wheel events when expanded and on desktop
-    if (!isExpanded || !isDesktop) return;
+    // Only handle wheel events on desktop
+    if (!isDesktop) return;
     
     // Check cooldown to prevent rapid navigation
     const now = Date.now();
@@ -569,6 +569,22 @@ const HeroSection = () => {
     e.preventDefault();
     scrollCooldownRef.current = true;
     lastScrollTimeRef.current = now;
+    
+    // If not expanded and scrolling down, expand and go to first section (set-profile)
+    if (!isExpanded && delta > 0) {
+      const firstIcon = iconConfigs[0];
+      handleIconClick(firstIcon.name, firstIcon.sectionId);
+      setTimeout(() => {
+        scrollCooldownRef.current = false;
+      }, 500);
+      return;
+    }
+    
+    // If not expanded and scrolling up, do nothing
+    if (!isExpanded) {
+      scrollCooldownRef.current = false;
+      return;
+    }
     
     // Get current index in iconConfigs (contact is special case at end)
     const allSections = [...iconOrder, 'contact'];
