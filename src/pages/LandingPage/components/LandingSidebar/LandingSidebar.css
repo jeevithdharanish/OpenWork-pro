@@ -301,6 +301,7 @@
     /* Reset Desktop Absolute positioning */
     position: relative !important; 
     min-width: 33.33%; 
+  
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -327,14 +328,15 @@
   }
 
   .sidebar-nav-item img {
-    width: 18px;
-    height: 18px;
-    filter: grayscale(1) opacity(0.9);
+    width: 16px;
+    height: 16px;
+    filter: grayscale(1) opacity(1);
   }
 
   /* ACTIVE (CENTER) STATE */
   .sidebar-nav-item.active {
-    transform: scale(0.9);
+    gap: 10px;
+    transform: scale(0.8);
   }
 
   .sidebar-nav-item.active .icon-wrapper {
@@ -343,31 +345,42 @@
   }
 
   .sidebar-nav-item.active img {
+    width: 20px;
+    height: 20px;
     filter: brightness(0) saturate(100%) invert(33%) sepia(94%) saturate(3000%) hue-rotate(215deg) brightness(102%) contrast(102%);
   }
 
-  /* Label Styling */
+  /* Label Styling - visible for all icons in mobile */
   .nav-label {
-    visibility: hidden;
+    visibility: visible;
     font-size: 9px;
+    font-family: inter, sans-serif;
     margin-top: 6px;
     font-weight: 600;
     color: #999;
-    opacity: 0;
-    transform: translateY(5px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.1px;
   }
 
   .sidebar-nav-item.active .nav-label {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1.4);
     color: #5c7cf1ff;
+    font-weight: 700;
   }
 
   /* Hide Desktop specific elements */
   .sidebar-line, .sidebar-top-icon {
     display: none;
+  }
+
+  /* Hide sidebar when on contact section */
+  .landing-sidebar.contact-active {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }
