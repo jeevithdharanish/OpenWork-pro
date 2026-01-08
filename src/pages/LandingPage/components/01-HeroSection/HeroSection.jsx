@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Button from '../../../../components/Button/Button';
 import './HeroSection.css';
 
@@ -129,6 +129,10 @@ const HeroSection = () => {
   const iconOrder = iconConfigs.map((icon) => icon.name);
   const defaultCenterIndex = Math.max(0, iconOrder.indexOf('direct-contract'));
   const [activeIndex, setActiveIndex] = useState(defaultCenterIndex);
+  
+  // Ref to track scroll cooldown to prevent rapid section changes
+  const scrollCooldownRef = useRef(false);
+  const lastScrollTimeRef = useRef(0);
 
   const sectionMap = iconConfigs.reduce((map, icon) => {
     map[icon.sectionId] = icon.name;
@@ -545,6 +549,78 @@ const HeroSection = () => {
     setIsExpanded(false);
     setActiveIcon(null);
   };
+
+  // Handle scroll/wheel events to navigate between sections
+  const handleWheelNavigation = useCallback((e) => {
+    // Only handle wheel events when expanded and on desktop
+    if (!isExpanded || !isDesktop) return;
+    
+    // Check cooldown to prevent rapid navigation
+    const now = Date.now();
+    if (scrollCooldownRef.current || now - lastScrollTimeRef.current < 600) {
+      e.preventDefault();
+      return;
+    }
+    
+    // Determine scroll direction
+    const delta = e.deltaY;
+    if (Math.abs(delta) < 30) return; // Ignore small scroll movements
+    
+    e.preventDefault();
+    scrollCooldownRef.current = true;
+    lastScrollTimeRef.current = now;
+    
+    // Get current index in iconConfigs (contact is special case at end)
+    const allSections = [...iconOrder, 'contact'];
+    const currentIndex = activeIcon === 'contact' ? allSections.length - 1 : iconOrder.indexOf(activeIcon);
+    
+    let newIndex;
+    if (delta > 0) {
+      // Scrolling down - go to next section
+      newIndex = Math.min(currentIndex + 1, allSections.length - 1);
+    } else {
+      // Scrolling up - go to previous section
+      newIndex = Math.max(currentIndex - 1, -1);
+    }
+    
+    // If going before first section, collapse to home
+    if (newIndex < 0) {
+      setIsExpanded(false);
+      setActiveIcon(null);
+      scrollCooldownRef.current = false;
+      return;
+    }
+    
+    const newIconName = allSections[newIndex];
+    const newSectionId = newIconName === 'contact' ? 'lp-13-section' : iconConfigs[newIndex]?.sectionId;
+    
+    if (newIconName && newIconName !== activeIcon) {
+      // Trigger the same behavior as clicking an icon
+      handleIconClick(newIconName, newSectionId);
+    }
+    
+    // Reset cooldown after animation completes
+    setTimeout(() => {
+      scrollCooldownRef.current = false;
+    }, 500);
+  }, [isExpanded, isDesktop, activeIcon, iconOrder, iconConfigs]);
+
+  // Add wheel event listener for section navigation
+  useEffect(() => {
+    if (!isDesktop) return;
+    
+    const mainElement = document.querySelector('.landing-main');
+    if (!mainElement) return;
+    
+    const wheelHandler = (e) => handleWheelNavigation(e);
+    
+    // Use passive: false to allow preventDefault
+    mainElement.addEventListener('wheel', wheelHandler, { passive: false });
+    
+    return () => {
+      mainElement.removeEventListener('wheel', wheelHandler);
+    };
+  }, [handleWheelNavigation, isDesktop]);
 
   return (
     <section id="lp-1-section" className="lp-section lp-1-section">
