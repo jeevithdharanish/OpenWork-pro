@@ -581,13 +581,15 @@
     height: 70px;
   }
   .lp-7-athena-image{
-    width: 75px;
-    height: 75px;
+    width: 105px;
+    height: 105px;
     /* transform: translateX(-3px); */
   }
   .lp-7-job-text{
-    width:80%;
-    height: 8%;
+    
+    width:140px;
+    height:90px;
+    margin-top:8px;
   }
 
   .lp-7-bottom-text {

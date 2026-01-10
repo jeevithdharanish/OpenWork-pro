@@ -124,10 +124,10 @@
 /* Core Circle */
 .lp-9-core-circle {
   position: absolute;
-  left: 116.19px; /* centered inside 450px group */
-  top: 116.19px;
-  width: 217.618px;
-  height: 217.618px;
+  left: 116px; /* centered inside 450px group */
+  top: 116px;
+  width: 217.6px;
+  height: 217.6px;
   z-index: 2;
 }
 
@@ -168,8 +168,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 87.474px;
-  height: 87.474px;
+  width: 87.4px;
+  height: 87.4px;
   z-index: 6;
   display: flex;
   align-items: center;
@@ -205,16 +205,13 @@
     line-height: 44px;
   }
 
-  .lp-9-circle-container {
-    
-    margin-right: 40px;
-    
-    width: 460px;
-    
+  .lp-9-circle-container {  
+    margin-right: 40px;   
+    width: 460px; 
     height: 420px;
   }
+
   .lp-9-governance-circle-group {
-    
     transform:  scale(1.1) translate(-50%, -50%);
   }
 }

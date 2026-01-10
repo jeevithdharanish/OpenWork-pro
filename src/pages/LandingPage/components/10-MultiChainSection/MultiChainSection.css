@@ -61,7 +61,7 @@
 
 .lp-10-chain-circle-group {
   position: absolute;
-  width: 346.047px;
+  width: 346px;
   height: 360px;
   left: 50%;
   top: 50%;
@@ -73,8 +73,8 @@
   position: absolute;
   left: 0;
   top: 19.2px;
-  width: 340.798px;
-  height: 340.798px;
+  width: 340.7px;
+  height: 340.7px;
   z-index: 0;
   pointer-events: none;
   transform-origin: center center;
@@ -95,8 +95,8 @@
   position: absolute;
   left: 0;
   top: 19.2px;
-  width: 340.798px;
-  height: 340.798px;
+  width: 340.7px;
+  height: 340.7px;
   z-index: 3;
   pointer-events: none;
   transform-origin: center center;
@@ -110,10 +110,10 @@
 /* Radiant Glow */
 .lp-10-radiant-glow {
   position: absolute;
-  left: 61.67px;
-  top: 80.99px;
-  width: 217.618px;
-  height: 217.53px;
+  left: 61.6px;
+  top: 80.9px;
+  width: 217.6px;
+  height: 217.5px;
   animation: lp10-rotate-glow 20s linear infinite;
   z-index: 1;
 }
@@ -140,9 +140,9 @@
 .lp-10-core-circle {
   position: absolute;
   left: 61.67px;
-  top: 80.99px;
-  width: 217.618px;
-  height: 217.618px;
+  top: 80px;
+  width: 217.6px;
+  height: 217.6px;
   z-index: 2;
 }
 
@@ -155,7 +155,7 @@
   width: 280px;
   height: 280px;
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
-  animation: lp10-rotate-glow 20s linear infinite;
+  animation: lp10-rotate-glow 12s linear infinite;
   pointer-events: none;
   z-index: -1;
 }
@@ -179,21 +179,21 @@
 .lp-10-center-label {
   position: absolute;
   left: calc(50% + 0.324px);
-  top: 223.74px;
+  top: 223.7px;
   transform: translateX(-50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.978px;
+  gap: 1.9px;
 }
 
 .lp-10-compatible-text {
   font-family: 'Satoshi', sans-serif;
   font-weight: 700;
-  font-size: 11.065px;
+  font-size: 11px;
   line-height: normal;
-  letter-spacing: 1.1065px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: #767676;
   text-align: center;
@@ -223,17 +223,17 @@
 }
 
 .lp-10-chain-xdc {
-  left: 126.08px;
+  left: 126px;
   top: 154.4px;
-  width: 42.67px;
-  height: 42.67px;
+  width: 42.6px;
+  height: 42.6px;
 }
 
 .lp-10-chain-arbitrum-center {
-  left: 177.61px;
+  left: 177.6px;
   top: 154.4px;
-  width: 42.67px;
-  height: 42.67px;
+  width: 42.6px;
+  height: 42.6px;
 }
 
 /* Responsive Design */
@@ -345,20 +345,20 @@
 
 @media (max-width: 480px) {
    .lp-10-section {
-   padding-top: 0px;
+    padding-top: 0px;
     margin-left: 0px;
   }
   .lp-10-container {
      /* background-color:black; */
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 100px 16px 72px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 90px;
-  min-height: calc(90vh - 64px);
-  }
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 100px 16px 72px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+    min-height: calc(90vh - 64px);
+    }
 
 
   .lp-10-heading {
@@ -408,6 +408,6 @@
   .lp-10-chain-circle-group {
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) translateZ(0);
   }
 }
