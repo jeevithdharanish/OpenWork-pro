@@ -81,7 +81,7 @@ const DirectContractSection = () => {
                 <span className="amount-value">50</span>
                 <img src="/assets/usdc-icon.png" alt="USDC" className="usdc-icon" />
               </div>
-              <span className="amount-label">AMOUNT RECEIVED</span>
+              <span className="amount-label-right">AMOUNT RECEIVED</span>
               <span className="user-name">Mollie Hall</span>
             </div>
           </div>

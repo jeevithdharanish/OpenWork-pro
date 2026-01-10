@@ -50,33 +50,33 @@
 
 /* Right Content - Oracle Circle */
 .lp-7-circle-container {
-  transform: scale(1) translateX(80px);
   width: 450px;
-  margin-top: 60px;
   height: 450px;
+  margin-top: 60px;
+  margin-left: 80px; /* ← Replace translateX(80px) */
   position: relative;
   flex-shrink: 0;
+  transform: translateZ(0); /* ← GPU acceleration only */
 }
 
 .lp-7-oracle-circle-group {
-  
   position: relative;
-  width: 389.93px;
+  width: 390px; /* ← Rounded from 389.93px */
   height: 450px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
 }
 
-/* Core Circle */
 .lp-7-core-circle {
-  
   position: absolute;
-  left: 80.95px;
-  top: 101.09px;
-  width: 214.988px;
-  height: 214.988px;
+  left: 81px; /* ← Rounded from 80.95px */
+  top: 101px; /* ← Rounded from 101.09px */
+  width: 215px; /* ← Rounded from 214.988px */
+  height: 215px;
   z-index: 2;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .lp-7-core-circle::before {
@@ -84,7 +84,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   width: 280px;
   height: 280px;
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
@@ -116,11 +116,15 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0);
   width: 600px;
   height: 600px;
   z-index: 0;
   pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  will-change: transform; /* Optimize rendering */
 }
 
 /* Center Athena */
@@ -138,16 +142,16 @@
 
 .lp-7-athena-container {
   position: relative;
-  width: 79.727px;
-  height: 82.476px;
+  width: 79.7px;
+  height: 82px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .lp-7-athena-image {
-  width: 99.727px;
-  height: 102.476px;
+  width: 99px;
+  height: 102px;
   object-fit: contain;
   position: relative;
   z-index: 2;
@@ -166,17 +170,17 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100.804px;
-  height: 14.662px;
+  width: 100.8px;
+  height: 14.6px;
   z-index: 1;
 }
 
 .lp-7-athena-label {
   font-family: 'Satoshi', sans-serif;
   font-weight: 700;
-  font-size: 10.539px;
+  font-size: 10.5px;
   line-height: normal;
-  letter-spacing: 1.0539px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: #767676;
   text-align: center;
@@ -193,12 +197,12 @@
 }
 
 .lp-7-oracle-button {
-  width: 50.585px;
-  height: 50.585px;
+  width: 50.5px;
+  height: 50.5px;
   border-radius: 50%;
-  border: 4.215px solid white;
+  border: 4.25px solid white;
   background: linear-gradient(180deg, #F4F4F4 0%, #FEFEFE 100%);
-  padding: 8.431px;
+  padding: 8px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -206,23 +210,23 @@
 }
 
 .lp-7-oracle-img {
-  width: 33.724px;
-  height: 33.724px;
+  width: 33.7px;
+  height: 33.7px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .lp-7-oracle-status {
-  width: 28.454px;
-  height: 12.646px;
+  width: 28.4px;
+  height: 12.6px;
 }
 
 .lp-7-oracle-coins {
   position: absolute;
   bottom: 52px;
-  left: 2.75px;
-  width: 15.808px;
-  height: 18.97px;
+  left: 2.7px;
+  width: 15.8px;
+  height: 18.9px;
 }
 
 .lp-7-coin-stack {
@@ -232,43 +236,43 @@
 
 /* Oracle Positions */
 .lp-7-oracle-top {
-  left: 155.33px;
+  left: 155px;
   top: 0;
-  width: 75.746px;
+  width: 75.7px;
 }
 
 .lp-7-oracle-left {
   left: 0.41px;
-  top: 105.39px;
-  width: 75.746px;
+  top: 105px;
+  width: 75.7px;
 }
 
 .lp-7-oracle-bottom-left {
-  left: 37.3px;
-  top: 301.41px;
-  width: 75.746px;
+  left: 37px;
+  top: 301px;
+  width: 75.7px;
 }
 
 .lp-7-oracle-bottom-right {
-  left: 263.88px;
-  top: 292.97px;
-  width: 75.746px;
+  left: 263.8px;
+  top: 292.9px;
+  width: 75.7px;
 }
 
 .lp-7-oracle-bottom-right .lp-7-oracle-button {
-  width: 44.525px;
-  height: 44.525px;
+  width: 44.5px;
+  height: 44.5px;
 }
 
 .lp-7-oracle-bottom-right .lp-7-oracle-img {
-  width: 27.663px;
-  height: 27.663px;
+  width: 27.6px;
+  height: 27.6px;
 }
 
 .lp-7-oracle-right {
-  left: 313.41px;
-  top: 125.41px;
-  width: 75.746px;
+  left: 313px;
+  top: 125px;
+  width: 75.7px;
 }
 
 /* Center Question */
@@ -281,20 +285,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8.431px;
+  gap: 8px;
   z-index: 6;
 }
 
 .lp-7-question-button {
   background: linear-gradient(180deg, #1246FF 23.958%, #4770FF 134.37%);
   border: 2.108px solid #1246FF;
-  border-radius: 52.693px;
-  padding: 8.431px 12.646px;
+  border-radius: 52.6px;
+  padding: 8px 12.6px;
   font-family: 'Satoshi', sans-serif;
   font-weight: 700;
-  font-size: 10.539px;
+  font-size: 10.5px;
   line-height: normal;
-  letter-spacing: 1.0539px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: white;
   cursor: pointer;
@@ -309,12 +313,12 @@
 .lp-7-vote-options {
   display: flex;
   align-items: center;
-  gap: 8.431px;
+  gap: 8px;
 }
 
 .lp-7-vote-btn {
-  width: 16.862px;
-  height: 16.862px;
+  width: 16.8px;
+  height: 16.8px;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -326,9 +330,9 @@
 .lp-7-or-text {
   font-family: 'Satoshi', sans-serif;
   font-weight: 700;
-  font-size: 8.431px;
-  line-height: 11.305px;
-  letter-spacing: 0.8431px;
+  font-size: 8px;
+  line-height: 11px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: #767676;
   text-align: center;
@@ -342,8 +346,8 @@
   transform: translateX(-50%);
   font-family: 'Satoshi', sans-serif;
   font-weight: 500;
-  font-size: 12.646px;
-  line-height: 12.646px;
+  font-size: 12.6px;
+  line-height: 12.6px;
   color: #767676;
   text-align: center;
   white-space: nowrap;
@@ -521,13 +525,18 @@
   }
 
   .lp-7-oracle-circle-group {
-    transform: translate(-50%, -50%) scale(0.75);
+    align-items:center;
+    justify-content:center;
+    transform: translate(-50%, -50%) translateZ(0);
   }
 
  .lp-7-ellipse-bg{
-     justify-content: center;
-    align-items: center;
-    margin-left: 10px;
+      width: 130%;
+      height: 130%;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
   }
 
   /* Center the core circle reliably on small screens */
@@ -536,19 +545,49 @@
     left: 50%;
     top: 45%;
     transform: translate(-50%, -50%);
-    width: 218px;
-    height: 218px;
+    width: 258px;
+    height: 258px;
     z-index: 2;
   }
 
+  .lp-7-core-circle::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateZ(0);
+    width: 105%;
+    height: 105%;
+    background: url('/assets/RadiantGlow.png') center/contain no-repeat;
+    animation: lp7-rotate-glow 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    will-change: transform;
+  }
   .lp-7-core-bg{
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    transform: translate(-50%, -50%) ;
+    width: 80%;
+    height: 80%;
     pointer-events: none;
+  }
+
+  .lp-7-athena-container{
+    items-align: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+  }
+  .lp-7-athena-image{
+    width: 75px;
+    height: 75px;
+    /* transform: translateX(-3px); */
+  }
+  .lp-7-job-text{
+    width:80%;
+    height: 8%;
   }
 
   .lp-7-bottom-text {

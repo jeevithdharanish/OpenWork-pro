@@ -1244,8 +1244,7 @@
     /* Scale with viewport height to stay aligned with icons */
    width: min(2200px, 153.5vw);
     height: min(2200px, 153.5vw);
-    margin: 0;
-  
+    margin: 0; 
     /* Reduced margin to bring gradient closer to icons */
     margin-left: min(130px,40vw);
     /* Keep vertical center at 50% so shrinking height scales both elements equally */
@@ -1281,7 +1280,7 @@
     .landing-main.expanded .floating-icons.active-pos-9 .icon-multichain,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-11 .icon-revolution
-     { left: 36% !important; top: 29.5% !important; }
+     { left: 36.5% !important; top: 29.5% !important; }
      
     /* center icon position */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-set-profile,
@@ -1310,7 +1309,7 @@
     .landing-main.expanded .floating-icons.active-pos-8 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-9 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-10 .icon-contact
-    { left: 36.5% !important; top: 67% !important;opacity: 1 !important; }
+    { left: 36.4% !important; top: 67% !important;opacity: 1 !important; }
 
     /* bottom 2 icon position */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-post-job,
@@ -1323,7 +1322,7 @@
     .landing-main.expanded .floating-icons.active-pos-7 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-8 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-9 .icon-contact
-    { left: 39% !important; top: 75% !important;opacity: 1 !important; }
+    { left: 38.5% !important; top: 75% !important;opacity: 1 !important; }
 
     /* bottom 3 icon position */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-direct-contract,
@@ -1335,7 +1334,7 @@
     .landing-main.expanded .floating-icons.active-pos-6 .icon-architecture,
     .landing-main.expanded .floating-icons.active-pos-7 .icon-revolution,
     .landing-main.expanded .floating-icons.active-pos-8 .icon-contact
-    { left: 42% !important; top: 83% !important;opacity: 1 !important; }
+    { left: 41.5% !important; top: 83% !important;opacity: 1 !important; }
 
     /* rest icons below */
     .landing-main.expanded .floating-icons.active-pos-0 .icon-job-progress, 

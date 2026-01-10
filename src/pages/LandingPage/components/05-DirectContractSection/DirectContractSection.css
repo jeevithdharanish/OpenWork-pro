@@ -48,18 +48,20 @@
   position: relative;
   flex-shrink: 0;
   display: flex;
-  transform: scale(1) translateX(80px);
   align-items: center;
   justify-content: center;
+  /* Add these for crisp rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .contract-circle-group {
   position: absolute;
-  width: 266.344px;
-  height: 266.344px;
+  width: 266px;  /* ← rounded from 266.344px */
+  height: 266px; /* ← rounded from 266.344px */
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0); /* ← added translateZ(0) */
 }
 
 .contract-radiant-glow {
@@ -68,11 +70,12 @@
   height: 340px;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0); /* ← added translateZ(0) */
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
   animation: rotate-glow 20s linear infinite;
   pointer-events: none;
   z-index: 0;
+  will-change: transform; /* ← optimize animation */
 }
 
 @keyframes rotate-glow {
@@ -103,10 +106,10 @@
 
 .contract-avatar {
   position: absolute;
-  width: 81.114px;
-  height: 81.114px;
+  width: 81px;
+  height: 81px;
   background: linear-gradient(180deg, #F4F4F4 0%, #FEFEFE 100%);
-  border: 5.474px solid #FFFFFF;
+  border: 5.5px solid #FFFFFF;
   border-radius: 605326px;
   z-index: 3;
   display: flex;
@@ -116,33 +119,33 @@
 }
 
 .contract-avatar img {
-  width: 32.688px;
-  height: 32.688px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   object-fit: cover;
 }
 
 .contract-avatar-left {
-  left: -52.55px;
+  left: -53px; /* ← rounded from -52.55px */
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0); /* ← added translateZ(0) */
 }
 
 .contract-avatar-right {
-  right: -52.55px;
+  right: -53px; /* ← rounded from -52.55px */
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateZ(0); /* ← added translateZ(0) */
 }
 
 .contract-center-info {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(0); /* ← added translateZ(0) */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.421px;
+  gap: 2px; /* ← rounded from 2.421px */
   z-index: 4;
 }
 
@@ -151,62 +154,82 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4.843px;
+  gap: 5px;
   z-index: 4;
 }
 
 .contract-info-left {
   left: -80px;
   top: 50%;
-  transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%) translateZ(0); /* ← added translateZ(0) */
   align-items: flex-end;
 }
 
 .contract-info-right {
   right: -80px;
   top: 50%;
-  transform: translate(100%, -50%);
+  transform: translate(100%, -50%) translateZ(0); /* ← added translateZ(0) */
   align-items: flex-start;
 }
 
 .contract-amount {
   display: flex;
   align-items: center;
-  gap: 4.843px;
+  gap: 5px;
 }
 
 .amount-value {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 12.107px;
+  font-family: 'inter', sans-serif;
+  font-size: 12px;
   font-weight: 500;
   color: #767676;
-  letter-spacing: 0.2421px;
+  letter-spacing: 0.25px;
 }
 
 .usdc-icon {
-  width: 9.685px;
-  height: 9.685px;
+  width: 10px;
+  height: 10px;
   object-fit: contain;
 }
 
 .amount-label {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 6.053px;
+  font-family: 'inter', sans-serif;
+  font-size: 9px;
   font-weight: 700;
   color: #767676;
-  letter-spacing: 0.6053px;
+  letter-spacing: 0.3px;
   text-transform: uppercase;
   text-align: center;
 }
 
-.user-name {
-  font-family: 'Satoshi', sans-serif;
-  font-size: 8.475px;
-  font-weight: 500;
-  color: #050505;
-  letter-spacing: 0.1695px;
-  text-align: center;
-}
+.amount-label-right{
+      color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 8.6px; /* 200% */
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    }
+
+  .user-name {
+    font-family: 'inter', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    color: #050505;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  .amount-label,
+  .amount-label-right,
+  .user-name,
+  .amount-value {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
 /* Responsive */
 @media (min-width: 1280px) and (max-width: 1440px) {
@@ -373,12 +396,14 @@
   }
 
   .contract-circle-section {
-    width: min(340px, 50vw);
+    width: 59%;   
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
   }
 
   .contract-circle-group {
-    width: 110%;
-    height: 110%;
+    width: 100%;
+    height: 100%;
   }
   .contract-radiant-glow {
     width: 120%;
@@ -392,18 +417,83 @@
   }
 
   .contract-avatar-left {
+   width: 20%;
+    height: 20%;
     left: -16px;
   }
 
   .contract-avatar-right {
+    width: 20%;
+    height: 20%;
     right: -16px;
   }
 
   .contract-info-left {
-    left: -12px;
+    display: flex;
+    width: 48px;
+    height: 35px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 3px;
   }
 
   .contract-info-right {
-    right: -12px;
+    /* background-color:black; */
+    display: flex;
+    width: 58px;
+    height: 55px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3px;
   }
+
+  .contract-amount {
+    display: flex;
+    align-items: center;
+    gap: 3.5px;
+  }
+
+  .amount-label,
+  .amount-label-right,
+  .user-name {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translateZ(0); /* Force GPU acceleration */
+  }
+
+  .amount-label {
+    color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
+    font-size: 5.5px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 8px; /* 200% */
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    }
+    .amount-label-right{
+      color: var(--Gray-Dark, #767676);
+    text-align: center;
+    font-family: inter, sans-serif;
+    font-size: 5.5px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 8.6px; /* 200% */
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    }
+
+    .user-name {
+    font-family: inter, sans-serif;
+    font-size: 6.5px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 7px; /* 130% */
+    letter-spacing: 1px;
+    text-align: center;
+    }
+    
 }

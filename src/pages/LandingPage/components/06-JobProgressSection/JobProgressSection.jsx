@@ -39,9 +39,14 @@ const JobProgressSection = () => {
         </div>
 
         {/* Right Content - Job Details Card (SVG placeholder) */}
+        {isMobile ? <div className="lp-6-job-card-container-mobile">
+          <img src="/assets/jobprogress/svg-mob.svg" alt="Job Details" className="lp-6-job-card-image-mobile" />
+        </div>
+        :
         <div className="lp-6-job-card-container">
           <img src="/assets/jobprogress/svgimg.svg" alt="Job Details" className="lp-6-job-card-image" />
         </div>
+        }
       </div>
     </section>
   );
