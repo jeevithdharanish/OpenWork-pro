@@ -156,9 +156,9 @@
   .icon-btn {  
     position: absolute;
     width: auto;
-    height: 32px;
-    min-width: 32px;
-    max-width: 32px;
+    height: 34px;
+    min-width: 34px;
+    max-width: 34px;
     padding: 0;
     border-radius: 999px;
     display: inline-flex;
@@ -182,8 +182,8 @@
 
   /* ICON — fixed anchor */
   .icon-btn img {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     margin-left: 7.5px; /* 👈 anchor point */
     flex-shrink: 0;
     display: block;
@@ -267,6 +267,15 @@
     top: 7.5%;
   }
 
+  .icon-btn.icon-direct-contract:hover,
+.icon-btn:has(.icon-direct-contract):hover {
+  max-width: 240px;
+  padding-right: 9.885px;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px) translateX(-50%);
+  left: 50%; /* centers the expanded button */
+}
+  
   .icon-job-progress {
     left: 64.2%;
     top: 17.7%;
@@ -1131,6 +1140,14 @@
     top: 5%;
     /* transform: translateX(-50%); */
   }
+   .icon-btn.icon-direct-contract:hover,
+  .icon-btn:has(.icon-direct-contract):hover {
+    max-width: 240px;
+    padding-right: 9.885px;
+    box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+    transform: translateY(-1px) translateX(-40%);
+    left: 50%; /* centers the expanded button */
+  }
   
   .icon-job-progress {
     left: 65.2%;
@@ -1200,9 +1217,10 @@
   .icon-revolution img,
   .icon-multichain img {    
       opacity: 1;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
     }
+
 
     .icon-home img {     
       opacity: 1;
