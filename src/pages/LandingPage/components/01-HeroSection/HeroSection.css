@@ -1201,11 +1201,7 @@
     padding-inline: 6px !important;
   }
 
-  .icon-set-profile img{
-    opacity: 0.9;
-    width: 17px;
-    height: 17px;
-  }
+  .icon-set-profile img,
   .icon-discoverable img,
   .icon-post-job img,
   .icon-direct-contract img,
@@ -1220,7 +1216,6 @@
       width: 16px;
       height: 16px;
     }
-
 
     .icon-home img {     
       opacity: 1;
