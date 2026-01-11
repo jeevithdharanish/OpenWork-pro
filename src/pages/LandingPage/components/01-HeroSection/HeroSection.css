@@ -1127,9 +1127,9 @@
   }
   
   .icon-direct-contract {
-    left: 50%;
+    left: 48%!important;
     top: 5%;
-    transform: translateX(-50%);
+    /* transform: translateX(-50%); */
   }
   
   .icon-job-progress {
