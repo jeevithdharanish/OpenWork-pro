@@ -59,7 +59,7 @@
   position: absolute;
   width: 266px;  /* ← rounded from 266.344px */
   height: 266px; /* ← rounded from 266.344px */
-  left: 50%;
+  left: 60%;
   top: 50%;
   transform: translate(-50%, -50%) translateZ(0); /* ← added translateZ(0) */
 }
@@ -234,16 +234,17 @@
 /* Responsive */
 @media (min-width: 1280px) and (max-width: 1440px) {
    .lp-5-section {
-    
-
     margin-left: 0px;
   }
   .lp-5-container {
     margin-left: 180px;
     padding: 0 80px;
   }
+  .contract-circle-group {
+    left: 50%;
+  }
   .contract-circle-section {
-    transform: scale(1.15);
+    transform: scale(1.1);
   }
 }
 
@@ -402,6 +403,7 @@
   }
 
   .contract-circle-group {
+    left: 50%;
     width: 100%;
     height: 100%;
   }

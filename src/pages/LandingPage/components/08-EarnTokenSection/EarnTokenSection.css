@@ -320,6 +320,7 @@
 }
 
   .lp-8-content {
+     margin-left: -40px;
     width: 400px;
   }
 
@@ -329,7 +330,6 @@
   }
 
   .lp-8-circle-container {
-    
     width: 470px;
     height: 420px;
   }
@@ -345,23 +345,23 @@
     margin-left: 0px;
   }
   .lp-8-token-icon {
-  width: 15px;
-  height: 15px;
- border-radius: 9.375px;
-  border: 0.937px solid #1246FF;
-  background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  box-sizing: border-box;
-}
+      width: 15px;
+      height: 15px;
+    border-radius: 9.375px;
+      border: 0.937px solid #1246FF;
+      background: linear-gradient(180deg, #1246FF -23.96%, #4770FF 134.37%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      box-sizing: border-box;
+    }
 
-.lp-8-token-icon-img {
-  margin-left: 1px;
-  width: 10px;
-  height: 8px;
-}
+    .lp-8-token-icon-img {
+      margin-left: 1px;
+      width: 10px;
+      height: 8px;
+    }
   .lp-8-container {
     padding: 0 80px;
     gap: 50px;
@@ -399,7 +399,7 @@
     padding: 60px 0;
   }
 
-   .lp-8-token-icon {
+  .lp-8-token-icon {
   width: 15px;
   height: 15px;
   border-radius: 14px;
@@ -411,14 +411,14 @@
   padding: 7px ;
   aspect-ratio: 1/1;
   box-sizing: border-box;
-}
+  }
 
-.lp-8-token-icon-img {
-  
-  margin-left: 1px;
-  width: 11px;
-  height: 8px;
-}
+  .lp-8-token-icon-img {
+    
+    margin-left: 1px;
+    width: 11px;
+    height: 8px;
+  }
   .lp-8-container {
     padding: 0 40px;
     gap: 40px;
@@ -490,6 +490,7 @@
 
   .lp-8-content {
     display: flex;
+     margin-left: 0px;
     width: 100%;
     max-width: 375px;
     flex-direction: column;

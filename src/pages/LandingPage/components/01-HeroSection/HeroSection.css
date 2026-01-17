@@ -48,8 +48,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
+    /* Responsive sizing - scales with viewport width (600px at 1600px = 37.5vw) */
+    width: min(37.5vw, 600px);
+    height: min(37.5vw, 600px);
     pointer-events: none;
     z-index: 1;
   }
@@ -192,12 +193,12 @@
 
   /* LABEL — hidden by default */
   .icon-btn span {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 12px;
+    font-family: 'inter', sans-serif;
+    font-size: 16px;
     font-weight: 500;
     margin-left: 3px;
     opacity: 0;
-    transform: translateX(-6px);
+    transform: translate(-5px);
     color: #767676;
     transition:
       opacity 0.25s ease,
@@ -207,7 +208,7 @@
 
   /* HOVER — expand right only */
   .icon-btn:hover {
-    max-width: 240px; /* expands only as far as text needs */
+    max-width: 250px; /* expands only as far as text needs */
     padding-right: 9.885px; /* extra pill breathing room without shifting icon */
     box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
     transform: translateY(-1px);
@@ -232,18 +233,17 @@
   .icon-set-profile img,.icon-raise-dispute img,
   .icon-earn-token img,.icon-dao img,
   .icon-multichain img,.icon-architecture img,
-  .icon-revolution img,.icon-home img,.icon-contact img,
+  .icon-revolution img,.icon-contact img,
   {
     opacity: 1;
-    width: 16px !important;
-    height: 16px !important;
+    width: 1px !important;
+    height: 1px !important;
   }
 
   /* Home icon specifics */
   .icon-home img { 
     opacity: 1;
-    margin: 6px;
-    width: 16px; height: 16px; 
+    width: 18px; height: 18px; 
   }
   .icon-home { }
 
@@ -327,7 +327,7 @@
             contrast(var(--icon-contrast-high));
     opacity: 1;
     margin: 6px;
-    width: 16px; height: 16px; 
+    width: 18px; height: 18px; 
   }
 
   /* Hide contact icon when not expanded */
@@ -344,7 +344,7 @@
     min-width: max-content;
     max-width: none !important;
     margin-left:-1px;
-    /* padding: 14.667px 16px 14.667px 14.667px !important; */
+    padding: 4px 14px 4px 4px !important;
     border-radius: 24px !important;
     gap: 8px;
     transform: none !important;
@@ -392,23 +392,23 @@
 
   .landing-main.expanded .radiant-glow-container {
     /* Expand the radiant SVG in place when an icon is clicked */
-    width: 2000px;
-    height: 2000px;
+    width: min(2250px, 140vw);
+    height: min(2250px, 900vh);
     opacity: 1;
     pointer-events: none;
     visibility: visible;
     display: block;
     top: -5%;
-    margin-left: 20px;
+    margin-left:min( 65px, 4vw);
     /* Shift slightly right so icons can sit on the left */
-    left: 5%;
+    left:min(83px, 5.5vw);
     transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                 height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
                 left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
                 opacity 0.4s ease;
-  } 
+}
 
-  .landing-main.expanded .floating-icons {
+.landing-main.expanded .floating-icons {
     position: fixed;
     left: 0;
     top: 55%;
@@ -426,9 +426,9 @@
       margin-left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1001;
     /* moved left to better align with sidebar */
-    margin-left: -135px;
+    margin-left: min(-140px, -9.1vw);
     animation: none !important;
-  }
+}
 
   /* Icons move smoothly along the curve - synced with circle expansion */
   .landing-main.expanded .icon-btn {
@@ -1092,7 +1092,7 @@
   .floating-icons {
       /* Match the same scale factor */
       width: min(1100px, 130vw, 130vh);  /* Scale proportionally with glow */
-      height: min(555px, 66vw, 66vh); 
+      height: min(555px, 66vw, 66vh);
   }
   
    .lp-blue-button {
@@ -1175,7 +1175,7 @@
   }
 
   .center-content {
-    margin-top: -30px;
+    margin-top: -90px;
   }
 
   /* Active state - show label when active */

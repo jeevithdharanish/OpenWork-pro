@@ -4,6 +4,8 @@ import './DisputeSection.css';
 
 const DisputeSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
       useEffect(() => {
         const handleResize = () => {
           setIsMobile(window.innerWidth <= 480);
@@ -12,6 +14,15 @@ const DisputeSection = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
       }, []);
+
+  // Preload the SVG in background without blocking render
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/assets/outer-circle-dispute.svg';
+    img.onload = () => setImageLoaded(true);
+    return () => { img.onload = null; };
+  }, []);
+
   const navigate = useNavigate();
 
   return (
@@ -35,7 +46,29 @@ const DisputeSection = () => {
 
         <div className="lp-7-circle-container">
           <div className="lp-7-oracle-circle-group">
-            <img src="/assets/outer-circle-dispute.svg" alt="" className="lp-7-ellipse-bg" loading="lazy" decoding="async" />
+            {/* Desktop: shimmer loading technique */}
+            {!isMobile ? (
+              <div className="lp-7-ellipse-shimmer-wrapper">
+                <div className={`lp-7-shimmer-placeholder ${imageLoaded ? 'hidden' : ''}`} />
+                {imageLoaded && (
+                  <img 
+                    src="/assets/outer-circle-dispute.svg" 
+                    alt="" 
+                    className="lp-7-ellipse-bg loaded"
+                    decoding="async"
+                  />
+                )}
+              </div>
+            ) : (
+              /* Mobile: direct image load */
+              <img 
+                src="/assets/outer-circle-dispute.svg" 
+                alt="" 
+                className="lp-7-ellipse-bg"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
 
             <div className="lp-7-core-circle">
               <img src="/assets/lp7-core-circle.svg" alt="" className="lp-7-core-bg" loading="lazy" />

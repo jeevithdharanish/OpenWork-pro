@@ -77,7 +77,7 @@ const HeroSection = () => {
     },
     {
       name: 'job-progress',
-      label: 'Job In Progress',
+      label: 'Job Progress',
       sectionId: 'lp-6-section',
       icon: '/assets/icons/jobprogress.svg',
       className: 'icon-job-progress',

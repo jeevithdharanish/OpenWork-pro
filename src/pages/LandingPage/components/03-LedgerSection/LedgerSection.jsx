@@ -47,7 +47,7 @@ const LedgerSection = () => {
           <img src="/assets/Ledger-section/svg-mobile.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
         </div>:
         <div className="lp-3-ledger-container">
-          <img src="/assets/Ledger-section/svg-desktop.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
+          <img src="/assets/Ledger-section/svg-desktop.svg" alt="OpenWork Ledger" className="openwork-ledger-image" loading="lazy" fetchpriority="high" decoding="async"/>
         </div>
         }
       </div>
