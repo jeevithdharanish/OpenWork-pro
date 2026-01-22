@@ -4,14 +4,43 @@
   padding-top: 64px;
   margin-left: 50px;
 }
+
+/* Shimmer Loading Effect */
+.lp-4-shimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.openwork-ledger-image.loading {
+  opacity: 0;
+}
+
+.openwork-ledger-image.loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
 .lp-4-ledger-container {
+  position: relative;
   width: 480px;
   height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
- 
 }
 
 .lp-4-section .openwork-ledger-image {

@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './PostJobSection.css';
-import MobileSVG from '/assets/browsejob/image-mobile.svg';
-import DesktopSVG from '/assets/browsejob/svgimg.svg';
-import ButtonIcon from '/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg';
+import MobileSVG from '../../../../assets/browsejob/image-mobile.svg';
+import DesktopSVG from '../../../../assets/browsejob/svgimg.svg';
+import ButtonIcon from '../../../../assets/browsejob/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg';
+
 
 const PostJobSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
-
+  
+console.log('Bundler output:', DesktopSVG);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 480);
@@ -23,10 +26,17 @@ const PostJobSection = () => {
   };
 
   // Memoize the image source to prevent unnecessary recalculations
-  const imageSrc = useMemo(() => 
-    isMobile ? MobileSVG : DesktopSVG,
-    [isMobile]
-  );
+  const imageSrc = useMemo(() => {
+  const src = isMobile ? MobileSVG : DesktopSVG;
+  console.log('Image source:', src);
+
+  // Check if already cached
+  const img = new Image();
+  img.src = src;
+  console.log('Image complete (cached):', img.complete);
+  
+  return src;
+}, [isMobile]);
 
   return (
     <section id="lp-4-section" className="lp-section lp-4-section">
@@ -46,18 +56,26 @@ const PostJobSection = () => {
             Post Job/Browse Talent
             <img src={ButtonIcon} alt="" className="lp-button-icon" />
           </button>
+          
         </div>
 
         {/* Right Content - OpenWork Ledger SVG */}
         <div className="lp-4-ledger-container">
+          {!imageLoaded && <div className="lp-4-shimmer" />}
           <img 
+            onLoad={() => {
+              console.log('Image loaded:', imageSrc);
+              setImageLoaded(true);
+            }}
             src={imageSrc} 
             alt="OpenWork Ledger" 
-            className="openwork-ledger-image" 
+            className={`openwork-ledger-image ${imageLoaded ? 'loaded' : 'loading'}`}
             loading="lazy" 
           />
         </div>
+        
       </div>
+      
     </section>
   );
 };

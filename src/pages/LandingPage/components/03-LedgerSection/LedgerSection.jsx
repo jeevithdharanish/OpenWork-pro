@@ -7,6 +7,7 @@ import DesktopSVG from '/assets/Ledger-section/svg-desktop.svg';
 
 const LedgerSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   useEffect(() => {
     const handleResize = () => {
@@ -43,11 +44,13 @@ const LedgerSection = () => {
         </div>
 
         <div className="lp-3-ledger-container">
+          {!imageLoaded && <div className="lp-3-shimmer" />}
           <img 
             src={isMobile ? MobileSVG : DesktopSVG} 
             alt="OpenWork Ledger" 
-            className="openwork-ledger-image" 
-            loading="lazy" 
+            className={`openwork-ledger-image ${imageLoaded ? 'loaded' : 'loading'}`}
+            loading="lazy"
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
       </div>

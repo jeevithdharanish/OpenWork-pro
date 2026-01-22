@@ -6,6 +6,7 @@ import ArrowIcon from '/assets/lp8-arrow-icon.svg';
 
 const ArchitectureSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,10 +46,12 @@ const ArchitectureSection = () => {
 
         <div className="lp-11-diagram-container">
           {/* Architecture diagram */}
+          {!imageLoaded && <div className="lp-11-shimmer" />}
           <img 
             src={ArchitectureDiagram} 
             alt="OpenWork Architecture Diagram" 
-            className="lp-11-architecture-image"
+            className={`lp-11-architecture-image ${imageLoaded ? 'loaded' : 'loading'}`}
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
       </div>
