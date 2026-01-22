@@ -1,22 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import './ProfileSection.css';
-import { useState, useEffect } from 'react';
+
+// SVG imports
+import ButtonIcon from '/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg';
+import GlowBase from '/assets/f01626b372dd2b2391f5fe54c12ae2256c1f5afb.svg';
+import GlowOverlay from '/assets/091c505d411eb57b9f1d9290b4460a2192f03cba.svg';
+import AboutIcon from '/assets/081d3bfdc15b7ac4902803ad1728684196fe82ca.svg';
+import JobsIcon from '/assets/bb51c34d86b51b6cc653f8826f3a8f5c05028d96.svg';
+import StarBg from '/assets/c88d1ccb13275217d5fa8cc23be07c290ae77d34.svg';
+import StarIcon from '/assets/721e043aefa6d0dae1674935f768680ab6f3a4f2.svg';
+
+// PNG imports
+import ProfileCircleBg from '/assets/directcontract/image.png';
+import ProfileAvatar from '/assets/3d90d978da202913302b7c506fa777f428500cc6.png';
 
 const ProfileSection = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleSetProfile = () => {
     document.getElementById('lp-2-section').scrollIntoView({ 
       behavior: 'smooth' 
     });
   };
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
-      useEffect(() => {
-        const handleResize = () => {
-          setIsMobile(window.innerWidth <= 480);
-        };
-    
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
 
   return (
     <section id="lp-2-section" className="lp-section lp-2-section">
@@ -35,7 +49,7 @@ const ProfileSection = () => {
             onClick={handleSetProfile}
           >
             Set Your Profile
-            <img src="/assets/b16a6ff87b2913f8bdc303dda7816c024bd687cb.svg" alt="" className="lp-button-icon" />
+            <img src={ButtonIcon} alt="" className="lp-button-icon" />
           </button>
         </div>
 
@@ -44,13 +58,13 @@ const ProfileSection = () => {
           <div className="profile-circle-group">
             {/* Radiant Glow */}
             <div className="profile-radiant-glow">
-              <img src="/assets/f01626b372dd2b2391f5fe54c12ae2256c1f5afb.svg" alt="" />
-              <img src="/assets/091c505d411eb57b9f1d9290b4460a2192f03cba.svg" alt="" className="glow-overlay" />
+              <img src={GlowBase} alt="" />
+              <img src={GlowOverlay} alt="" className="glow-overlay" />
             </div>
             
             {/* Main Circle */}
             <img 
-              src="/assets/directcontract/image.png" 
+              src={ProfileCircleBg} 
               alt="" 
               className="profile-circle-bg"
             />
@@ -58,7 +72,7 @@ const ProfileSection = () => {
             {/* Left Button - About */}
             <div className="radial-button radial-button-left">
               <div className="radial-button-content">
-                <img src="/assets/081d3bfdc15b7ac4902803ad1728684196fe82ca.svg" alt="About" />
+                <img src={AboutIcon} alt="About" />
                 <span>About</span>
               </div>
             </div>
@@ -66,7 +80,7 @@ const ProfileSection = () => {
             {/* Right Button - Jobs */}
             <div className="radial-button radial-button-right">
               <div className="radial-button-content">
-                <img src="/assets/bb51c34d86b51b6cc653f8826f3a8f5c05028d96.svg" alt="Jobs" />
+                <img src={JobsIcon} alt="Jobs" />
                 <span>Jobs</span>
               </div>
             </div>
@@ -74,13 +88,13 @@ const ProfileSection = () => {
             {/* Center Profile */}
             <div className="center-profile">
               <div className="profile-avatar">
-                <img src="/assets/3d90d978da202913302b7c506fa777f428500cc6.png" alt="Profile" />
+                <img src={ProfileAvatar} alt="Profile" />
               </div>
               <div className="profile-rating">
                 <span className="rating-text">4.9</span>
                 <div className="star-icon">
-                  <img src="/assets/c88d1ccb13275217d5fa8cc23be07c290ae77d34.svg" alt="" className="star-bg" />
-                  <img src="/assets/721e043aefa6d0dae1674935f768680ab6f3a4f2.svg" alt="" className="star" />
+                  <img src={StarBg} alt="" className="star-bg" />
+                  <img src={StarIcon} alt="" className="star" />
                 </div>
               </div>
             </div>

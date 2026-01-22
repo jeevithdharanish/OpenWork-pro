@@ -1,10 +1,13 @@
 import React from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './LedgerSection.css';
+import MobileSVG from '/assets/Ledger-section/svg-mobile.svg';
+import DesktopSVG from '/assets/Ledger-section/svg-desktop.svg';
 
 const LedgerSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 480);
@@ -23,13 +26,12 @@ const LedgerSection = () => {
   return (
     <section id="lp-3-section" className="lp-section lp-3-section">
       <div className="lp-3-container">
-        {/* Left Content */}
         <div className="lp-3-content">
           <div className="text-content">
             <h1 className="lp-3-heading">Added to the Ledger - Forever Yours</h1>
-          <p className="lp-3-description">
-            Every job, update, and review is logged immutably in the OpenWork Ledger (OWL), giving you a permanent and transparent work history.
-          </p>
+            <p className="lp-3-description">
+              Every job, update, and review is logged immutably in the OpenWork Ledger (OWL), giving you a permanent and transparent work history.
+            </p>
           </div>         
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
@@ -40,16 +42,14 @@ const LedgerSection = () => {
           </button>
         </div>
 
-        {/* Right Content - OpenWork Ledger SVG */}
-        {
-          isMobile ?
         <div className="lp-3-ledger-container">
-          <img src="/assets/Ledger-section/svg-mobile.svg" alt="OpenWork Ledger" className="openwork-ledger-image" />
-        </div>:
-        <div className="lp-3-ledger-container">
-          <img src="/assets/Ledger-section/svg-desktop.svg" alt="OpenWork Ledger" className="openwork-ledger-image" loading="lazy" fetchpriority="high" decoding="async"/>
+          <img 
+            src={isMobile ? MobileSVG : DesktopSVG} 
+            alt="OpenWork Ledger" 
+            className="openwork-ledger-image" 
+            loading="lazy" 
+          />
         </div>
-        }
       </div>
     </section>
   );

@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DisputeSection.css';
+import OuterCircleSVG from '/assets/outer-circle-dispute.svg';
+import CoreCircleSVG from '/assets/lp7-core-circle.svg';
+import AthenaSVG from '/assets/Athena.svg';
+import JobTextSVG from '/assets/job-text.svg';
+import ArrowIcon from '/assets/lp7-arrow-icon.svg';
 
 const DisputeSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const navigate = useNavigate();
 
-      useEffect(() => {
-        const handleResize = () => {
-          setIsMobile(window.innerWidth <= 480);
-        };
-    
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-      }, []);
-
-  // Preload the SVG in background without blocking render
   useEffect(() => {
-    const img = new Image();
-    img.src = '/assets/outer-circle-dispute.svg';
-    img.onload = () => setImageLoaded(true);
-    return () => { img.onload = null; };
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const navigate = useNavigate();
+  // Preload the SVG in background without blocking render (for desktop shimmer effect)
+  useEffect(() => {
+    if (!isMobile) {
+      const img = new Image();
+      img.src = OuterCircleSVG;
+      img.onload = () => setImageLoaded(true);
+      return () => { img.onload = null; };
+    }
+  }, [isMobile]);
 
   return (
     <section id="lp-7-section" className="lp-section lp-7-section">
@@ -31,16 +37,16 @@ const DisputeSection = () => {
         <div className="lp-7-content">
           <div className="text-content">
             <h1 className="lp-7-heading">Dispute Resolution with Skill Oracles</h1>
-          <p className="lp-7-description">
-            Disagreements? Let verified experts in the field decide. Skill-based oracles resolve disputes through decentralized token-based voting.
-          </p>
+            <p className="lp-7-description">
+              Disagreements? Let verified experts in the field decide. Skill-based oracles resolve disputes through decentralized token-based voting.
+            </p>
           </div>
           <button 
             className={isMobile ? "lp-blue-button-1" : "lp-blue-button"}
             onClick={() => navigate('/browse-jobs')}
           >
             See Disputes
-            <img src="/assets/lp7-arrow-icon.svg" alt="" className="lp-button-icon" />
+            <img src={ArrowIcon} alt="" className="lp-button-icon" />
           </button>
         </div>
 
@@ -52,33 +58,31 @@ const DisputeSection = () => {
                 <div className={`lp-7-shimmer-placeholder ${imageLoaded ? 'hidden' : ''}`} />
                 {imageLoaded && (
                   <img 
-                    src="/assets/outer-circle-dispute.svg" 
+                    src={OuterCircleSVG} 
                     alt="" 
                     className="lp-7-ellipse-bg loaded"
-                    decoding="async"
                   />
                 )}
               </div>
             ) : (
               /* Mobile: direct image load */
               <img 
-                src="/assets/outer-circle-dispute.svg" 
+                src={OuterCircleSVG} 
                 alt="" 
                 className="lp-7-ellipse-bg"
                 loading="lazy"
-                decoding="async"
               />
             )}
 
             <div className="lp-7-core-circle">
-              <img src="/assets/lp7-core-circle.svg" alt="" className="lp-7-core-bg" loading="lazy" />
+              <img src={CoreCircleSVG} alt="" className="lp-7-core-bg" loading="lazy" />
             </div>
 
             <div className="lp-7-center-athena">
               <div className="lp-7-athena-container">
-                <img src="/assets/Athena.svg" alt="Athena" className="lp-7-athena-image" loading="lazy" decoding="async" />
+                <img src={AthenaSVG} alt="Athena" className="lp-7-athena-image" loading="lazy" />
               </div>
-              <img src="/assets/job-text.svg" alt="" className="lp-7-job-text" />
+              <img src={JobTextSVG} alt="" className="lp-7-job-text" />
             </div>
           </div>
         </div>

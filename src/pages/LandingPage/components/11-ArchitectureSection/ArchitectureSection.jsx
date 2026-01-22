@@ -1,18 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ArchitectureSection.css';
+import ArchitectureDiagram from '/assets/LP-11 architectecture.svg';
+import ArrowIcon from '/assets/lp8-arrow-icon.svg';
 
 const ArchitectureSection = () => {
- const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
-     useEffect(() => {
-       const handleResize = () => {
-         setIsMobile(window.innerWidth <= 480);
-       };
-   
-       window.addEventListener('resize', handleResize);
-       return () => window.removeEventListener('resize', handleResize);
-     }, []);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 480);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Memoize description text
+  const descriptionText = useMemo(() =>
+    isMobile
+      ? "OpenWork's chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the OpenWork Chain."
+      : "OpenWork's chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the aggregating OpenWork parent chain. This parent chain supports oracles for dispute resolution and key DAO decisions through OpenWork's DAO contracts.",
+    [isMobile]
+  );
 
   return (
     <section id="lp-11-section" className="lp-section lp-11-section">
@@ -20,12 +31,7 @@ const ArchitectureSection = () => {
         <div className="lp-11-content">
           <div className="text-content">
             <h2 className="lp-11-heading">The OpenWork Architecture</h2>
-          <p className="lp-11-description">
-            {isMobile
-              ? "OpenWork’s chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the OpenWork Chain."
-              : "OpenWork's chain-agnostic architecture lets users operate on their preferred chains, like Arbitrum, while all data is securely stored on the aggregating OpenWork parent chain. This parent chain supports oracles for dispute resolution and key DAO decisions through OpenWork's DAO contracts."
-            }
-          </p>
+            <p className="lp-11-description">{descriptionText}</p>
           </div>
 
           <button 
@@ -33,14 +39,14 @@ const ArchitectureSection = () => {
             onClick={() => navigate('/documentation')}
           >
             View Documentation
-            <img src="/assets/lp8-arrow-icon.svg" alt="" className="lp-button-icon" />
+            <img src={ArrowIcon} alt="" className="lp-button-icon" />
           </button>
         </div>
 
         <div className="lp-11-diagram-container">
           {/* Architecture diagram */}
           <img 
-            src="/assets/LP-11 architectecture.svg" 
+            src={ArchitectureDiagram} 
             alt="OpenWork Architecture Diagram" 
             className="lp-11-architecture-image"
           />
