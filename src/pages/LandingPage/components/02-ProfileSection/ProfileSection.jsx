@@ -50,7 +50,7 @@ const ProfileSection = () => {
             
             {/* Main Circle */}
             <img 
-              src="/assets/300d7ce82be9f924ea45b3f5b13e3886ae2e040b.svg" 
+              src="/assets/directcontract/image.png" 
               alt="" 
               className="profile-circle-bg"
             />

@@ -94,8 +94,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* Responsive sizing - scales with viewport height */
-    width: 758px;
-    height:   758px;
+    width: 788px;
+    height:   788px;
     background: url('/assets/RadiantGlow.svg') center/contain no-repeat;
     animation: rotate-glow 3s linear infinite;
     pointer-events: none;
@@ -137,8 +137,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1280px;
-    height: 734px;
+    width: 1340px;
+    height: 764px;
     z-index: 2;
     pointer-events: none;
     transition: 
@@ -194,7 +194,7 @@
   /* LABEL — hidden by default */
   .icon-btn span {
     font-family: 'inter', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     margin-left: 3px;
     opacity: 0;
@@ -248,13 +248,13 @@
   .icon-home { }
 
   .icon-set-profile {
-    left: 26%;
-    top: 54.1%;
+    left: 26.5%;
+    top: 59%;
   }
 
   .icon-discoverable {
-    left: 27%;
-    top: 33%;
+    left: 26.5%;
+    top: 37.9%;
   }
 
   .icon-post-job {
@@ -282,13 +282,13 @@
   }
 
   .icon-raise-dispute {
-    left: 70.2%;
-    top: 32.4%;
+    left: 71%;
+    top: 37.3%;
   }
 
   .icon-earn-token {
-    left: 71.7%;
-    top: 53.5%;
+    left: 70.8%;
+    top: 58.4%;
   }
 
   .icon-dao {
@@ -1213,8 +1213,8 @@
   .icon-revolution img,
   .icon-multichain img {    
       opacity: 1;
-      width: 16px;
-      height: 16px;
+      width: 19px;
+      height: 19px;
     }
 
     .icon-home img {     

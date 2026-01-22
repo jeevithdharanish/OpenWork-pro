@@ -46,7 +46,7 @@ const DirectContractSection = () => {
             </div>
             
             <img 
-              src="/assets/lp5-circle-bg.svg" 
+              src="/assets/directcontract/image.png" 
               alt="" 
               className="contract-circle-bg"
             />
