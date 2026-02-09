@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './DisputeSection.css';
-import OuterCircleSVG from '/assets/outer-circle-dispute.svg';
+import OuterCircleSVG from '/assets/raisedispute/image.png';
 import CoreCircleSVG from '/assets/lp7-core-circle.svg';
 import AthenaSVG from '/assets/Athena.svg';
 import JobTextSVG from '/assets/job-text.svg';
@@ -57,11 +57,13 @@ const DisputeSection = () => {
               <div className="lp-7-ellipse-shimmer-wrapper">
                 <div className={`lp-7-shimmer-placeholder ${imageLoaded ? 'hidden' : ''}`} />
                 {imageLoaded && (
+                  <div className='lp-7-core-circle'>
                   <img 
                     src={OuterCircleSVG} 
                     alt="" 
                     className="lp-7-ellipse-bg loaded"
                   />
+                  </div>
                 )}
               </div>
             ) : (
@@ -74,16 +76,16 @@ const DisputeSection = () => {
               />
             )}
 
-            <div className="lp-7-core-circle">
+            {/* <div className="lp-7-core-circle">
               <img src={CoreCircleSVG} alt="" className="lp-7-core-bg" loading="lazy" />
-            </div>
+            </div> */}
 
-            <div className="lp-7-center-athena">
+            {/* <div className="lp-7-center-athena">
               <div className="lp-7-athena-container">
                 <img src={AthenaSVG} alt="Athena" className="lp-7-athena-image" loading="lazy" />
               </div>
               <img src={JobTextSVG} alt="" className="lp-7-job-text" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -61,6 +61,7 @@
 }
 
 .lp-7-oracle-circle-group {
+  /* background-color:black; */
   position: relative;
   width: 390px; /* ← Rounded from 389.93px */
   height: 450px;
@@ -71,29 +72,30 @@
 
 .lp-7-core-circle {
   position: absolute;
-  left: 75px; /* ← Rounded from 80.95px */
-  top: 85px; /* ← Rounded from 101.09px */
-  width: 215px; /* ← Rounded from 214.988px */
-  height: 215px;
+  left: 10%; /* ← Rounded from 80.95px */
+  top: 5%; /* ← Rounded from 101.09px */
+  width: 519px; /* ← Rounded from 214.988px */
+  height: 519px;
   z-index: 2;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-
 .lp-7-core-circle::before {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: 40.15%;
+  top: 45.2%;
   transform: translate(-50%, -50%) translateZ(0);
-  width: 280px;
-  height: 280px;
+  width: 285px;
+  height: 285px;
   background: url('/assets/RadiantGlow.png') center/contain no-repeat;
   animation: lp7-rotate-glow 20s linear infinite;
   pointer-events: none;
   z-index: -1;
   will-change: transform;
 }
+
+
 
 @keyframes lp7-rotate-glow {
   from {
@@ -115,11 +117,11 @@
 /* Ellipse Background */
 .lp-7-ellipse-bg {
   position: absolute;
-  left: 3.5% !important;
-  top: 2%!important;
+  left: 3% !important;
+  top: 5%!important;
   transform: translate(-50%, -50%) translateZ(0);
-  width: 550px;
-  height: 550px;
+  width: 400px;
+  height: 450px;
   z-index: 0;
   pointer-events: none;
   -webkit-backface-visibility: hidden;
@@ -610,8 +612,8 @@
  .lp-7-ellipse-bg{
      top: 49% !important;
       left: 49%!important;
-      width: 125%;
-      height: 125%;
+      width: 400px;
+    height: 450px;
       margin: 0 auto;
       justify-content: center;
       align-items: center;

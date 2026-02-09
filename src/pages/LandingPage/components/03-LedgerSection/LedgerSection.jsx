@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import './LedgerSection.css';
 import MobileSVG from '/assets/Ledger-section/svg-mobile.svg';
 import DesktopSVG from '/assets/Ledger-section/svg-desktop.svg';
+import Desktop from '/assets/Ledger-section/desktop.png';
 
 const LedgerSection = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
@@ -46,7 +47,7 @@ const LedgerSection = () => {
         <div className="lp-3-ledger-container">
           {!imageLoaded && <div className="lp-3-shimmer" />}
           <img 
-            src={isMobile ? MobileSVG : DesktopSVG} 
+            src={isMobile ? MobileSVG : Desktop} 
             alt="OpenWork Ledger" 
             className={`openwork-ledger-image ${imageLoaded ? 'loaded' : 'loading'}`}
             loading="lazy"
